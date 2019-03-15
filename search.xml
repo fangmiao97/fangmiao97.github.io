@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>LeetCode刷题总结（持续更新）</title>
+      <link href="/2019/03/15/MyLeetCodeSummarize/"/>
+      <url>/2019/03/15/MyLeetCodeSummarize/</url>
+      
+        <content type="html"><![CDATA[<p>我的答案仓库地址：<a href="https://github.com/fangmiao97/MyLeetCode" target="_blank" rel="noopener">MyLeetCode</a></p><h2 id="Tree与迭代、动态规划"><a href="#Tree与迭代、动态规划" class="headerlink" title="Tree与迭代、动态规划"></a>Tree与迭代、动态规划</h2><ul><li><p><a href="https://leetcode.com/problems/maximum-binary-tree/" target="_blank" rel="noopener">Maximum Binary Tree</a></p><ul><li>思路：将创建最大二叉树，即根节点比所有叶子节点都大，的过程，分解成先寻找到当前数列中最大值，然后在创建左右最大子树的过程</li><li>退出情况是数列为一个数时返回null，即表示结束没有子树可以构造了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TreeNode root = new TreeNode(nums[max_i]);</span><br><span class="line">root.left = construct(nums, l, max_i);</span><br><span class="line">root.right = construct(nums, max_i + 1, r);</span><br></pre></td></tr></table></figure></li></ul></li><li><p><a href="https://leetcode.com/problems/maximum-binary-tree-ii/" target="_blank" rel="noopener">Maximum Binary Tree II</a></p><ul><li>描述：在一棵现成的最大二叉树中，插入一个数，使得插入之后依然是最大二叉树</li><li>技巧点：比根节点小的数一律往根节点的右子树插。</li><li>思路：插入值与当前根节点的值比较，若大于根节点的值则创建节点，并将原根节点作为自己的左子结点，并返回新的根节点。否则的话插入值插入原根节点的右子树，并循环这个过程。若插入值比较到最后，即与null比较，则创建该节点并返回这个节点。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode insertIntoMaxTree(TreeNode root, int val) &#123;</span><br><span class="line">        if(root == null)&#123;</span><br><span class="line">            return new TreeNode(val);</span><br><span class="line">        &#125;</span><br><span class="line">        if(root.val&lt;val)&#123;</span><br><span class="line">            TreeNode head = new TreeNode(val);</span><br><span class="line">            head.left = root;</span><br><span class="line">            return head;</span><br><span class="line">        &#125;</span><br><span class="line">        root.right = insertIntoMaxTree(root.right, val);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li></ul></li><li><p><a href="https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/" target="_blank" rel="noopener">Second Minimum Node In a Binary Tree</a></p><ul><li>需要注意的事，必须将所有的节点都遍历完全才能找到第二小的数字。因为有一个用例将第二小的数值藏在了最下面</li><li>采用DFS或BFS都可以。关键是判断第二小的时候，先要将第一小的数找到，如果之后有数字不是小于<strong>等于</strong>第一小的话，才可以比较是不是第二小。如果只是单纯的小于第一小，会让第二小也成为和第一小一样的数值。</li></ul></li><li>BFS常用结构<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;TreeNode&gt; a = new LinkedList&lt;&gt;();</span><br><span class="line">a.offer(p);</span><br><span class="line">while (!a.isEmpty())&#123;</span><br><span class="line">    for (int sz = a.size(); sz &gt; 0; --sz) &#123;</span><br><span class="line">        TreeNode n = a.poll();</span><br><span class="line">        //do something</span><br><span class="line">        a.offer(n.left);</span><br><span class="line">        a.offer(n.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>微信小程序开发🚀</title>
       <link href="/2019/03/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%84%8F%E8%A7%81/"/>
       <url>/2019/03/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%84%8F%E8%A7%81/</url>
@@ -14,7 +39,7 @@
       
         <tags>
             
-            <tag> 微信小程序 </tag>
+            <tag> 开发相关 </tag>
             
         </tags>
       
