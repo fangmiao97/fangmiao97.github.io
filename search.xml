@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>微信小程序开发🚀</title>
+      <link href="/2019/03/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%84%8F%E8%A7%81/"/>
+      <url>/2019/03/15/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%84%8F%E8%A7%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="布局样式📱"><a href="#布局样式📱" class="headerlink" title="布局样式📱"></a>布局样式📱</h2><ul><li><a href="https://www.imooc.com/learn/974" target="_blank" rel="noopener">入门教程视频</a></li><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">基础代码教程</a></li><li>相关实用网站<ul><li><a href="http://www.runoob.com/css/css-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></li><li><a href="https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/file.html#wxml-%E6%A8%A1%E6%9D%BF" target="_blank" rel="noopener">WXML与WXSS</a></li><li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" target="_blank" rel="noopener">WXSS主要注意尺寸单位</a></li><li><a href="https://developers.weixin.qq.com/miniprogram/dev/component/" target="_blank" rel="noopener">小程序的基本组件</a></li></ul></li></ul><h2 id="逻辑🗯"><a href="#逻辑🗯" class="headerlink" title="逻辑🗯"></a>逻辑🗯</h2><ul><li><a href="https://developers.weixin.qq.com/community/develop/article/doc/000aa057ca0a88dcd938b4d6656813" target="_blank" rel="noopener">PWA</a>(了解）</li><li><a href="https://www.v2ex.com/t/427255" target="_blank" rel="noopener">关于HTML5/小程序的产生</a>(了解）</li><li><a href="https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/file.html#js-%E4%BA%A4%E4%BA%92%E9%80%BB%E8%BE%91" target="_blank" rel="noopener">JS逻辑交互</a></li><li>相关实用网站<ul><li><a href="https://developers.weixin.qq.com/miniprogram/dev/quickstart/basic/framework.html#api" target="_blank" rel="noopener">小程序的API</a></li><li><a href="http://www.runoob.com/js/js-tutorial.html" target="_blank" rel="noopener">JavaScript</a></li><li><a href="http://www.runoob.com/json/json-tutorial.html" target="_blank" rel="noopener">JSON教程</a></li></ul></li></ul><h2 id="其他实用网站🕸"><a href="#其他实用网站🕸" class="headerlink" title="其他实用网站🕸"></a>其他实用网站🕸</h2><ul><li><a href="https://developers.weixin.qq.com/" target="_blank" rel="noopener">官方社区</a>:有的坑可能别人已经踩过，可以搜索一下</li><li><a href="https://minapp.com/miniapp/" target="_blank" rel="noopener">知晓程序</a>：可以看看别人产品的想法和思路</li><li><a href="https://tencent.github.io/wepy/" target="_blank" rel="noopener">WePY</a>：开发小程序的一个框架。建议看看就好，还是以原生开发为主。等原生上手后再看看框架。</li><li><a href="https://github.com/Shincey/HFUTSZK" target="_blank" rel="noopener">工大思政课</a>:无网络交互，可以独立开发完成。</li><li><a href="https://github.com/fangmiao97/AISmallTribe-weixinMiniProgram" target="_blank" rel="noopener">AI小部落</a>：js逻辑中有网络交互，可以做参考。</li><li>各种css样式配置web工具<ul><li><a href="https://www.html.cn/tool/css3Preview/Box-Shadow.html" target="_blank" rel="noopener">box、卡片的阴影效果</a></li><li>……</li></ul></li></ul><h2 id="建议🍻"><a href="#建议🍻" class="headerlink" title="建议🍻"></a>建议🍻</h2><ul><li>先学习基础<strong>HTML/CSS/JavaScript</strong>，不用特别抓细节，但是要知晓常见用法</li><li>理清三个方面：<ul><li>如何布局、添加样式</li><li>逻辑层与 ui 层如何交互，或者说如何用代码操控 ui 组件</li><li>如何处理用户的交互动作</li></ul></li><li>先从简单的功能开始开发，如，点击按钮显示图片文本。再逐渐复杂逻辑</li><li>小程序推荐用原生开发，先不要用框架</li><li>看官方文档，也要结合搜索引擎。因为微信的官方文档，有坑</li><li>每天新增一行代码都是进步😃加油！</li><li>逐渐理解<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" target="_blank" rel="noopener">生命周期</a></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 微信小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/03/15/hello-world/"/>
+      <url>/2019/03/15/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
