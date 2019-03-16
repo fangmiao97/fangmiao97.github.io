@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wx1.sinaimg.cn/mw1024/6a49516fly1g14vxty5rbj21400u0e82.jpg">
 <meta property="og:image" content="https://wx2.sinaimg.cn/mw1024/6a49516fly1g14w7kwjt8j20j60n4dks.jpg">
-<meta property="og:updated_time" content="2019-03-16T12:45:35.000Z">
+<meta property="og:updated_time" content="2019-03-16T14:28:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每周记录📝（190316）">
 <meta name="twitter:description" content="这一周将毕业设计的开头部分完成了链路打通，具体就是在前端埋点得到的数据能够在kafka中分topic消费。 其实这之间走了很多弯路，自己反复查资料才发现一个正确的方法。现在才意识到做项目需要一个指导老师的重要性，同样企业需要技术的布道师也是这个道理。 我的毕设是使用spark streaming进行网站流量的分析。其实对于毕设很尴尬的一点事，没有真实的业务数据，只能自己凭空制造。另外我觉得高校中">
@@ -81,10 +81,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/03/16/MyLeetCodeSummarize/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2019/03/15/微信小程序学习意见/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/16/FluemToKafkaBaseOnDifferntTopic/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -135,7 +133,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-03-16T12:45:35.000Z" itemprop="datePublished">2019-03-16</time>
+        <time datetime="2019-03-16T14:28:06.000Z" itemprop="datePublished">2019-03-16</time>
         
       
     </div>
@@ -161,7 +159,7 @@
 <p>我的毕设是使用spark streaming进行网站流量的分析。其实对于毕设很尴尬的一点事，没有真实的业务数据，只能自己凭空制造。另外我觉得高校中的毕业设计，真的越来越水，就像是一个大一点的课程设计，自己独立完成的那种。</p>
 <p>这一周我首先想完成通过自己在前端埋点，收集到数据，并能够给后面的业务流程使用。我的前端使用react，埋点的数据收集打算用flume收集。最开始的思路是使用flume的HTTPSource直接收集来自前端POST请求中的数据，可是通过查阅文档发现，无法完成。因为HTTPSource接受的需要是flume的Event对象，前端直接发来的数据不符合要求。所以说前端的任务只要完成原始数据收集的工作就可以了，其他必要的转换由后端完成。</p>
 <p>还有一点就是，经别人提醒，如果说用flume直接收集网络上的数据还有安全的问题（见<a href="https://www.v2ex.com/t/543592#reply4" target="_blank" rel="noopener">V2ex帖子</a>）。所以有后端转发的必要。所以在这里我就有个疑惑，关于HTTPSource的使用场景到底是什么？</p>
-<p>进过反复的尝试，确定了方案是：前端埋点采集到的数据由后端接受，并发送log4j日志给flume，再由flume的interceptor进行过滤（分流），分成不同的topic给kafka的消费者使用，之后就可以给spark streaming使用啦。</p>
+<p>进过反复的尝试，确定了方案是：前端埋点采集到的数据由后端接受，并发送log4j日志给flume，再由flume的interceptor进行过滤（分流），分成不同的topic给kafka的消费者使用，之后就可以给spark streaming使用啦。(解决方案<a href="https://fangmiao97.github.io/2019/03/16/FluemToKafkaBaseOnDifferntTopic/" target="_blank" rel="noopener">见文章</a>)</p>
 <p>不过现在遗留下的问题就是，前端使用axios出现跨域访问的问题。这个问题下周开始解决。下周要完成的任务就是把前端的框架搭好，开始学习spark streaming深入一点的东西，然后找需求。目前的需求太单薄了，不怎么丰富。</p>
 <p>本周还做了点其他的事，总之效率没有那么高吧。这两天刷LeetCode也刷不起来，不知道为啥。所以这两天休息了一下，没刷。</p>
 <p>感觉自己有的时候总被一些东西打扰，自己的控制力不够。另外看书的速度也挺慢的。看了名人传记，感觉厉害的人为何有那么多精力呢？</p>
