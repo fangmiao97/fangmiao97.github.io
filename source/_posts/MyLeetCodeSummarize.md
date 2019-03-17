@@ -53,3 +53,68 @@ public TreeNode insertIntoMaxTree(TreeNode root, int val) {
                 a.offer(n.right);
             }
 ```
+## 字节/位处理
+* [Reverse Integer](https://leetcode.com/problems/reverse-integer/)
+    * java中不同数据类型的取值范围
+        * int 32
+        * short 16
+        * long 64
+        * float 32
+        * double 64
+    * 本题中关于溢出可能的判断
+   
+```java
+//方式一
+//正数溢出情况（2147483647）
+if (rev > Integer.MAX_VALUE/10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;
+//负数（-2147483648）
+if (rev < Integer.MIN_VALUE/10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0;
+
+
+//方式二
+if((rev - pop) / 10 != org) return 0;//溢出的话肯定计算不出原来的数字了
+```
+
+* [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/)
+    * 找一个int数的二进制中有多少个1，hamming weight
+    * & -- 位与运算 | -- 位或运算
+
+```java
+int res = 0;
+        for(int i = 31; i >= 0; i--) {
+            if((n & 1) == 1)
+                res++;
+            n >>= 1; //右移一位
+        }
+```
+* [java中的移位操作符](https://zhuanlan.zhihu.com/p/30108890)
+
+* [Reverse Bits](https://leetcode.com/problems/reverse-bits/)
+    * 翻转32位比特值，依次移动每一位。将每次需要移动的比特放在最后一位。与1进行位与操作后，将这一位移动到正确的位置后，与结果进行位或操作。
+    
+```java
+int ans = 0;
+        for(int i = 31; i >= 0; i--) {
+            ans = ans | ((n & 1) << i);
+            n >>= 1;
+        }
+```
+
+* [Counting Bits](https://leetcode.com/problems/counting-bits/)
+    * **DP** When it comes to even numbers, i.e, 2,4,6,8, their binary should be like '10', '100', '110', '1000' 
+      so one notable difference is their unit digit is always 0, 
+      which means when you call >> 1- shift one bit rightwards 
+      and also means dividing by 2- would cause no change to the count of '1' in the binary string.
+      
+      Vice versa, when you meet odd numbers, shifting one bit rightwards always eliminates one '1' digit from original binary string,
+      that is why we should "compensate" one '1' character to the count.
+      
+      To sum up, when you meet even number the count of '1's is always the same as its half number,
+      on the other hand, remember to plus one to the odds' half number.
+   
+```java
+    int[] f = new int[num + 1];
+    for (int i=1; i<=num; i++) f[i] = f[i >> 1] + (i & 1);
+    return f;
+```
+

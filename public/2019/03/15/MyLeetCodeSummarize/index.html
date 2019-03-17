@@ -79,7 +79,7 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/03/16/weeklyReport190316/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/16/FluemToKafkaBaseOnDifferntTopic/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2019/03/14/微信小程序学习意见/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -109,7 +109,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree与迭代、动态规划"><span class="toc-number">1.</span> <span class="toc-text">Tree与迭代、动态规划</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree与迭代、动态规划"><span class="toc-number">1.</span> <span class="toc-text">Tree与迭代、动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字节-位处理"><span class="toc-number">2.</span> <span class="toc-text">字节/位处理</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -185,6 +185,51 @@
 <li>BFS常用结构</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;TreeNode&gt; a = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">a.offer(p);</span><br><span class="line"><span class="keyword">while</span> (!a.isEmpty())&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> sz = a.size(); sz &gt; <span class="number">0</span>; --sz) &#123;</span><br><span class="line">        TreeNode n = a.poll();</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">        a.offer(n.left);</span><br><span class="line">        a.offer(n.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字节-位处理"><a href="#字节-位处理" class="headerlink" title="字节/位处理"></a>字节/位处理</h2><ul>
+<li><a href="https://leetcode.com/problems/reverse-integer/" target="_blank" rel="noopener">Reverse Integer</a><ul>
+<li>java中不同数据类型的取值范围<ul>
+<li>int 32</li>
+<li>short 16</li>
+<li>long 64</li>
+<li>float 32</li>
+<li>double 64</li>
+</ul>
+</li>
+<li>本题中关于溢出可能的判断</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式一</span></span><br><span class="line"><span class="comment">//正数溢出情况（2147483647）</span></span><br><span class="line"><span class="keyword">if</span> (rev &gt; Integer.MAX_VALUE/<span class="number">10</span> || (rev == Integer.MAX_VALUE / <span class="number">10</span> &amp;&amp; pop &gt; <span class="number">7</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="comment">//负数（-2147483648）</span></span><br><span class="line"><span class="keyword">if</span> (rev &lt; Integer.MIN_VALUE/<span class="number">10</span> || (rev == Integer.MIN_VALUE / <span class="number">10</span> &amp;&amp; pop &lt; -<span class="number">8</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//方式二</span></span><br><span class="line"><span class="keyword">if</span>((rev - pop) / <span class="number">10</span> != org) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//溢出的话肯定计算不出原来的数字了</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="noopener">Number of 1 Bits</a><ul>
+<li>找一个int数的二进制中有多少个1，hamming weight</li>
+<li>&amp; – 位与运算 | – 位或运算</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>((n &amp; <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">                res++;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>; <span class="comment">//右移一位</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><a href="https://zhuanlan.zhihu.com/p/30108890" target="_blank" rel="noopener">java中的移位操作符</a></p>
+</li>
+<li><p><a href="https://leetcode.com/problems/reverse-bits/" target="_blank" rel="noopener">Reverse Bits</a></p>
+<ul>
+<li>翻转32位比特值，依次移动每一位。将每次需要移动的比特放在最后一位。与1进行位与操作后，将这一位移动到正确的位置后，与结果进行位或操作。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            ans = ans | ((n &amp; <span class="number">1</span>) &lt;&lt; i);</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="noopener">Counting Bits</a></p>
+<ul>
+<li><p><strong>DP</strong> When it comes to even numbers, i.e, 2,4,6,8, their binary should be like ‘10’, ‘100’, ‘110’, ‘1000’<br>so one notable difference is their unit digit is always 0,<br>which means when you call &gt;&gt; 1- shift one bit rightwards<br>and also means dividing by 2- would cause no change to the count of ‘1’ in the binary string.</p>
+<p>Vice versa, when you meet odd numbers, shifting one bit rightwards always eliminates one ‘1’ digit from original binary string,<br>that is why we should “compensate” one ‘1’ character to the count.</p>
+<p>To sum up, when you meet even number the count of ‘1’s is always the same as its half number,<br>on the other hand, remember to plus one to the odds’ half number.</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] f = <span class="keyword">new</span> <span class="keyword">int</span>[num + <span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=num; i++) f[i] = f[i &gt;&gt; <span class="number">1</span>] + (i &amp; <span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> f;</span><br></pre></td></tr></table></figure>
+
   </div>
 </article>
 
@@ -215,7 +260,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree与迭代、动态规划"><span class="toc-number">1.</span> <span class="toc-text">Tree与迭代、动态规划</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree与迭代、动态规划"><span class="toc-number">1.</span> <span class="toc-text">Tree与迭代、动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字节-位处理"><span class="toc-number">2.</span> <span class="toc-text">字节/位处理</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
