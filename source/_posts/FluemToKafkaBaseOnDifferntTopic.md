@@ -1,5 +1,6 @@
 ---
 title: Flume使用interceptors向不同的Kafka Consumers发送基于Topic维度的信息
+date: 2019/3/16
 categories:
     - 技术总结
 tags:
