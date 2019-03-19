@@ -118,3 +118,67 @@ int ans = 0;
     return f;
 ```
 
+## Two Pointers
+
+* [浅析经典面试算法题-two pointer的运用](https://chocoluffy.com/2016/12/04/浅析经典面试算法题-two-pointer的运用/)
+
+* Two Sum
+    * integer array已经过排序
+    * 两个pointers一头一尾。那么sum只有三种可能：
+        * sum == target，则返回
+        * sum < target，头指针向后走一个
+        * sum > target，尾指针向前走一个
+    * 循环条件，头 < 尾
+    
+```java
+int low = 0;
+int high = nums.length - 1;
+while(low < high) {
+    if(nums[low] + nums[high] == target)
+        //do something;
+        // low++ high--;
+    else if (nums[low] + nums[high] < target)
+        low++;
+    else
+        high--;
+} 
+```
+
+* 3Sum
+    * 先将数列排序，再固定第一个数字，从剩下的数列中用2 sum的方法找。
+    * 注意一些要过滤的条件：
+        * 第一个数字在移动的过程中，如果与前一个一样的话，就再移一下
+        * low和high移动的道理也一样
+ 
+```java
+ public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>()
+        for(int i = 0; i < nums.length - 2; i++) {
+            if(i == 0 || nums[i] != nums[i - 1]) {
+                int low = i + 1;
+                int high = nums.length - 1;
+                int remain = 0 - nums[i];
+                while(low < high) {
+                    if(nums[low] + nums[high] == remain) {
+                        res.add(Arrays.asList(nums[i], nums[low], nums[high]));
+                        while(low < high && nums[low + 1] == nums[low])
+                            low++;
+                        while(low < high && nums[high - 1] == nums[high])
+                            high--;
+                        low++;
+                        high--;
+                    }else if(nums[low] + nums[high] < remain)
+                        low++;
+                    else
+                        high--;
+                }
+            }
+        }
+        return res;
+    }
+```
+
+* 3Sum closest
+    * 找最接近的sum（也可能相等）
+    * 增加判断条件Math.abs小的话，就要更新。

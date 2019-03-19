@@ -48,7 +48,7 @@ agent1.sinks.kafka-sink.topic = %{topic}
 ```
 
 * 结果
-不同的kafka consumer能够接收不同topic的埋点数据
+不同的kafka Producer能够接收不同topic的埋点数据，之后的consumer也能消费到了
 
 # 参考文档
 * [regex-extractor-interceptor正则表达式interceptor](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html#regex-extractor-interceptor)

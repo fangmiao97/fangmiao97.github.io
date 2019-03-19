@@ -109,7 +109,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree与迭代、动态规划"><span class="toc-number">1.</span> <span class="toc-text">Tree与迭代、动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字节-位处理"><span class="toc-number">2.</span> <span class="toc-text">字节/位处理</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree与迭代、动态规划"><span class="toc-number">1.</span> <span class="toc-text">Tree与迭代、动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字节-位处理"><span class="toc-number">2.</span> <span class="toc-text">字节/位处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Two-Pointers"><span class="toc-number">3.</span> <span class="toc-text">Two Pointers</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -229,6 +229,42 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] f = <span class="keyword">new</span> <span class="keyword">int</span>[num + <span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=num; i++) f[i] = f[i &gt;&gt; <span class="number">1</span>] + (i &amp; <span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> f;</span><br></pre></td></tr></table></figure>
+<h2 id="Two-Pointers"><a href="#Two-Pointers" class="headerlink" title="Two Pointers"></a>Two Pointers</h2><ul>
+<li><p><a href="https://chocoluffy.com/2016/12/04/浅析经典面试算法题-two-pointer的运用/" target="_blank" rel="noopener">浅析经典面试算法题-two pointer的运用</a></p>
+</li>
+<li><p>Two Sum</p>
+<ul>
+<li>integer array已经过排序</li>
+<li>两个pointers一头一尾。那么sum只有三种可能：<ul>
+<li>sum == target，则返回</li>
+<li>sum &lt; target，头指针向后走一个</li>
+<li>sum &gt; target，尾指针向前走一个</li>
+</ul>
+</li>
+<li>循环条件，头 &lt; 尾</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> high = nums.length - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(low &lt; high) &#123;</span><br><span class="line">    <span class="keyword">if</span>(nums[low] + nums[high] == target)</span><br><span class="line">        <span class="comment">//do something;</span></span><br><span class="line">        <span class="comment">// low++ high--;</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (nums[low] + nums[high] &lt; target)</span><br><span class="line">        low++;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        high--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3Sum<ul>
+<li>先将数列排序，再固定第一个数字，从剩下的数列中用2 sum的方法找。</li>
+<li>注意一些要过滤的条件：<ul>
+<li>第一个数字在移动的过程中，如果与前一个一样的话，就再移一下</li>
+<li>low和high移动的道理也一样</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">       Arrays.sort(nums);</span><br><span class="line">       List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;()</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++) &#123;</span><br><span class="line">           <span class="keyword">if</span>(i == <span class="number">0</span> || nums[i] != nums[i - <span class="number">1</span>]) &#123;</span><br><span class="line">               <span class="keyword">int</span> low = i + <span class="number">1</span>;</span><br><span class="line">               <span class="keyword">int</span> high = nums.length - <span class="number">1</span>;</span><br><span class="line">               <span class="keyword">int</span> remain = <span class="number">0</span> - nums[i];</span><br><span class="line">               <span class="keyword">while</span>(low &lt; high) &#123;</span><br><span class="line">                   <span class="keyword">if</span>(nums[low] + nums[high] == remain) &#123;</span><br><span class="line">                       res.add(Arrays.asList(nums[i], nums[low], nums[high]));</span><br><span class="line">                       <span class="keyword">while</span>(low &lt; high &amp;&amp; nums[low + <span class="number">1</span>] == nums[low])</span><br><span class="line">                           low++;</span><br><span class="line">                       <span class="keyword">while</span>(low &lt; high &amp;&amp; nums[high - <span class="number">1</span>] == nums[high])</span><br><span class="line">                           high--;</span><br><span class="line">                       low++;</span><br><span class="line">                       high--;</span><br><span class="line">                   &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[low] + nums[high] &lt; remain)</span><br><span class="line">                       low++;</span><br><span class="line">                   <span class="keyword">else</span></span><br><span class="line">                       high--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> res;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3Sum closest<ul>
+<li>找最接近的sum（也可能相等）</li>
+<li>增加判断条件Math.abs小的话，就要更新。</li>
+</ul>
+</li>
+</ul>
 
   </div>
 </article>
@@ -260,7 +296,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree与迭代、动态规划"><span class="toc-number">1.</span> <span class="toc-text">Tree与迭代、动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字节-位处理"><span class="toc-number">2.</span> <span class="toc-text">字节/位处理</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree与迭代、动态规划"><span class="toc-number">1.</span> <span class="toc-text">Tree与迭代、动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字节-位处理"><span class="toc-number">2.</span> <span class="toc-text">字节/位处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Two-Pointers"><span class="toc-number">3.</span> <span class="toc-text">Two Pointers</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

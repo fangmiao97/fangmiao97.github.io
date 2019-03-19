@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="需求 后端接口通过log4j转发给flume的Event是直接发给avro source，之后要交给kafka sink供不同的应用处理。如果对于不同的topic都用一个agent处理感觉略尴尬（没有尝试），所以用一个avro source进行接收，用flume的interceptor进行按topic分流。  方案流程 前端 向后端上传数据时，加入topic字段    12345axios.get">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-17T07:46:54.748Z">
+<meta property="og:updated_time" content="2019-03-19T03:15:27.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flume使用interceptors向不同的Kafka Consumers发送基于Topic维度的信息">
 <meta name="twitter:description" content="需求 后端接口通过log4j转发给flume的Event是直接发给avro source，之后要交给kafka sink供不同的应用处理。如果对于不同的topic都用一个agent处理感觉略尴尬（没有尝试），所以用一个avro source进行接收，用flume的interceptor进行按topic分流。  方案流程 前端 向后端上传数据时，加入topic字段    12345axios.get">
@@ -180,7 +180,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#source interceptor</span><br><span class="line">agent1.sources.avro-source.interceptors=i1</span><br><span class="line">agent1.sources.avro-source.interceptors.i1.type=regex_extractor</span><br><span class="line">agent1.sources.avro-source.interceptors.i1.regex=topic:(.*?) contents:(.*?)</span><br><span class="line">agent1.sources.avro-source.interceptors.i1.serializers=s1 s2</span><br><span class="line">#agent1.sources.avro-source.interceptors.i1.serializers.s1.type=default</span><br><span class="line">agent1.sources.avro-source.interceptors.i1.serializers.s1.name=topic</span><br><span class="line">#agent1.sources.avro-source.interceptors.i1.serializers.s2.type=default</span><br><span class="line">agent1.sources.avro-source.interceptors.i1.serializers.s2.name=contents</span><br><span class="line"></span><br><span class="line">#define sink</span><br><span class="line">agent1.sinks.kafka-sink.type=org.apache.flume.sink.kafka.KafkaSink</span><br><span class="line">agent1.sinks.kafka-sink.topic = %&#123;topic&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>结果<br>不同的kafka consumer能够接收不同topic的埋点数据</li>
+<li>结果<br>不同的kafka Producer能够接收不同topic的埋点数据，之后的consumer也能消费到了</li>
 </ul>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
 <li><a href="http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html#regex-extractor-interceptor" target="_blank" rel="noopener">regex-extractor-interceptor正则表达式interceptor</a></li>
