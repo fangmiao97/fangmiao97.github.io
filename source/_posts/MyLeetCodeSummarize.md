@@ -182,3 +182,21 @@ while(low < high) {
 * 3Sum closest
     * 找最接近的sum（也可能相等）
     * 增加判断条件Math.abs小的话，就要更新。
+
+* 3Sum With Multiplicity
+    * 每一中情况都要考虑到--排列组合
+
+```java
+  if (A[j] == A[k]) {
+    // If A[j...k] are all equal, then there are C(k - j + 1, 2) 
+    // combinations that meet the requirement.取两个
+    res = (res + (k - j + 1) * (k - j) / 2) % m;
+    break;
+    }
+    int l = 1, r = 1;
+    while (j + l < k && A[j + l] == A[j]) { ++l; } // l: number of elements equal to A[j].
+    while (j < k - r && A[k - r] == A[k]) { ++r; } // r: number of elements equal to A[k].
+    res = (res + l * r) % m; // found l * r cases that meet the requirement.
+    j += l; // forward j by l steps.
+    k -= r; // backward k by r steps.
+```

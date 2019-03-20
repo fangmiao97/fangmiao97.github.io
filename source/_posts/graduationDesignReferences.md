@@ -10,6 +10,10 @@ tags:
 * [基于Spark Streaming的实时日志分析与信息管理系统的设计与实现](http://new.gb.oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&dbname=CMFD201901&filename=1018894622.nh&uid=WEEvREcwSlJHSldRa1Fhb09jT0pkRlg1TFVqTzAvOUVLVWZDZmNBOEF0az0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&v=MDAwNDFyQ1VSTE9mWk9kbUZpRGhWNzdJVkYyNkZydXhHdGZPclpFYlBJUjhlWDFMdXhZUzdEaDFUM3FUcldNMUY=):分析DDoS攻击。系统日志的信息安全审计
 * [基于海量网络日志数据的实时流处理系统的设计与实现](http://new.gb.oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&dbname=CMFD201801&filename=1017292559.nh&v=MTU5MjBlWDFMdXhZUzdEaDFUM3FUcldNMUZyQ1VSTE9mWk9kbUZ5amtWTHZMVkYyNkdiR3hITlRKcHBFYlBJUjg=&uid=WEEvREcwSlJHSldRa1FhdkJkVG1CcDNRL2o5cjJMcDdKU2FGb00xSGNGND0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!):可以参考这部分的绪论部分
 ## 日志信息隐藏关系
+* [大数据下基于Spark的电商实时推荐系统的设计与实现](http://new.gb.oversea.cnki.net/KXReader/Detail?dbcode=CJFD&filename=WJSY201705010&UID=WEEvREcwSlJHSldRa1FhdkJkVG1CcDc5Ym4weGJzK0hVZ1FjREZpT1JEcz0%3d%249A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&autoLogin=0)
 
 ## 研究目的/出发点
 * [互联网闭环](https://www.zhihu.com/question/20624296/answer/15731592)
+
+## 关于spark streaming业务算法的创新
+* [对有状态计算操作的基数计算的精确计算方法和估算方法进行了比较分析](http://new.gb.oversea.cnki.net/KXReader/Detail?dbcode=CJFD&filename=WJSY201705010&UID=WEEvREcwSlJHSldRa1FhdkJkVG1CcDc5Ym4weGJzK0hVZ1FjREZpT1JEcz0%3d%249A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&autoLogin=0)
