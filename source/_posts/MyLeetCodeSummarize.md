@@ -200,3 +200,68 @@ while(low < high) {
     j += l; // forward j by l steps.
     k -= r; // backward k by r steps.
 ```
+## 基础字符串操作
+* reverse
+```java
+ public String reverse(String s) {
+      StringBuilder res=new StringBuilder();
+        for (int i = 0; i < s.length(); i++)
+            res.insert(0,s.charAt(i));
+        return res.toString();
+    }
+```
+
+* split 对应API public String[] split(String regex, int limit)
+
+```java
+public String[] split(String s) {
+        ArrayList < String > words = new ArrayList < > ();
+        StringBuilder word = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' ') {
+                words.add(word.toString());
+                word = new StringBuilder();
+            } else
+                word.append( s.charAt(i));
+        }
+        words.add(word.toString());
+        return words.toArray(new String[words.size()]);
+    }
+```
+* 大小写转换
+    * a - 97 0x61(0110 0001) A - 65 0x41(0100 0001)
+    
+```java
+    //法一
+    string.toLowerCase() or toUpperCase()
+    //法二
+    if ('A' <= a[i] && a[i] <= 'Z')
+        a[i] = (char) (a[i] - 'A' + 'a');
+    //法三，按位或，把第五位的1加上
+    char c = (char)(str.charAt(i) | (char)(32));
+```
+
+## 非常规顺序操作
+
+* [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/)
+    * 取相同数字位的进行操作：0123210123210..
+    * 法一：能够发现0之后都是加一，3之后都是减一
+    * 设置一个标志来判断是否加一还是减一
+    * 法二：变步长
+    
+```java
+    //1
+    if(curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;
+    curRow += goingDown ? 1 : -1;
+    //2
+            int n = s.length();
+            int cycleLen = 2 * numRows - 2; //numRows = 4
+    
+            for (int i = 0; i < numRows; i++) {
+                for (int j = 0; j + i < n; j += cycleLen) {
+                    ret.append(s.charAt(j + i));
+                    if (i != 0 && i != numRows - 1 && j + cycleLen - i < n)
+                        ret.append(s.charAt(j + cycleLen - i));
+                }
+            }
+```

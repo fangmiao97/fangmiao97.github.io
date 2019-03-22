@@ -1,0 +1,27 @@
+---
+title: Minions-frontend 框架技术结构
+date: 2019/3/21
+categories:
+    - 毕业设计
+---
+## 前端技术选型
+* react 16.8.4
+* Ant Design ([Pro v1](https://v1.pro.ant.design/docs/getting-started-cn)) 3.15.0
+* XMLRequest:axios 0.18.0
+* 路由: react-router-dom
+* [精选组件](https://ant.design/docs/react/recommendation-cn)
+
+## 目录结构
+* components 放置个性化组件
+* contents 主体部分抽象布局
+* pages 页面（目前为单页面）
+
+## React-Router
+* react-router-dom 是对 react-router 在浏览器开发环境下的封装，所以没有本质差别
+
+## ant design pro
+* 需要引入css文件
+`import 'ant-design-pro/dist/ant-design-pro.css';`
+
+## react相关
+* [dangerouslySetInnerHTML, 让React正常显示你的html代码](http://www.cnblogs.com/xianyulaodi/p/5038258.html)
