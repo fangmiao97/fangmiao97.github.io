@@ -13,7 +13,10 @@ categories:
 
 ## 目录结构
 * components 放置个性化组件
+    * PageView 展示PV相关数据组件
 * contents 主体部分抽象布局
+    * Overview 今日数据概览
+    * HistoryView 历史数据查询
 * pages 页面（目前为单页面）
 
 ## React-Router

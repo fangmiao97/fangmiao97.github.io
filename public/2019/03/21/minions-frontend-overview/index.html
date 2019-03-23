@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="前端技术选型 react 16.8.4 Ant Design (Pro v1) 3.15.0 XMLRequest:axios 0.18.0 路由: react-router-dom 精选组件  目录结构 components 放置个性化组件 contents 主体部分抽象布局 pages 页面（目前为单页面）  React-Router react-router-dom 是对 react-rou">
+    <meta name="description" content="前端技术选型 react 16.8.4 Ant Design (Pro v1) 3.15.0 XMLRequest:axios 0.18.0 路由: react-router-dom 精选组件  目录结构 components 放置个性化组件 PageView 展示PV相关数据组件   contents 主体部分抽象布局 Overview 今日数据概览 HistoryView 历史数据查询   p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Minions-frontend 框架技术结构">
 <meta property="og:url" content="http://yoursite.com/2019/03/21/minions-frontend-overview/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
-<meta property="og:description" content="前端技术选型 react 16.8.4 Ant Design (Pro v1) 3.15.0 XMLRequest:axios 0.18.0 路由: react-router-dom 精选组件  目录结构 components 放置个性化组件 contents 主体部分抽象布局 pages 页面（目前为单页面）  React-Router react-router-dom 是对 react-rou">
+<meta property="og:description" content="前端技术选型 react 16.8.4 Ant Design (Pro v1) 3.15.0 XMLRequest:axios 0.18.0 路由: react-router-dom 精选组件  目录结构 components 放置个性化组件 PageView 展示PV相关数据组件   contents 主体部分抽象布局 Overview 今日数据概览 HistoryView 历史数据查询   p">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-22T06:27:35.063Z">
+<meta property="og:updated_time" content="2019-03-23T07:22:53.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Minions-frontend 框架技术结构">
-<meta name="twitter:description" content="前端技术选型 react 16.8.4 Ant Design (Pro v1) 3.15.0 XMLRequest:axios 0.18.0 路由: react-router-dom 精选组件  目录结构 components 放置个性化组件 contents 主体部分抽象布局 pages 页面（目前为单页面）  React-Router react-router-dom 是对 react-rou">
+<meta name="twitter:description" content="前端技术选型 react 16.8.4 Ant Design (Pro v1) 3.15.0 XMLRequest:axios 0.18.0 路由: react-router-dom 精选组件  目录结构 components 放置个性化组件 PageView 展示PV相关数据组件   contents 主体部分抽象布局 Overview 今日数据概览 HistoryView 历史数据查询   p">
     
     
         
@@ -77,6 +77,8 @@
     <br>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" href="/2019/03/23/weeklyReport190323/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2019/03/19/graduationDesignReferences/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -158,8 +160,15 @@
 <li><a href="https://ant.design/docs/react/recommendation-cn" target="_blank" rel="noopener">精选组件</a></li>
 </ul>
 <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ul>
-<li>components 放置个性化组件</li>
-<li>contents 主体部分抽象布局</li>
+<li>components 放置个性化组件<ul>
+<li>PageView 展示PV相关数据组件</li>
+</ul>
+</li>
+<li>contents 主体部分抽象布局<ul>
+<li>Overview 今日数据概览</li>
+<li>HistoryView 历史数据查询</li>
+</ul>
+</li>
 <li>pages 页面（目前为单页面）</li>
 </ul>
 <h2 id="React-Router"><a href="#React-Router" class="headerlink" title="React-Router"></a>React-Router</h2><ul>
