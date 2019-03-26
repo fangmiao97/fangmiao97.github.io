@@ -61,25 +61,13 @@
     
     
     <entry>
-      <title>Java中常用API</title>
-      <link href="/2019/03/18/JavaUtilsAPI/"/>
-      <url>/2019/03/18/JavaUtilsAPI/</url>
+      <title>Websites Safari</title>
+      <link href="/2019/03/18/websitesafari/"/>
+      <url>/2019/03/18/websitesafari/</url>
       
-        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
+        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul>]]></content>
       
       
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
       
     </entry>
     
@@ -138,32 +126,25 @@
     
     
     <entry>
-      <title>Websites Safari</title>
-      <link href="/2019/03/18/websitesafari/"/>
-      <url>/2019/03/18/websitesafari/</url>
+      <title>Java中常用API</title>
+      <link href="/2019/03/18/JavaUtilsAPI/"/>
+      <url>/2019/03/18/JavaUtilsAPI/</url>
       
-        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>每周记录📝（190316）</title>
-      <link href="/2019/03/16/weeklyReport190316/"/>
-      <url>/2019/03/16/weeklyReport190316/</url>
-      
-        <content type="html"><![CDATA[<p><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g14vxty5rbj21400u0e82.jpg" alt="学校的傍晚"></p><p>这一周将毕业设计的开头部分完成了链路打通，具体就是在前端埋点得到的数据能够在kafka中分topic消费。</p><p>其实这之间走了很多弯路，自己反复查资料才发现一个正确的方法。现在才意识到做项目需要一个指导老师的重要性，同样企业需要技术的布道师也是这个道理。</p><p>我的毕设是使用spark streaming进行网站流量的分析。其实对于毕设很尴尬的一点事，没有真实的业务数据，只能自己凭空制造。另外我觉得高校中的毕业设计，真的越来越水，就像是一个大一点的课程设计，自己独立完成的那种。</p><p>这一周我首先想完成通过自己在前端埋点，收集到数据，并能够给后面的业务流程使用。我的前端使用react，埋点的数据收集打算用flume收集。最开始的思路是使用flume的HTTPSource直接收集来自前端POST请求中的数据，可是通过查阅文档发现，无法完成。因为HTTPSource接受的需要是flume的Event对象，前端直接发来的数据不符合要求。所以说前端的任务只要完成原始数据收集的工作就可以了，其他必要的转换由后端完成。</p><p>还有一点就是，经别人提醒，如果说用flume直接收集网络上的数据还有安全的问题（见<a href="https://www.v2ex.com/t/543592#reply4" target="_blank" rel="noopener">V2ex帖子</a>）。所以有后端转发的必要。所以在这里我就有个疑惑，关于HTTPSource的使用场景到底是什么？</p><p>进过反复的尝试，确定了方案是：前端埋点采集到的数据由后端接受，并发送log4j日志给flume，再由flume的interceptor进行过滤（分流），分成不同的topic给kafka的消费者使用，之后就可以给spark streaming使用啦。(解决方案<a href="https://fangmiao97.github.io/2019/03/16/FluemToKafkaBaseOnDifferntTopic/" target="_blank" rel="noopener">见文章</a>)</p><p>不过现在遗留下的问题就是，前端使用axios出现跨域访问的问题。这个问题下周开始解决。下周要完成的任务就是把前端的框架搭好，开始学习spark streaming深入一点的东西，然后找需求。目前的需求太单薄了，不怎么丰富。</p><p>本周还做了点其他的事，总之效率没有那么高吧。这两天刷LeetCode也刷不起来，不知道为啥。所以这两天休息了一下，没刷。</p><p>感觉自己有的时候总被一些东西打扰，自己的控制力不够。另外看书的速度也挺慢的。看了名人传记，感觉厉害的人为何有那么多精力呢？</p><p>最近看到好玩的图，取名我的毕设，哈哈哈🤣<br><img src="https://wx2.sinaimg.cn/mw1024/6a49516fly1g14w7kwjt8j20j60n4dks.jpg" alt="我的毕设"></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> 每周记录 </category>
+          <category> 技术总结 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
       
     </entry>
     
@@ -191,6 +172,25 @@
             <tag> Flume </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>每周记录📝（190316）</title>
+      <link href="/2019/03/16/weeklyReport190316/"/>
+      <url>/2019/03/16/weeklyReport190316/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g14vxty5rbj21400u0e82.jpg" alt="学校的傍晚"></p><p>这一周将毕业设计的开头部分完成了链路打通，具体就是在前端埋点得到的数据能够在kafka中分topic消费。</p><p>其实这之间走了很多弯路，自己反复查资料才发现一个正确的方法。现在才意识到做项目需要一个指导老师的重要性，同样企业需要技术的布道师也是这个道理。</p><p>我的毕设是使用spark streaming进行网站流量的分析。其实对于毕设很尴尬的一点事，没有真实的业务数据，只能自己凭空制造。另外我觉得高校中的毕业设计，真的越来越水，就像是一个大一点的课程设计，自己独立完成的那种。</p><p>这一周我首先想完成通过自己在前端埋点，收集到数据，并能够给后面的业务流程使用。我的前端使用react，埋点的数据收集打算用flume收集。最开始的思路是使用flume的HTTPSource直接收集来自前端POST请求中的数据，可是通过查阅文档发现，无法完成。因为HTTPSource接受的需要是flume的Event对象，前端直接发来的数据不符合要求。所以说前端的任务只要完成原始数据收集的工作就可以了，其他必要的转换由后端完成。</p><p>还有一点就是，经别人提醒，如果说用flume直接收集网络上的数据还有安全的问题（见<a href="https://www.v2ex.com/t/543592#reply4" target="_blank" rel="noopener">V2ex帖子</a>）。所以有后端转发的必要。所以在这里我就有个疑惑，关于HTTPSource的使用场景到底是什么？</p><p>进过反复的尝试，确定了方案是：前端埋点采集到的数据由后端接受，并发送log4j日志给flume，再由flume的interceptor进行过滤（分流），分成不同的topic给kafka的消费者使用，之后就可以给spark streaming使用啦。(解决方案<a href="https://fangmiao97.github.io/2019/03/16/FluemToKafkaBaseOnDifferntTopic/" target="_blank" rel="noopener">见文章</a>)</p><p>不过现在遗留下的问题就是，前端使用axios出现跨域访问的问题。这个问题下周开始解决。下周要完成的任务就是把前端的框架搭好，开始学习spark streaming深入一点的东西，然后找需求。目前的需求太单薄了，不怎么丰富。</p><p>本周还做了点其他的事，总之效率没有那么高吧。这两天刷LeetCode也刷不起来，不知道为啥。所以这两天休息了一下，没刷。</p><p>感觉自己有的时候总被一些东西打扰，自己的控制力不够。另外看书的速度也挺慢的。看了名人传记，感觉厉害的人为何有那么多精力呢？</p><p>最近看到好玩的图，取名我的毕设，哈哈哈🤣<br><img src="https://wx2.sinaimg.cn/mw1024/6a49516fly1g14w7kwjt8j20j60n4dks.jpg" alt="我的毕设"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每周记录 </category>
+          
+      </categories>
+      
       
     </entry>
     
