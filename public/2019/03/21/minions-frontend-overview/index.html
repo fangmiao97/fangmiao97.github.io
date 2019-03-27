@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="前端技术选型 react 16.8.4 Ant Design (Pro v1) 3.15.0 XMLRequest:axios 0.18.0 路由: react-router-dom 精选组件  目录结构 components 放置个性化组件 PageView 展示PV相关数据组件   contents 主体部分抽象布局 Overview 今日数据概览 HistoryView 历史数据查询   p">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-23T07:22:53.154Z">
+<meta property="og:updated_time" content="2019-03-27T06:00:23.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Minions-frontend 框架技术结构">
 <meta name="twitter:description" content="前端技术选型 react 16.8.4 Ant Design (Pro v1) 3.15.0 XMLRequest:axios 0.18.0 路由: react-router-dom 精选组件  目录结构 components 放置个性化组件 PageView 展示PV相关数据组件   contents 主体部分抽象布局 Overview 今日数据概览 HistoryView 历史数据查询   p">
@@ -179,6 +179,20 @@
 </ul>
 <h2 id="react相关"><a href="#react相关" class="headerlink" title="react相关"></a>react相关</h2><ul>
 <li><a href="http://www.cnblogs.com/xianyulaodi/p/5038258.html" target="_blank" rel="noopener">dangerouslySetInnerHTML, 让React正常显示你的html代码</a></li>
+<li><p><a href="https://github.com/pvoznyuk/react-live-clock" target="_blank" rel="noopener">时间显示组件</a></p>
+<ul>
+<li><p>获取今天的时间</p>
+<p><code>const today = moment().format(&#39;YYYYMMDD&#39;);</code></p>
+</li>
+</ul>
+</li>
+<li><p>react setState是异步调用的</p>
+<ul>
+<li>使用props和componentWillReceiveProps(nextProps)来解决</li>
+<li><a href="https://github.com/fangmiao97/MessageWiKiPro-frontend/blob/master/src/TopicInfo.js" target="_blank" rel="noopener">见topicid的变换</a></li>
+<li>在minions中的历史数据页面，需要根据选择的不同日期显示相关数据。日期选择为父组件中的state.date改变，并将state.date传给child组件。child接收后通过componentWillReceiveProps来进行更新</li>
+</ul>
+</li>
 </ul>
 
   </div>
