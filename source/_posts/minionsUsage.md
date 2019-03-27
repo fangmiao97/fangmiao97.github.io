@@ -8,6 +8,7 @@ date: 2019/03/27
 	* 对接前端埋点的数据
 
 ```
+//第一个在ZK Kafka启动后启动
 flume-ng agent \
 --name exec-memory-kafka \
 --conf $FLUME_HOME/conf \
