@@ -265,3 +265,53 @@ public String[] split(String s) {
                 }
             }
 ```
+
+## 数字计算
+
+* pow(x, n)
+    * n%2==0 -> x^n = x^(n/2) * x^(n/2) = (x*x)^(n/2)
+    * n%2==1 -> x^n = x*(x^(n/2) * x^(n/2)) = x * (x*x)^(n/2)
+
+```java
+public double pow(double x, int n) {
+            if(n == 0)
+                return 1;
+            if(n == Integer.MIN_VALUE){//-2147483648不能直接换成正的，会溢出
+                return myPow(x*x, n/2);
+            }
+            if(n < 0){
+                x = 1/x;
+                n = -n;
+            }
+            if(n%2 == 1) 
+                return myPow(x*x, n/2)*x;
+            else
+                return myPow(x*x, n/2);
+                }
+```
+
+* sqrt(x)
+    * I have seen many variants using Binary Search, the key difference is the search range. It seems easy to do it but actually there are some traps we need to take care. I made this just for a note for me.
+      Search range summary:
+      
+      * [1, Integer.MAX_VALUE](easy but not recommend)
+      * [1, x](recommended)
+      * [1, x/2](you need to do math to prove it)
+    * For case 2 and case 3, we need to take care of the corner case by making sure right >= left for [left, right], so:
+      2. x >= 1 for [1, x] => so we need to take care of the corner case: x < 1
+      3. x/2 >= 1 for [1, x/2]=> x >= 2 => so we need to take care of the corner case: x < 2
+   
+      
+```java
+class Solution {
+    public int mySqrt(int x) {
+        long l=0,r=x; //in case of overflow
+        while(l<r){
+            long mid=l+(r-l)/2+1;
+            if(mid*mid>x) r=mid-1;
+            else l=mid;
+        }
+        return (int)l;
+    }
+}
+```
