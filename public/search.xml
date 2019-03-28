@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>学习HBase JAVA API</title>
+      <link href="/2019/03/28/StudyHBaseJavaAPI/"/>
+      <url>/2019/03/28/StudyHBaseJavaAPI/</url>
+      
+        <content type="html"><![CDATA[<h2 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h2><ul><li><a href="https://www.baeldung.com/hbase" target="_blank" rel="noopener">HBase with Java</a></li><li><a href="https://www.bilibili.com/video/av21911076" target="_blank" rel="noopener">HBase表概念</a></li><li><a href="https://www.jianshu.com/p/fb4bd7a2a23e" target="_blank" rel="noopener">Filter 过滤器</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Minions初始化手册✋</title>
       <link href="/2019/03/27/minionsUsage/"/>
       <url>/2019/03/27/minionsUsage/</url>
@@ -40,7 +59,7 @@
       <link href="/2019/03/21/minions-frontend-overview/"/>
       <url>/2019/03/21/minions-frontend-overview/</url>
       
-        <content type="html"><![CDATA[<h2 id="前端技术选型"><a href="#前端技术选型" class="headerlink" title="前端技术选型"></a>前端技术选型</h2><ul><li>react 16.8.4</li><li>Ant Design (<a href="https://v1.pro.ant.design/docs/getting-started-cn" target="_blank" rel="noopener">Pro v1</a>) 3.15.0</li><li>XMLRequest:axios 0.18.0</li><li>路由: react-router-dom</li><li><a href="https://ant.design/docs/react/recommendation-cn" target="_blank" rel="noopener">精选组件</a></li></ul><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ul><li>components 放置个性化组件<ul><li>PageView 展示PV相关数据组件</li></ul></li><li>contents 主体部分抽象布局<ul><li>Overview 今日数据概览</li><li>HistoryView 历史数据查询</li></ul></li><li>pages 页面（目前为单页面）</li></ul><h2 id="React-Router"><a href="#React-Router" class="headerlink" title="React-Router"></a>React-Router</h2><ul><li>react-router-dom 是对 react-router 在浏览器开发环境下的封装，所以没有本质差别</li></ul><h2 id="ant-design-pro"><a href="#ant-design-pro" class="headerlink" title="ant design pro"></a>ant design pro</h2><ul><li>需要引入css文件<br><code>import &#39;ant-design-pro/dist/ant-design-pro.css&#39;;</code></li></ul><h2 id="react相关"><a href="#react相关" class="headerlink" title="react相关"></a>react相关</h2><ul><li><a href="http://www.cnblogs.com/xianyulaodi/p/5038258.html" target="_blank" rel="noopener">dangerouslySetInnerHTML, 让React正常显示你的html代码</a></li><li><p><a href="https://github.com/pvoznyuk/react-live-clock" target="_blank" rel="noopener">时间显示组件</a></p><ul><li><p>获取今天的时间</p><p><code>const today = moment().format(&#39;YYYYMMDD&#39;);</code></p></li></ul></li><li><p>react setState是异步调用的</p><ul><li>使用props和componentWillReceiveProps(nextProps)来解决</li><li><a href="https://github.com/fangmiao97/MessageWiKiPro-frontend/blob/master/src/TopicInfo.js" target="_blank" rel="noopener">见topicid的变换</a></li><li>在minions中的历史数据页面，需要根据选择的不同日期显示相关数据。日期选择为父组件中的state.date改变，并将state.date传给child组件。child接收后通过componentWillReceiveProps来进行更新</li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="前端技术选型"><a href="#前端技术选型" class="headerlink" title="前端技术选型"></a>前端技术选型</h2><ul><li>react 16.8.4</li><li>Ant Design (<a href="https://v1.pro.ant.design/docs/getting-started-cn" target="_blank" rel="noopener">Pro v1</a>) 3.15.0</li><li>XMLRequest:axios 0.18.0</li><li>路由: react-router-dom</li><li><a href="https://ant.design/docs/react/recommendation-cn" target="_blank" rel="noopener">精选组件</a></li></ul><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ul><li>components 放置个性化组件<ul><li>PageView 展示PV相关数据组件</li></ul></li><li>contents 主体部分抽象布局<ul><li>Overview 今日数据概览</li><li>HistoryView 历史数据查询</li></ul></li><li>pages 页面（目前为单页面）</li></ul><h2 id="React-Router"><a href="#React-Router" class="headerlink" title="React-Router"></a>React-Router</h2><ul><li>react-router-dom 是对 react-router 在浏览器开发环境下的封装，所以没有本质差别</li></ul><h2 id="ant-design-pro"><a href="#ant-design-pro" class="headerlink" title="ant design pro"></a>ant design pro</h2><ul><li>需要引入css文件<br><code>import &#39;ant-design-pro/dist/ant-design-pro.css&#39;;</code></li></ul><h2 id="react相关"><a href="#react相关" class="headerlink" title="react相关"></a>react相关</h2><ul><li><a href="http://www.cnblogs.com/xianyulaodi/p/5038258.html" target="_blank" rel="noopener">dangerouslySetInnerHTML, 让React正常显示你的html代码</a></li><li><p><a href="https://github.com/pvoznyuk/react-live-clock" target="_blank" rel="noopener">时间显示组件</a></p><ul><li><p>获取今天的时间</p><p><code>const today = moment().format(&#39;YYYYMMDD&#39;);</code></p></li></ul></li><li><p>react setState是异步调用的</p><ul><li>使用props和componentWillReceiveProps(nextProps)来解决</li><li><a href="https://github.com/fangmiao97/MessageWiKiPro-frontend/blob/master/src/TopicInfo.js" target="_blank" rel="noopener">见topicid的变换</a></li><li>在minions中的历史数据页面，需要根据选择的不同日期显示相关数据。日期选择为父组件中的state.date改变，并将state.date传给child组件。child接收后通过componentWillReceiveProps来进行更新</li></ul></li><li><p>RestFul API</p></li></ul>]]></content>
       
       
       <categories>
@@ -74,6 +93,31 @@
     
     
     <entry>
+      <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
+      <link href="/2019/03/18/frontendstudy/"/>
+      <url>/2019/03/18/frontendstudy/</url>
+      
+        <content type="html"><![CDATA[<h2 id="基础知识🚶"><a href="#基础知识🚶" class="headerlink" title="基础知识🚶"></a>基础知识🚶</h2><ul><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">HTML代码练习</a>(第4周-第6周）</li><li><a href="https://wangdoc.com/javascript/" target="_blank" rel="noopener">JavaScript语言入门教程</a></li><li><a href="http://www.imooc.com/learn/36" target="_blank" rel="noopener">Js视频</a></li></ul><h2 id="进阶🏃"><a href="#进阶🏃" class="headerlink" title="进阶🏃"></a>进阶🏃</h2><ul><li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a></li><li><a href="https://www.imooc.com/learn/955" target="_blank" rel="noopener">ES6快速入门</a></li><li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">React入门教程</a></li><li>使用React的网站：<ul><li><a href="http://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li><li><a href="http://instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.zhihu.com/" target="_blank" rel="noopener">知乎</a></li></ul></li></ul><h2 id="React🚕"><a href="#React🚕" class="headerlink" title="React🚕"></a>React🚕</h2><ul><li><a href="https://juejin.im/post/59dcd87451882578c2084515" target="_blank" rel="noopener">从React脚手架工具学习React项目的最佳实践</a></li><li><a href="https://juejin.im/entry/5b3f3c82e51d45190905d3a2" target="_blank" rel="noopener">组件库（了解）</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">React 技术栈系列教程</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react ES6 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java中常用API</title>
       <link href="/2019/03/18/JavaUtilsAPI/"/>
       <url>/2019/03/18/JavaUtilsAPI/</url>
@@ -99,25 +143,13 @@
     
     
     <entry>
-      <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
-      <link href="/2019/03/18/frontendstudy/"/>
-      <url>/2019/03/18/frontendstudy/</url>
+      <title>Websites Safari</title>
+      <link href="/2019/03/18/websitesafari/"/>
+      <url>/2019/03/18/websitesafari/</url>
       
-        <content type="html"><![CDATA[<h2 id="基础知识🚶"><a href="#基础知识🚶" class="headerlink" title="基础知识🚶"></a>基础知识🚶</h2><ul><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">HTML代码练习</a>(第4周-第6周）</li><li><a href="https://wangdoc.com/javascript/" target="_blank" rel="noopener">JavaScript语言入门教程</a></li><li><a href="http://www.imooc.com/learn/36" target="_blank" rel="noopener">Js视频</a></li></ul><h2 id="进阶🏃"><a href="#进阶🏃" class="headerlink" title="进阶🏃"></a>进阶🏃</h2><ul><li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a></li><li><a href="https://www.imooc.com/learn/955" target="_blank" rel="noopener">ES6快速入门</a></li><li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">React入门教程</a></li><li>使用React的网站：<ul><li><a href="http://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li><li><a href="http://instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.zhihu.com/" target="_blank" rel="noopener">知乎</a></li></ul></li></ul><h2 id="React🚕"><a href="#React🚕" class="headerlink" title="React🚕"></a>React🚕</h2><ul><li><a href="https://juejin.im/post/59dcd87451882578c2084515" target="_blank" rel="noopener">从React脚手架工具学习React项目的最佳实践</a></li><li><a href="https://juejin.im/entry/5b3f3c82e51d45190905d3a2" target="_blank" rel="noopener">组件库（了解）</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">React 技术栈系列教程</a></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
+        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul>]]></content>
       
       
-        <tags>
-            
-            <tag> react ES6 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -145,19 +177,6 @@
             <tag> CORS </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Websites Safari</title>
-      <link href="/2019/03/18/websitesafari/"/>
-      <url>/2019/03/18/websitesafari/</url>
-      
-        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul>]]></content>
-      
-      
       
     </entry>
     

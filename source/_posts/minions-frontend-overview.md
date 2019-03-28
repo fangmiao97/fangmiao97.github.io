@@ -37,4 +37,5 @@ categories:
     * 使用props和componentWillReceiveProps(nextProps)来解决
     * [见topicid的变换](https://github.com/fangmiao97/MessageWiKiPro-frontend/blob/master/src/TopicInfo.js)
     * 在minions中的历史数据页面，需要根据选择的不同日期显示相关数据。日期选择为父组件中的state.date改变，并将state.date传给child组件。child接收后通过componentWillReceiveProps来进行更新
-    
+
+* RestFul API
