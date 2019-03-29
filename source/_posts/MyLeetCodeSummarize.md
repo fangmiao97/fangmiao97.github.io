@@ -200,6 +200,28 @@ while(low < high) {
     j += l; // forward j by l steps.
     k -= r; // backward k by r steps.
 ```
+
+* Sum of Square Numbers
+    * c = a^2 + b^2
+    
+```java
+public boolean judgeSquareSum(int c) {
+        int limit = (int)Math.sqrt(c);
+        int low = 0;
+        while(low<=limit){
+            int sum = low*low + limit*limit;
+            if(c==sum){
+                return true;
+            }
+            if(sum<c){
+               low++;
+            } else {
+               limit--; 
+            }
+        }
+        return false;
+    }
+```
 ## 基础字符串操作
 * reverse
 ```java

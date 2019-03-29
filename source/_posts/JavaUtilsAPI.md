@@ -40,3 +40,9 @@ tags:
     toUpperCase()
 ```
 
+## 数字操作
+
+```java
+    //sqrt
+    Math.sqrt(num);
+```
