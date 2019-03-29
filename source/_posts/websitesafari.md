@@ -10,3 +10,10 @@ date: 2019/3/18
 
 ## React Framework
 * [Next.js](https://nextjs.org/)
+
+## 前端
+* [JS变化历史](https://ponyfoo.com/articles/brief-history-of-modularity)
+* [图标定制](https://iconsvg.xyz/)
+
+## 开发
+* [领域驱动设计在互联网业务开发中的实践](https://zhuanlan.zhihu.com/p/32459776)
