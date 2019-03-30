@@ -6,17 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="网站 HBase with Java HBase表概念 Filter 过滤器">
+    <meta name="description" content="这周看了乔布斯的传记，其中说到乔布斯做产品的时候，追求完美。 这周把毕设完善了一下：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习HBase JAVA API">
-<meta property="og:url" content="http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/index.html">
+<meta property="og:title" content="每周记录📝（190330）">
+<meta property="og:url" content="http://yoursite.com/2019/03/30/weeklyReport190330/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
-<meta property="og:description" content="网站 HBase with Java HBase表概念 Filter 过滤器">
+<meta property="og:description" content="这周看了乔布斯的传记，其中说到乔布斯做产品的时候，追求完美。 这周把毕设完善了一下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-28T12:25:26.381Z">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1l2zafpgwj21hc0u079v.jpg">
+<meta property="og:image" content="https://wx2.sinaimg.cn/mw1024/6a49516fly1g1l2z9yalhj21hc0u0n9a.jpg">
+<meta property="og:updated_time" content="2019-03-30T12:56:44.821Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习HBase JAVA API">
-<meta name="twitter:description" content="网站 HBase with Java HBase表概念 Filter 过滤器">
+<meta name="twitter:title" content="每周记录📝（190330）">
+<meta name="twitter:description" content="这周看了乔布斯的传记，其中说到乔布斯做产品的时候，追求完美。 这周把毕设完善了一下：">
+<meta name="twitter:image" content="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1l2zafpgwj21hc0u079v.jpg">
     
     
         
@@ -36,7 +39,7 @@
         
     
     <!-- title -->
-    <title>学习HBase JAVA API</title>
+    <title>每周记录📝（190330）</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -78,10 +81,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/03/30/weeklyReport190330/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2019/03/27/minionsUsage/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/03/28/StudyHBaseJavaAPI/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -94,21 +95,21 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&text=学习HBase JAVA API"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&is_video=false&description=学习HBase JAVA API"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=学习HBase JAVA API&body=Check out this article: http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&name=学习HBase JAVA API&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/03/30/weeklyReport190330/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/03/30/weeklyReport190330/&text=每周记录📝（190330）"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/03/30/weeklyReport190330/&is_video=false&description=每周记录📝（190330）"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=每周记录📝（190330）&body=Check out this article: http://yoursite.com/2019/03/30/weeklyReport190330/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/03/30/weeklyReport190330/&name=每周记录📝（190330）&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网站"><span class="toc-number">1.</span> <span class="toc-text">网站</span></a></li></ol>
+      
     </div>
   </span>
 </div>
@@ -120,7 +121,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        学习HBase JAVA API
+        每周记录📝（190330）
     </h1>
 
 
@@ -132,7 +133,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-03-27T16:00:00.000Z" itemprop="datePublished">2019-03-28</time>
+        <time datetime="2019-03-29T16:00:00.000Z" itemprop="datePublished">2019-03-30</time>
         
       
     </div>
@@ -141,7 +142,7 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/技术总结/">技术总结</a>
+        <a class="category-link" href="/categories/每周记录/">每周记录</a>
     </div>
 
 
@@ -152,11 +153,9 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h2><ul>
-<li><a href="https://www.baeldung.com/hbase" target="_blank" rel="noopener">HBase with Java</a></li>
-<li><a href="https://www.bilibili.com/video/av21911076" target="_blank" rel="noopener">HBase表概念</a></li>
-<li><a href="https://www.jianshu.com/p/fb4bd7a2a23e" target="_blank" rel="noopener">Filter 过滤器</a></li>
-</ul>
+    <p>这周看了乔布斯的传记，其中说到乔布斯做产品的时候，追求完美。</p>
+<p>这周把毕设完善了一下：<br><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1l2zafpgwj21hc0u079v.jpg" alt></p>
+<p><img src="https://wx2.sinaimg.cn/mw1024/6a49516fly1g1l2z9yalhj21hc0u0n9a.jpg" alt></p>
 
   </div>
 </article>
@@ -188,21 +187,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网站"><span class="toc-number">1.</span> <span class="toc-text">网站</span></a></li></ol>
+      
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&text=学习HBase JAVA API"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&is_video=false&description=学习HBase JAVA API"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=学习HBase JAVA API&body=Check out this article: http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/&name=学习HBase JAVA API&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/03/30/weeklyReport190330/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/03/30/weeklyReport190330/&text=每周记录📝（190330）"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/03/30/weeklyReport190330/&is_video=false&description=每周记录📝（190330）"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=每周记录📝（190330）&body=Check out this article: http://yoursite.com/2019/03/30/weeklyReport190330/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/03/30/weeklyReport190330/&title=每周记录📝（190330）"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/03/30/weeklyReport190330/&name=每周记录📝（190330）&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

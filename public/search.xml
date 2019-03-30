@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>每周记录📝（190330）</title>
+      <link href="/2019/03/30/weeklyReport190330/"/>
+      <url>/2019/03/30/weeklyReport190330/</url>
+      
+        <content type="html"><![CDATA[<p>这周看了乔布斯的传记，其中说到乔布斯做产品的时候，追求完美。</p><p>这周把毕设完善了一下：<br><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1l2zafpgwj21hc0u079v.jpg" alt></p><p><img src="https://wx2.sinaimg.cn/mw1024/6a49516fly1g1l2z9yalhj21hc0u0n9a.jpg" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每周记录 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>学习HBase JAVA API</title>
       <link href="/2019/03/28/StudyHBaseJavaAPI/"/>
       <url>/2019/03/28/StudyHBaseJavaAPI/</url>
@@ -59,7 +78,7 @@
       <link href="/2019/03/21/minions-frontend-overview/"/>
       <url>/2019/03/21/minions-frontend-overview/</url>
       
-        <content type="html"><![CDATA[<h2 id="前端技术选型"><a href="#前端技术选型" class="headerlink" title="前端技术选型"></a>前端技术选型</h2><ul><li>react 16.8.4</li><li>Ant Design (<a href="https://v1.pro.ant.design/docs/getting-started-cn" target="_blank" rel="noopener">Pro v1</a>) 3.15.0</li><li>XMLRequest:axios 0.18.0</li><li>路由: react-router-dom</li><li><a href="https://ant.design/docs/react/recommendation-cn" target="_blank" rel="noopener">精选组件</a></li></ul><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ul><li>components 放置个性化组件<ul><li>PageView 展示PV相关数据组件</li></ul></li><li>contents 主体部分抽象布局<ul><li>Overview 今日数据概览</li><li>HistoryView 历史数据查询</li></ul></li><li>pages 页面（目前为单页面）</li></ul><h2 id="React-Router"><a href="#React-Router" class="headerlink" title="React-Router"></a>React-Router</h2><ul><li>react-router-dom 是对 react-router 在浏览器开发环境下的封装，所以没有本质差别</li></ul><h2 id="ant-design-pro"><a href="#ant-design-pro" class="headerlink" title="ant design pro"></a>ant design pro</h2><ul><li>需要引入css文件<br><code>import &#39;ant-design-pro/dist/ant-design-pro.css&#39;;</code></li></ul><h2 id="react相关"><a href="#react相关" class="headerlink" title="react相关"></a>react相关</h2><ul><li><a href="http://www.cnblogs.com/xianyulaodi/p/5038258.html" target="_blank" rel="noopener">dangerouslySetInnerHTML, 让React正常显示你的html代码</a></li><li><p><a href="https://github.com/pvoznyuk/react-live-clock" target="_blank" rel="noopener">时间显示组件</a></p><ul><li><p>获取今天的时间</p><p><code>const today = moment().format(&#39;YYYYMMDD&#39;);</code></p></li></ul></li><li><p>react setState是异步调用的</p><ul><li>使用props和componentWillReceiveProps(nextProps)来解决</li><li><a href="https://github.com/fangmiao97/MessageWiKiPro-frontend/blob/master/src/TopicInfo.js" target="_blank" rel="noopener">见topicid的变换</a></li><li>在minions中的历史数据页面，需要根据选择的不同日期显示相关数据。日期选择为父组件中的state.date改变，并将state.date传给child组件。child接收后通过componentWillReceiveProps来进行更新</li></ul></li><li><p>RestFul API</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="前端技术选型"><a href="#前端技术选型" class="headerlink" title="前端技术选型"></a>前端技术选型</h2><ul><li>react 16.8.4</li><li>Ant Design (<a href="https://v1.pro.ant.design/docs/getting-started-cn" target="_blank" rel="noopener">Pro v1</a>) 3.15.0</li><li>XMLRequest:axios 0.18.0</li><li>路由: react-router-dom</li><li><a href="https://ant.design/docs/react/recommendation-cn" target="_blank" rel="noopener">精选组件</a></li></ul><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ul><li>components 放置个性化组件<ul><li>PageView 展示PV相关数据组件</li></ul></li><li>contents 主体部分抽象布局<ul><li>Overview 今日数据概览</li><li>HistoryView 历史数据查询</li></ul></li><li>pages 页面（目前为单页面）</li></ul><h2 id="React-Router"><a href="#React-Router" class="headerlink" title="React-Router"></a>React-Router</h2><ul><li>react-router-dom 是对 react-router 在浏览器开发环境下的封装，所以没有本质差别</li></ul><h2 id="ant-design-pro"><a href="#ant-design-pro" class="headerlink" title="ant design pro"></a>ant design pro</h2><ul><li>需要引入css文件<br><code>import &#39;ant-design-pro/dist/ant-design-pro.css&#39;;</code></li></ul><h2 id="react相关"><a href="#react相关" class="headerlink" title="react相关"></a>react相关</h2><ul><li><a href="http://www.cnblogs.com/xianyulaodi/p/5038258.html" target="_blank" rel="noopener">dangerouslySetInnerHTML, 让React正常显示你的html代码</a></li><li><p><a href="https://github.com/pvoznyuk/react-live-clock" target="_blank" rel="noopener">时间显示组件</a></p><ul><li><p>获取今天的时间</p><p><code>const today = moment().format(&#39;YYYYMMDD&#39;);</code></p></li></ul></li><li><p>react setState是异步调用的</p><ul><li>使用props和componentWillReceiveProps(nextProps)来解决</li><li><a href="https://github.com/fangmiao97/MessageWiKiPro-frontend/blob/master/src/TopicInfo.js" target="_blank" rel="noopener">见topicid的变换</a></li><li>在minions中的历史数据页面，需要根据选择的不同日期显示相关数据。日期选择为父组件中的state.date改变，并将state.date传给child组件。child接收后通过componentWillReceiveProps来进行更新</li></ul></li><li><p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">flex布局</a></p></li><li><p>RestFul API</p></li><li><p>组件定时刷新</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.timer = setInterval(</span><br><span class="line">            () =&gt; &#123;</span><br><span class="line">                <span class="comment">//更新组件state...</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="number">60000</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li><li><p>组件动态渲染</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line"><span class="keyword">this</span>.state = &#123;</span><br><span class="line">            songsInfoList:[]</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        render() &#123;</span><br><span class="line">                <span class="keyword">let</span> songInfoList = <span class="keyword">this</span>.state.songsInfoList;</span><br><span class="line">                <span class="keyword">return</span> (</span><br><span class="line">                    &lt;div&gt;</span><br><span class="line">                        &#123;</span><br><span class="line">                            songInfoList.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">                                <span class="keyword">return</span> &lt;MockSongComponent key=&#123;index&#125; songInfo=&#123;item&#125;/&gt;</span><br><span class="line">                            &#125;)</span><br><span class="line">                        &#125;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                );</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line"><span class="comment">//子组件</span></span><br><span class="line"><span class="keyword">this</span>.state = &#123;</span><br><span class="line">            songInfo: <span class="keyword">this</span>.props.songInfo</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">render() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> songInfo = <span class="keyword">this</span>.state.songInfo;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">              &#123;songInfo.name&#125;</span><br><span class="line">              &#123;songInfo.coverUrl&#125;</span><br><span class="line">              ......</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></li></ul>]]></content>
       
       
       <categories>
@@ -78,7 +97,7 @@
       <link href="/2019/03/19/graduationDesignReferences/"/>
       <url>/2019/03/19/graduationDesignReferences/</url>
       
-        <content type="html"><![CDATA[<h2 id="实时流处理应用场景"><a href="#实时流处理应用场景" class="headerlink" title="实时流处理应用场景"></a>实时流处理应用场景</h2><ul><li><a href="http://new.gb.oversea.cnki.net/KXReader/Detail?dbcode=CJFD&amp;filename=DNZS201825112&amp;uid=WEEvREcwSlJHSldRa1Fhb09jT0pkRlg1TFVqTzAvOUVLVWZDZmNBOEF0az0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!" target="_blank" rel="noopener">Spark Streaming在实时计算中的应用研究</a>:延时限制在秒级的应用场景,电商实时营销。</li><li><a href="http://new.gb.oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&amp;dbname=CMFD201901&amp;filename=1018894622.nh&amp;uid=WEEvREcwSlJHSldRa1Fhb09jT0pkRlg1TFVqTzAvOUVLVWZDZmNBOEF0az0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&amp;v=MDAwNDFyQ1VSTE9mWk9kbUZpRGhWNzdJVkYyNkZydXhHdGZPclpFYlBJUjhlWDFMdXhZUzdEaDFUM3FUcldNMUY=" target="_blank" rel="noopener">基于Spark Streaming的实时日志分析与信息管理系统的设计与实现</a>:分析DDoS攻击。系统日志的信息安全审计</li><li><a href="http://new.gb.oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&amp;dbname=CMFD201801&amp;filename=1017292559.nh&amp;v=MTU5MjBlWDFMdXhZUzdEaDFUM3FUcldNMUZyQ1VSTE9mWk9kbUZ5amtWTHZMVkYyNkdiR3hITlRKcHBFYlBJUjg=&amp;uid=WEEvREcwSlJHSldRa1FhdkJkVG1CcDNRL2o5cjJMcDdKU2FGb00xSGNGND0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!" target="_blank" rel="noopener">基于海量网络日志数据的实时流处理系统的设计与实现</a>:可以参考这部分的绪论部分</li></ul><h2 id="日志信息隐藏关系"><a href="#日志信息隐藏关系" class="headerlink" title="日志信息隐藏关系"></a>日志信息隐藏关系</h2><ul><li><a href="http://new.gb.oversea.cnki.net/KXReader/Detail?dbcode=CJFD&amp;filename=WJSY201705010&amp;UID=WEEvREcwSlJHSldRa1FhdkJkVG1CcDc5Ym4weGJzK0hVZ1FjREZpT1JEcz0%3d%249A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&amp;autoLogin=0" target="_blank" rel="noopener">大数据下基于Spark的电商实时推荐系统的设计与实现</a></li></ul><h2 id="研究目的-出发点"><a href="#研究目的-出发点" class="headerlink" title="研究目的/出发点"></a>研究目的/出发点</h2><ul><li><a href="https://www.zhihu.com/question/20624296/answer/15731592" target="_blank" rel="noopener">互联网闭环</a></li></ul><h2 id="关于spark-streaming业务算法的创新"><a href="#关于spark-streaming业务算法的创新" class="headerlink" title="关于spark streaming业务算法的创新"></a>关于spark streaming业务算法的创新</h2><ul><li><a href="http://new.gb.oversea.cnki.net/KXReader/Detail?dbcode=CJFD&amp;filename=WJSY201705010&amp;UID=WEEvREcwSlJHSldRa1FhdkJkVG1CcDc5Ym4weGJzK0hVZ1FjREZpT1JEcz0%3d%249A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&amp;autoLogin=0" target="_blank" rel="noopener">对有状态计算操作的基数计算的精确计算方法和估算方法进行了比较分析</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="实时流处理应用场景"><a href="#实时流处理应用场景" class="headerlink" title="实时流处理应用场景"></a>实时流处理应用场景</h2><ul><li><a href="http://new.gb.oversea.cnki.net/KXReader/Detail?dbcode=CJFD&amp;filename=DNZS201825112&amp;uid=WEEvREcwSlJHSldRa1Fhb09jT0pkRlg1TFVqTzAvOUVLVWZDZmNBOEF0az0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!" target="_blank" rel="noopener">Spark Streaming在实时计算中的应用研究</a>:延时限制在秒级的应用场景,电商实时营销。</li><li><a href="http://new.gb.oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&amp;dbname=CMFD201901&amp;filename=1018894622.nh&amp;uid=WEEvREcwSlJHSldRa1Fhb09jT0pkRlg1TFVqTzAvOUVLVWZDZmNBOEF0az0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&amp;v=MDAwNDFyQ1VSTE9mWk9kbUZpRGhWNzdJVkYyNkZydXhHdGZPclpFYlBJUjhlWDFMdXhZUzdEaDFUM3FUcldNMUY=" target="_blank" rel="noopener">基于Spark Streaming的实时日志分析与信息管理系统的设计与实现</a>:分析DDoS攻击。系统日志的信息安全审计</li><li><a href="http://new.gb.oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&amp;dbname=CMFD201801&amp;filename=1017292559.nh&amp;v=MTU5MjBlWDFMdXhZUzdEaDFUM3FUcldNMUZyQ1VSTE9mWk9kbUZ5amtWTHZMVkYyNkdiR3hITlRKcHBFYlBJUjg=&amp;uid=WEEvREcwSlJHSldRa1FhdkJkVG1CcDNRL2o5cjJMcDdKU2FGb00xSGNGND0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!" target="_blank" rel="noopener">基于海量网络日志数据的实时流处理系统的设计与实现</a>:可以参考这部分的绪论部分</li><li><a href="https://www.infoq.cn/article/2016/01/spark-streaming-what-is-it-and-w" target="_blank" rel="noopener">大公司的应用</a></li><li><a href="https://www.infoq.cn/article/suning-realtime-log-analysis-system-spark-streaming" target="_blank" rel="noopener">苏宁基于 Spark Streaming 的实时日志分析系统实践</a></li></ul><h2 id="日志信息隐藏关系"><a href="#日志信息隐藏关系" class="headerlink" title="日志信息隐藏关系"></a>日志信息隐藏关系</h2><ul><li><a href="http://new.gb.oversea.cnki.net/KXReader/Detail?dbcode=CJFD&amp;filename=WJSY201705010&amp;UID=WEEvREcwSlJHSldRa1FhdkJkVG1CcDc5Ym4weGJzK0hVZ1FjREZpT1JEcz0%3d%249A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&amp;autoLogin=0" target="_blank" rel="noopener">大数据下基于Spark的电商实时推荐系统的设计与实现</a></li></ul><h2 id="研究目的-出发点"><a href="#研究目的-出发点" class="headerlink" title="研究目的/出发点"></a>研究目的/出发点</h2><ul><li><a href="https://www.zhihu.com/question/20624296/answer/15731592" target="_blank" rel="noopener">互联网闭环</a></li></ul><h2 id="关于spark-streaming业务算法的创新"><a href="#关于spark-streaming业务算法的创新" class="headerlink" title="关于spark streaming业务算法的创新"></a>关于spark streaming业务算法的创新</h2><ul><li><a href="http://new.gb.oversea.cnki.net/KXReader/Detail?dbcode=CJFD&amp;filename=WJSY201705010&amp;UID=WEEvREcwSlJHSldRa1FhdkJkVG1CcDc5Ym4weGJzK0hVZ1FjREZpT1JEcz0%3d%249A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&amp;autoLogin=0" target="_blank" rel="noopener">对有状态计算操作的基数计算的精确计算方法和估算方法进行了比较分析</a></li></ul><h2 id="架构参考"><a href="#架构参考" class="headerlink" title="架构参考"></a>架构参考</h2><ul><li><a href="https://book.douban.com/reading/37743267/" target="_blank" rel="noopener">参考</a></li></ul>]]></content>
       
       
       <categories>
@@ -87,6 +106,31 @@
           
       </categories>
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java中常用API</title>
+      <link href="/2019/03/18/JavaUtilsAPI/"/>
+      <url>/2019/03/18/JavaUtilsAPI/</url>
+      
+        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br></pre></td></tr></table></figure><h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqrt</span></span><br><span class="line">Math.sqrt(num);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
       
     </entry>
     
@@ -120,44 +164,6 @@
     
     
     <entry>
-      <title>Java中常用API</title>
-      <link href="/2019/03/18/JavaUtilsAPI/"/>
-      <url>/2019/03/18/JavaUtilsAPI/</url>
-      
-        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br></pre></td></tr></table></figure><h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqrt</span></span><br><span class="line">Math.sqrt(num);</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Websites Safari</title>
-      <link href="/2019/03/18/websitesafari/"/>
-      <url>/2019/03/18/websitesafari/</url>
-      
-        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
       <link href="/2019/03/18/frontendstudy/"/>
       <url>/2019/03/18/frontendstudy/</url>
@@ -177,6 +183,19 @@
             <tag> react ES6 </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Websites Safari</title>
+      <link href="/2019/03/18/websitesafari/"/>
+      <url>/2019/03/18/websitesafari/</url>
+      
+        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul>]]></content>
+      
+      
       
     </entry>
     
