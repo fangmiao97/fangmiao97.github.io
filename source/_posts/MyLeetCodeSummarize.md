@@ -337,3 +337,87 @@ class Solution {
     }
 }
 ```
+
+* 计算加减式
+    * [basic-calculator](https://leetcode.com/problems/basic-calculator/)
+  
+```java
+public int calculate(String s) {
+        Stack<Integer> stack = new Stack<Integer>();
+        int result = 0;
+        int number = 0;
+        int sign = 1;
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(Character.isDigit(c)) {
+                number = 10 * number + (int)(c  - '0');
+            }
+            else if(c == '+') {
+                number = sign * number;
+                result += number;
+                number = 0;
+                sign = 1;
+            } else if(c == '-') {
+                number = sign * number;
+                result += number;
+                number = 0;
+                sign = -1;
+            } else if( c == '(') {
+                stack.push(result);
+                stack.push(sign);
+                result = 0;
+                sign = 1;
+            } else if( c == ')') {
+                number = sign * number;
+                result += number;
+                number = 0; 
+                result *= stack.pop();
+                result += stack.pop();
+            }
+        }
+        //最后以数字结尾的话
+        if(number != 0) return result += sign * number;
+        return result;
+    }
+```
+
+* 加减乘除
+
+```java
+public int calculate(String s) {
+        Stack<Integer> stack = new Stack<Integer>();
+        int result = 0;
+        int number = 0;
+        char sign = '+';
+        for(int i = 0; i < s.length(); i++ ) {
+            
+            char c = s.charAt(i);
+            if(Character.isDigit(c)) {
+                number = number * 10 + (int)(c - '0');
+            }
+            if((!Character.isDigit(c) && c != ' ') || i == s.length()-1) {
+                if( sign == '+') {
+                    stack.push(number);
+                }
+                if(sign == '-') {
+                    stack.push(-number);
+                }
+                if(sign == '*') {
+                    stack.push(stack.pop() * number);
+                }
+                if(sign == '/') {
+                    stack.push(stack.pop() / number);
+                }
+                
+                sign = c;
+                number = 0;
+            }
+        }
+        
+        for(int i : stack) {
+            result += i;
+        }
+        
+        return result;
+    }
+```

@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="网站 HBase with Java HBase表概念 Filter 过滤器">
+    <meta name="description" content="网站 HBase with Java HBase表概念 Filter 过滤器  概念 Column Family  列族是列的集合 表可以有一个或多个列族 属于同一个列族的所有列前缀相同 containInfo:fname containInfo:lname   表按照列族维度进行存储，一个列族的数据存在一起 对一个列族可以单独定义存储属性调优，比如：一个列族存储图片数据，那么就可以对这个列族进行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习HBase JAVA API">
 <meta property="og:url" content="http://yoursite.com/2019/03/28/StudyHBaseJavaAPI/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
-<meta property="og:description" content="网站 HBase with Java HBase表概念 Filter 过滤器">
+<meta property="og:description" content="网站 HBase with Java HBase表概念 Filter 过滤器  概念 Column Family  列族是列的集合 表可以有一个或多个列族 属于同一个列族的所有列前缀相同 containInfo:fname containInfo:lname   表按照列族维度进行存储，一个列族的数据存在一起 对一个列族可以单独定义存储属性调优，比如：一个列族存储图片数据，那么就可以对这个列族进行">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-28T12:25:26.381Z">
+<meta property="og:updated_time" content="2019-03-31T10:49:30.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习HBase JAVA API">
-<meta name="twitter:description" content="网站 HBase with Java HBase表概念 Filter 过滤器">
+<meta name="twitter:description" content="网站 HBase with Java HBase表概念 Filter 过滤器  概念 Column Family  列族是列的集合 表可以有一个或多个列族 属于同一个列族的所有列前缀相同 containInfo:fname containInfo:lname   表按照列族维度进行存储，一个列族的数据存在一起 对一个列族可以单独定义存储属性调优，比如：一个列族存储图片数据，那么就可以对这个列族进行">
     
     
         
@@ -108,7 +108,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网站"><span class="toc-number">1.</span> <span class="toc-text">网站</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网站"><span class="toc-number">1.</span> <span class="toc-text">网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -157,6 +157,49 @@
 <li><a href="https://www.bilibili.com/video/av21911076" target="_blank" rel="noopener">HBase表概念</a></li>
 <li><a href="https://www.jianshu.com/p/fb4bd7a2a23e" target="_blank" rel="noopener">Filter 过滤器</a></li>
 </ul>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li><p>Column Family</p>
+<ul>
+<li>列族是列的集合</li>
+<li>表可以有一个或多个列族</li>
+<li>属于同一个列族的所有列前缀相同<ul>
+<li>containInfo:fname</li>
+<li>containInfo:lname</li>
+</ul>
+</li>
+<li>表按照列族维度进行存储，一个列族的数据存在一起</li>
+<li>对一个列族可以单独定义存储属性调优，比如：一个列族存储图片数据，那么就可以对这个列族进行存储压缩</li>
+<li>一个列族想有多少列都可宜，在进行数据添加操作的时候插入即可。不用修改表定义，在创建表的时候，定好列族就可以<br>*设计原则<ul>
+<li>不经常在一起访问的数据分开设计，比如：一个用户信息的表，可以将用户名、真实姓名、花名放在一个列族，将头像放在另一个列族</li>
+<li>使用不同列族存储设置时分开设计</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Columns 列</p>
+<ul>
+<li>列中包含表的数据</li>
+<li>可以动态实时地创建</li>
+</ul>
+</li>
+<li><p>Rows 行</p>
+<ul>
+<li>每一行有一个行键（RowKey)</li>
+<li>RowKey类似于关系型数据库的主键</li>
+<li>RowKey设计原则：方便scan操作，结合具体业务</li>
+<li>行按照行键排序进行存储，这样就提高了检索效率</li>
+</ul>
+</li>
+<li><p>Cell 单元</p>
+<ul>
+<li>行与列的交叉点</li>
+<li>版本化，支持多个版本，更新之前的数据可以保存（要定义），比如，QQ头像可以看到原来的头像</li>
+<li>内容是不可分割的</li>
+<li>存储的是byte array字节数组，无字段类型。只要能转成byte array的都可以存</li>
+<li>单元为空时，物理上是不存储的</li>
+</ul>
+</li>
+</ul>
 
   </div>
 </article>
@@ -188,7 +231,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网站"><span class="toc-number">1.</span> <span class="toc-text">网站</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网站"><span class="toc-number">1.</span> <span class="toc-text">网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
