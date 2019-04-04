@@ -46,7 +46,7 @@
       <link href="/2019/03/27/minionsUsage/"/>
       <url>/2019/03/27/minionsUsage/</url>
       
-        <content type="html"><![CDATA[<ul><li>kill所有进程</li><li>启动两个flume<ul><li>对接Python产生的伪日志</li><li>对接前端埋点的数据</li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//第一个在ZK Kafka启动后启动</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name exec-memory-kafka \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file /home/hadoop/data/project/streaming_project2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br><span class="line"></span><br><span class="line">flume-ng agent \</span><br><span class="line">--name agent1 \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file $FLUME_HOME/conf/streaming2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure><ul><li>启动zooKeeper</li></ul><p><code>zookeeper&gt;bin ./zkServer.sh start</code></p><ul><li>启动Kafka（后台）</li></ul><p><code>kafka&gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties</code></p><ul><li>启动Hadoop<ul><li>DataNode</li><li>SecondaryNameNode</li><li>NameNode </li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop/sbin&gt; ./start-dfs.sh</span><br><span class="line"></span><br><span class="line">//单独启动命令：</span><br><span class="line">./hadoop-daemon.sh start secondarynamenode</span><br></pre></td></tr></table></figure><ul><li>启动HBase<ul><li>HMaster</li><li>HRegionServer </li></ul></li></ul><p><code>bin&gt; ./start-hbase.sh</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./hbase shell</span><br><span class="line"></span><br><span class="line">list</span><br><span class="line">scan &apos;table_name&apos;</span><br><span class="line">desc &apos;table_name&apos;</span><br></pre></td></tr></table></figure><ul><li><p>启动spark作业</p><ul><li>MyStreamingApp : 统计访问量</li><li>KafKaStreamingApp : 处理前端埋点数据（hello_ladygaga_topic)</li></ul></li><li><p>启动Springboot后端和react前端</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li>启动zooKeeper</li></ul><p><code>zookeeper&gt;bin ./zkServer.sh start</code></p><ul><li>启动Kafka（后台）</li></ul><p><code>kafka&gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties</code></p><ul><li>kill所有进程</li><li>启动两个flume<ul><li>对接Python产生的伪日志</li><li>对接前端埋点的数据</li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//页面浏览日志 agent</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name exec-memory-kafka \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file /home/hadoop/data/project/streaming_project2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br><span class="line"></span><br><span class="line">//页面行为日志 agent</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name agent1 \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file $FLUME_HOME/conf/streaming2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure><ul><li>启动Hadoop<ul><li>DataNode</li><li>SecondaryNameNode</li><li>NameNode </li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop/sbin&gt; ./start-dfs.sh</span><br><span class="line"></span><br><span class="line">//单独启动命令：</span><br><span class="line">./hadoop-daemon.sh start secondarynamenode</span><br></pre></td></tr></table></figure><ul><li>启动HBase<ul><li>HMaster</li><li>HRegionServer </li></ul></li></ul><p><code>bin&gt; ./start-hbase.sh</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./hbase shell</span><br><span class="line"></span><br><span class="line">list</span><br><span class="line">scan &apos;table_name&apos;</span><br><span class="line">desc &apos;table_name&apos;</span><br></pre></td></tr></table></figure><ul><li><p>启动spark作业</p><ul><li>MyStreamingApp : 统计访问量</li><li>KafKaStreamingApp : 处理前端埋点数据（hello_ladygaga_topic)</li></ul></li><li><p>启动Springboot后端和react前端</p></li></ul>]]></content>
       
       
       
@@ -112,31 +112,6 @@
     
     
     <entry>
-      <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
-      <link href="/2019/03/18/frontendstudy/"/>
-      <url>/2019/03/18/frontendstudy/</url>
-      
-        <content type="html"><![CDATA[<h2 id="基础知识🚶"><a href="#基础知识🚶" class="headerlink" title="基础知识🚶"></a>基础知识🚶</h2><ul><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">HTML代码练习</a>(第4周-第6周）</li><li><a href="https://wangdoc.com/javascript/" target="_blank" rel="noopener">JavaScript语言入门教程</a></li><li><a href="http://www.imooc.com/learn/36" target="_blank" rel="noopener">Js视频</a></li></ul><h2 id="进阶🏃"><a href="#进阶🏃" class="headerlink" title="进阶🏃"></a>进阶🏃</h2><ul><li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a></li><li><a href="https://www.imooc.com/learn/955" target="_blank" rel="noopener">ES6快速入门</a></li><li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">React入门教程</a></li><li>使用React的网站：<ul><li><a href="http://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li><li><a href="http://instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.zhihu.com/" target="_blank" rel="noopener">知乎</a></li></ul></li></ul><h2 id="React🚕"><a href="#React🚕" class="headerlink" title="React🚕"></a>React🚕</h2><ul><li><a href="https://juejin.im/post/59dcd87451882578c2084515" target="_blank" rel="noopener">从React脚手架工具学习React项目的最佳实践</a></li><li><a href="https://juejin.im/entry/5b3f3c82e51d45190905d3a2" target="_blank" rel="noopener">组件库（了解）</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">React 技术栈系列教程</a></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> react ES6 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java中常用API</title>
       <link href="/2019/03/18/JavaUtilsAPI/"/>
       <url>/2019/03/18/JavaUtilsAPI/</url>
@@ -154,6 +129,31 @@
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
+      <link href="/2019/03/18/frontendstudy/"/>
+      <url>/2019/03/18/frontendstudy/</url>
+      
+        <content type="html"><![CDATA[<h2 id="基础知识🚶"><a href="#基础知识🚶" class="headerlink" title="基础知识🚶"></a>基础知识🚶</h2><ul><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">HTML代码练习</a>(第4周-第6周）</li><li><a href="https://wangdoc.com/javascript/" target="_blank" rel="noopener">JavaScript语言入门教程</a></li><li><a href="http://www.imooc.com/learn/36" target="_blank" rel="noopener">Js视频</a></li></ul><h2 id="进阶🏃"><a href="#进阶🏃" class="headerlink" title="进阶🏃"></a>进阶🏃</h2><ul><li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a></li><li><a href="https://www.imooc.com/learn/955" target="_blank" rel="noopener">ES6快速入门</a></li><li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">React入门教程</a></li><li>使用React的网站：<ul><li><a href="http://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li><li><a href="http://instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.zhihu.com/" target="_blank" rel="noopener">知乎</a></li></ul></li></ul><h2 id="React🚕"><a href="#React🚕" class="headerlink" title="React🚕"></a>React🚕</h2><ul><li><a href="https://juejin.im/post/59dcd87451882578c2084515" target="_blank" rel="noopener">从React脚手架工具学习React项目的最佳实践</a></li><li><a href="https://juejin.im/entry/5b3f3c82e51d45190905d3a2" target="_blank" rel="noopener">组件库（了解）</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">React 技术栈系列教程</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react ES6 </tag>
             
         </tags>
       

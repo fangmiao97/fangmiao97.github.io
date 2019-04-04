@@ -2,26 +2,6 @@
 title: Minions初始化手册✋
 date: 2019/03/27
 ---
-* kill所有进程
-* 启动两个flume
-	* 对接Python产生的伪日志
-	* 对接前端埋点的数据
-
-```
-//第一个在ZK Kafka启动后启动
-flume-ng agent \
---name exec-memory-kafka \
---conf $FLUME_HOME/conf \
---conf-file /home/hadoop/data/project/streaming_project2.conf \
--Dflume.root.logger=INFO,console
-
-flume-ng agent \
---name agent1 \
---conf $FLUME_HOME/conf \
---conf-file $FLUME_HOME/conf/streaming2.conf \
--Dflume.root.logger=INFO,console
-```
-
 * 启动zooKeeper
 
 `zookeeper>bin ./zkServer.sh start`
@@ -29,6 +9,27 @@ flume-ng agent \
 * 启动Kafka（后台）
 
 `kafka> bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties`
+
+* kill所有进程
+* 启动两个flume
+	* 对接Python产生的伪日志
+	* 对接前端埋点的数据
+
+```
+//页面浏览日志 agent
+flume-ng agent \
+--name exec-memory-kafka \
+--conf $FLUME_HOME/conf \
+--conf-file /home/hadoop/data/project/streaming_project2.conf \
+-Dflume.root.logger=INFO,console
+
+//页面行为日志 agent
+flume-ng agent \
+--name agent1 \
+--conf $FLUME_HOME/conf \
+--conf-file $FLUME_HOME/conf/streaming2.conf \
+-Dflume.root.logger=INFO,console
+```
 
 * 启动Hadoop
 	* DataNode

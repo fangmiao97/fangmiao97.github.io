@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="kill所有进程 启动两个flume 对接Python产生的伪日志 对接前端埋点的数据    123456789101112//第一个在ZK Kafka启动后启动flume-ng agent \--name exec-memory-kafka \--conf $FLUME_HOME/conf \--conf-file /home/hadoop/data/project/streaming_pro">
+    <meta name="description" content="启动zooKeeper  zookeeper&amp;gt;bin ./zkServer.sh start  启动Kafka（后台）  kafka&amp;gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties  kill所有进程 启动两个flume 对接Python产生的伪日志 对接前端埋点的数据    123456">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Minions初始化手册✋">
 <meta property="og:url" content="http://yoursite.com/2019/03/27/minionsUsage/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
-<meta property="og:description" content="kill所有进程 启动两个flume 对接Python产生的伪日志 对接前端埋点的数据    123456789101112//第一个在ZK Kafka启动后启动flume-ng agent \--name exec-memory-kafka \--conf $FLUME_HOME/conf \--conf-file /home/hadoop/data/project/streaming_pro">
+<meta property="og:description" content="启动zooKeeper  zookeeper&amp;gt;bin ./zkServer.sh start  启动Kafka（后台）  kafka&amp;gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties  kill所有进程 启动两个flume 对接Python产生的伪日志 对接前端埋点的数据    123456">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-27T10:57:25.662Z">
+<meta property="og:updated_time" content="2019-04-02T04:37:28.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Minions初始化手册✋">
-<meta name="twitter:description" content="kill所有进程 启动两个flume 对接Python产生的伪日志 对接前端埋点的数据    123456789101112//第一个在ZK Kafka启动后启动flume-ng agent \--name exec-memory-kafka \--conf $FLUME_HOME/conf \--conf-file /home/hadoop/data/project/streaming_pro">
+<meta name="twitter:description" content="启动zooKeeper  zookeeper&amp;gt;bin ./zkServer.sh start  启动Kafka（后台）  kafka&amp;gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties  kill所有进程 启动两个flume 对接Python产生的伪日志 对接前端埋点的数据    123456">
     
     
         
@@ -148,15 +148,6 @@
 
   <div class="content" itemprop="articleBody">
     <ul>
-<li>kill所有进程</li>
-<li>启动两个flume<ul>
-<li>对接Python产生的伪日志</li>
-<li>对接前端埋点的数据</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//第一个在ZK Kafka启动后启动</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name exec-memory-kafka \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file /home/hadoop/data/project/streaming_project2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br><span class="line"></span><br><span class="line">flume-ng agent \</span><br><span class="line">--name agent1 \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file $FLUME_HOME/conf/streaming2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
-<ul>
 <li>启动zooKeeper</li>
 </ul>
 <p><code>zookeeper&gt;bin ./zkServer.sh start</code></p>
@@ -164,6 +155,15 @@
 <li>启动Kafka（后台）</li>
 </ul>
 <p><code>kafka&gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties</code></p>
+<ul>
+<li>kill所有进程</li>
+<li>启动两个flume<ul>
+<li>对接Python产生的伪日志</li>
+<li>对接前端埋点的数据</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//页面浏览日志 agent</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name exec-memory-kafka \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file /home/hadoop/data/project/streaming_project2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br><span class="line"></span><br><span class="line">//页面行为日志 agent</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name agent1 \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file $FLUME_HOME/conf/streaming2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
 <ul>
 <li>启动Hadoop<ul>
 <li>DataNode</li>
