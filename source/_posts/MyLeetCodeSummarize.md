@@ -53,6 +53,21 @@ public TreeNode insertIntoMaxTree(TreeNode root, int val) {
                 a.offer(n.right);
             }
 ```
+* [Sum of Root To Leaf Binary Numbers](https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/)
+    * DFS
+    
+```java
+    public int sumRootToLeaf(TreeNode root) {
+        return dfs(root, 0);
+    }
+    public static int dfs(TreeNode root, int sum) {        
+        if(root == null) return 0;
+        sum = sum * 2 + root.val;
+        return root.left == root.right ? sum : dfs(root.left, sum) + dfs(root.right, sum);
+        
+    }
+    
+```
 ## 字节/位处理
 * [Reverse Integer](https://leetcode.com/problems/reverse-integer/)
     * java中不同数据类型的取值范围
@@ -420,4 +435,57 @@ public int calculate(String s) {
         
         return result;
     }
+```
+
+## Int处理
+
+* Palindrome Number 回文数
+    * 转换成String 使用reverse()判断是否相同
+    * [reverse Integer](https://leetcode.com/problems/reverse-integer/)，再看是否相同，但是可能会溢出
+    * 只转换后一半的数字，与前面一半的数字比较：1221 --> 12 12 12321 --> 12 123/10
+
+```java
+public boolean isPalindrome(int x) {
+    if(x < 0 || (x % 10 == 0 && x != 0))
+        return false;
+    
+    int rev = 0;
+    while(x > rev) { //当前面的数字小于等于后面翻转的数字时，就到中间了
+        rev = rev * 10 + x % 10;
+        x /= 10;
+    }
+    
+    return (x == rev || x == rev / 10);
+}
+```
+
+## LinkedList
+
+* middle ListNode
+
+```java
+public ListNode middleNode(ListNode head) {
+    ListNode slow = head, fast = head;
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+```
+
+* reverse List
+    * 将链表翻转
+
+```java
+public ListNode reverse(ListNode head) {
+    ListNode pre = null;
+    while(head != null) {
+        ListNode next = head.next;
+        head.next = pre;
+        pre = head;
+        head = next;
+    }
+    return pre;
+}
 ```
