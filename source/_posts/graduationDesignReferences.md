@@ -23,3 +23,6 @@ tags:
 
 ## 架构参考
 * [参考](https://book.douban.com/reading/37743267/)
+
+## Spark
+* [Spark入门：RDD的设计与运行原理](http://dblab.xmu.edu.cn/blog/985-2/)
