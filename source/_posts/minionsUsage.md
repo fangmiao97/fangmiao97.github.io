@@ -2,6 +2,9 @@
 title: Minions初始化手册✋
 date: 2019/03/27
 ---
+
+* kill所有进程
+
 * 启动zooKeeper
 
 `zookeeper>bin ./zkServer.sh start`
@@ -10,7 +13,6 @@ date: 2019/03/27
 
 `kafka> bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties`
 
-* kill所有进程
 * 启动两个flume
 	* 对接Python产生的伪日志
 	* 对接前端埋点的数据

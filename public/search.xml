@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>每周记录📝（190414）</title>
+      <link href="/2019/04/14/weekly-report-190414/"/>
+      <url>/2019/04/14/weekly-report-190414/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://wx4.sinaimg.cn/mw1024/6a49516fly1g21zk7ocndj22482tq7wh.jpg" alt></p><p>上一周没有周记，因为清明节回外婆家了。比较忙，也没有带电脑。<br>所以说，真的好像要自己的一台电脑啊！</p><p>另外也就是说，我的毕设在清明节之前的周四之后就没有弄过了！LeetCode也没有刷！真的很罪恶了。<br>这周开始全身心投入！</p><p>这里先定一下这周的计划：</p><ul><li>学习HBase RowKey的设计，以及java API的学习，记笔记。</li><li>用BizCharts完成毕设页面浏览信息的时间维度细化。</li><li>细化页面行为信息</li></ul><p>OK，展示一下目前毕设的状态：</p><p><img src="https://wx4.sinaimg.cn/mw1024/6a49516fly1g2207nk3atj21gn0u0tjq.jpg" alt></p><p><img src="https://wx2.sinaimg.cn/mw1024/6a49516fly1g2207nmb18j21gn0u0kcv.jpg" alt></p><p>另外，喜欢上喝铁观音。自己一周之内被骗了2次，损失36元！谨记！</p><p>be humble！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每周记录 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【翻译】弹性分布式数据集：基于内存的集群计算的容错性抽象</title>
       <link href="/2019/04/13/tanslate-Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction%E2%80%93for-In-Memory-Cluster-Computing/"/>
       <url>/2019/04/13/tanslate-Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction%E2%80%93for-In-Memory-Cluster-Computing/</url>
@@ -100,7 +119,7 @@
       <link href="/2019/03/27/minionsUsage/"/>
       <url>/2019/03/27/minionsUsage/</url>
       
-        <content type="html"><![CDATA[<ul><li>启动zooKeeper</li></ul><p><code>zookeeper&gt;bin ./zkServer.sh start</code></p><ul><li>启动Kafka（后台）</li></ul><p><code>kafka&gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties</code></p><ul><li>kill所有进程</li><li>启动两个flume<ul><li>对接Python产生的伪日志</li><li>对接前端埋点的数据</li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//页面浏览日志 agent</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name exec-memory-kafka \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file /home/hadoop/data/project/streaming_project2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br><span class="line"></span><br><span class="line">//页面行为日志 agent</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name agent1 \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file $FLUME_HOME/conf/streaming2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure><ul><li>启动Hadoop<ul><li>DataNode</li><li>SecondaryNameNode</li><li>NameNode </li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop/sbin&gt; ./start-dfs.sh</span><br><span class="line"></span><br><span class="line">//单独启动命令：</span><br><span class="line">./hadoop-daemon.sh start secondarynamenode</span><br></pre></td></tr></table></figure><ul><li>启动HBase<ul><li>HMaster</li><li>HRegionServer </li></ul></li></ul><p><code>bin&gt; ./start-hbase.sh</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./hbase shell</span><br><span class="line"></span><br><span class="line">list</span><br><span class="line">scan &apos;table_name&apos;</span><br><span class="line">desc &apos;table_name&apos;</span><br></pre></td></tr></table></figure><ul><li><p>启动spark作业</p><ul><li>MyStreamingApp : 统计访问量</li><li>KafKaStreamingApp : 处理前端埋点数据（hello_ladygaga_topic)</li></ul></li><li><p>启动Springboot后端和react前端</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>kill所有进程</p></li><li><p>启动zooKeeper</p></li></ul><p><code>zookeeper&gt;bin ./zkServer.sh start</code></p><ul><li>启动Kafka（后台）</li></ul><p><code>kafka&gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties</code></p><ul><li>启动两个flume<ul><li>对接Python产生的伪日志</li><li>对接前端埋点的数据</li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//页面浏览日志 agent</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name exec-memory-kafka \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file /home/hadoop/data/project/streaming_project2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br><span class="line"></span><br><span class="line">//页面行为日志 agent</span><br><span class="line">flume-ng agent \</span><br><span class="line">--name agent1 \</span><br><span class="line">--conf $FLUME_HOME/conf \</span><br><span class="line">--conf-file $FLUME_HOME/conf/streaming2.conf \</span><br><span class="line">-Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure><ul><li>启动Hadoop<ul><li>DataNode</li><li>SecondaryNameNode</li><li>NameNode </li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop/sbin&gt; ./start-dfs.sh</span><br><span class="line"></span><br><span class="line">//单独启动命令：</span><br><span class="line">./hadoop-daemon.sh start secondarynamenode</span><br></pre></td></tr></table></figure><ul><li>启动HBase<ul><li>HMaster</li><li>HRegionServer </li></ul></li></ul><p><code>bin&gt; ./start-hbase.sh</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./hbase shell</span><br><span class="line"></span><br><span class="line">list</span><br><span class="line">scan &apos;table_name&apos;</span><br><span class="line">desc &apos;table_name&apos;</span><br></pre></td></tr></table></figure><ul><li><p>启动spark作业</p><ul><li>MyStreamingApp : 统计访问量</li><li>KafKaStreamingApp : 处理前端埋点数据（hello_ladygaga_topic)</li></ul></li><li><p>启动Springboot后端和react前端</p></li></ul>]]></content>
       
       
       
@@ -166,6 +185,44 @@
     
     
     <entry>
+      <title>Java中常用API</title>
+      <link href="/2019/03/18/JavaUtilsAPI/"/>
+      <url>/2019/03/18/JavaUtilsAPI/</url>
+      
+        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br></pre></td></tr></table></figure><h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqrt</span></span><br><span class="line">Math.sqrt(num);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Websites Safari</title>
+      <link href="/2019/03/18/websitesafari/"/>
+      <url>/2019/03/18/websitesafari/</url>
+      
+        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
       <link href="/2019/03/18/frontendstudy/"/>
       <url>/2019/03/18/frontendstudy/</url>
@@ -212,44 +269,6 @@
             <tag> CORS </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java中常用API</title>
-      <link href="/2019/03/18/JavaUtilsAPI/"/>
-      <url>/2019/03/18/JavaUtilsAPI/</url>
-      
-        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br></pre></td></tr></table></figure><h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqrt</span></span><br><span class="line">Math.sqrt(num);</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Websites Safari</title>
-      <link href="/2019/03/18/websitesafari/"/>
-      <url>/2019/03/18/websitesafari/</url>
-      
-        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
-      
-      
       
     </entry>
     
