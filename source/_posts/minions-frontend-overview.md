@@ -26,6 +26,9 @@ categories:
 * 需要引入css文件
 `import 'ant-design-pro/dist/ant-design-pro.css';`
 
+## [BizChart](https://bizcharts.net/index)
+* 商业场景下的数据可视化
+
 ## react相关
 * [dangerouslySetInnerHTML, 让React正常显示你的html代码](http://www.cnblogs.com/xianyulaodi/p/5038258.html)
 * [时间显示组件](https://github.com/pvoznyuk/react-live-clock)
