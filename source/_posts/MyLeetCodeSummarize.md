@@ -489,3 +489,40 @@ public ListNode reverse(ListNode head) {
     return pre;
 }
 ```
+
+* 翻转部分List
+    * [reverse list II](https://leetcode.com/problems/reverse-linked-list-ii/)
+
+```java
+public ListNode reverseBetween(ListNode head, int m, int n) {
+        
+        if(head == null || n == 1) return head;
+        
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode p = dummy;
+        while(m > 1) {
+            p = p.next;
+            m--;
+            n--;
+        }
+        ListNode tail = p.next;
+        
+        ListNode tmp = p;
+        while(n > 1) {
+            tmp = p.next;
+            p.next = tail.next;
+            tail.next = tail.next.next;
+            p.next.next = tmp;
+            n--;
+        }
+         
+        return dummy.next;
+    }
+```
+
+* 有环的LinkedList
+    * [Linked List CycleII](https://leetcode.com/problems/linked-list-cycle-ii/)
+    * two pointers看解释
+    * 延伸[287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
+    * 将数组当成链表的索引表
