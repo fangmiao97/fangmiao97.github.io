@@ -437,6 +437,24 @@ public int calculate(String s) {
     }
 ```
 
+* [Missing Num](https://leetcode.com/problems/missing-number/)
+    * 在n长的数组中，包含0到n这n+1个数字中的n个。有个一数字[0, n]不在里面。
+    * 将数组的索引[0, n-1]想成抽屉的编号，如果是n缺少的话，每个抽屉其实都能装到自己的数字，n就单独出来了。
+    * 如果是[0, n-1]中的数字缺少了，说明n这个数字占了其中一个抽屉，那个数字（索引编号还贴在抽屉上）就单出来了。
+    * 使用异或操作可以将单独的数字找出来。
+
+```java
+     public int missingNumber(int[] nums) {   
+            
+            int missing = nums.length;
+            for(int i = 0; i < nums.length; i++) {
+                missing ^= i ^ nums[i];
+            }
+            
+            return missing;
+        }
+```
+
 ## Int处理
 
 * Palindrome Number 回文数
