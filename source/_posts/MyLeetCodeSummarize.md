@@ -526,3 +526,24 @@ public ListNode reverseBetween(ListNode head, int m, int n) {
     * two pointers看解释
     * 延伸[287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
     * 将数组当成链表的索引表
+    * 鸽笼原理，一个数组[n+1]中有1-n个不相同的数，肯定有一个数字是重复的。如果把数组中的每个数当做是索引值的话，没有重复数字的情况下，就会形成一个没有环的链。如果中间有重复值的话，就一定会出现环。
+
+```java
+    public int findDuplicate(int[] nums) {
+            int slow = nums[0];
+            int fast = nums[0];
+            
+            do{
+                slow = nums[slow];
+                fast = nums[nums[fast]];
+            }while(slow != fast);
+            
+            int head = nums[0];
+            while(head != slow) {
+                head = nums[head];
+                slow = nums[slow];
+            }
+            
+            return head;
+        }
+```
