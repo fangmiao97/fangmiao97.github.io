@@ -1,6 +1,6 @@
 ---
 title: 学习HBase JAVA API
-date: 2019/03/28
+date: 2019/04/19
 categories: 
     - 技术总结
 tages:
@@ -41,3 +41,7 @@ tages:
     * 内容是不可分割的
     * 存储的是byte array字节数组，无字段类型。只要能转成byte array的都可以存
     * 单元为空时，物理上是不存储的
+
+## HBase Java API
+* [HBase Java API 01：基础操作](https://www.jianshu.com/p/3c85060901da)
+* [HBase Java API 02：过滤器](https://www.jianshu.com/p/fb4bd7a2a23e)

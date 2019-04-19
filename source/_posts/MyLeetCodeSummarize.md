@@ -565,3 +565,42 @@ public ListNode reverseBetween(ListNode head, int m, int n) {
             return head;
         }
 ```
+## 指针
+
+* 将数组中的数当成指针
+    * [442. Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array)
+
+```java
+public List<Integer> findDuplicates(int[] nums) {
+        List<Integer> res = new ArrayList<>();
+        
+        for (int i = 0; i < nums.length; ++i) {
+            int index = Math.abs(nums[i])-1;//要去绝对值 索引
+            if (nums[index] < 0)//是负的说明，之前遇到过
+                res.add(Math.abs(index+1));
+            nums[index] = -nums[index];
+        }
+        
+        return res;
+    }
+```
+   * 448. Find All Numbers Disappeared in an Array
+
+```java
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        
+        List<Integer> res = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++) {
+            int val = Math.abs(nums[i]) - 1;
+            if(nums[val] > 0) {
+                nums[val] = - nums[val];
+            }
+        }
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] > 0 ) {
+                res.add(i+1);
+            }
+        }
+        return res;
+    }
+```
