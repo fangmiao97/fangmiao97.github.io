@@ -278,6 +278,30 @@ public String[] split(String s) {
     char c = (char)(str.charAt(i) | (char)(32));
 ```
 
+* 相同前缀
+    * indexOf（int，ch）：先看第一个indexOf它返回值是int，在看它的参数（int，ch）意思就是使用者可以给参数一个‘char’字符所代表的int值，然后去从前向后找到该字符在字符串中第一次出现处的索引，当然了我们不可能记得住每一个char的值所以我们在使用时直接用String s=abcdef;　int i=s.indexOf('d')
+    这种方式就可以了，char类型会自动提升为int类型，还有就是要注意如果返回值为-1，就说明索引越界了；
+    * indexOf（int ch，int，fromIndex）：这个方法就是说从指定位置往后找返回字符在该字符串中第一次出现处的索引，比如“woaizhongguo”indexOf（'o',2）那返回值就是6而不是1，也不是11；
+    * indexOf（Sting str）：这个方法基本就类似前面的了，只不过它是在参数里给一个子字符串，然后返回该子字符串在该字符串中第一次出现处的索引，比如"woaixuexi"要查"ai"这个子字符串在整个字符串中出现的索引位置那返回值就是2
+    * indexOf（String str，int fromIndex）这个方法不在累述
+    * lastIndexOf（int ch）：这个方法也是跟indexof相反，它是从后往前找返回字符在字符串中最后一次出现处的索引，也就是说找索引的时候是倒着找的但是返回值还是按照正的索引顺序返回的比如"woaiwo"用lastindexof查找‘w’返回的值是4而不是1
+    * lastIndexOf(int ch,fromindex)
+
+```java
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length == 0)
+            return "";
+        String prefix = strs[0];
+        for(int i = 0; i < strs.length; i++) {
+            while(strs[i].indexOf(prefix) != 0) {//前缀肯定是最短的，所以如果有这个相同前缀的话，肯定在每个string里面都有
+                prefix = prefix.substring(0, prefix.length() - 1);//前缀就从第一个字符串进行截取就可以了
+                if(prefix.isEmpty())
+                    return "";
+            }
+        }
+        return prefix;
+    }
+```
 ## 非常规顺序操作
 
 * [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/)
@@ -565,6 +589,27 @@ public ListNode reverseBetween(ListNode head, int m, int n) {
             return head;
         }
 ```
+
+* [二进制加](https://leetcode.com/problems/add-binary/)
+```java
+    public String addBinary(String a, String b) {
+            StringBuilder sb = new StringBuilder();
+            int i = a.length(), j = b.lengthg(), carry = 0;
+            
+            while(i >= 0 || j >= 0) {
+                int sum = carry;
+                if(j >= 0) sum += b.charAt(j--) - '0';
+                if(i >= 0) sum += a.charAt(i--) - '0'；
+                sb.insert(0, sum % 2);
+                carry = sum / 2;
+            }
+            
+            if(carry ！= 0)
+                sb.insert(0, carry);
+            return sb.toString();
+        }
+```
+    
 ## 指针
 
 * 将数组中的数当成指针
