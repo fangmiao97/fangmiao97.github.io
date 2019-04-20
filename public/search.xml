@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>每周记录📝（190420）</title>
+      <link href="/2019/04/20/weekly-report-190420/"/>
+      <url>/2019/04/20/weekly-report-190420/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g294xszz4gj23402c0qv7.jpg" alt></p><p>这周吃的铁板烧！大学里面最喜欢吃的东西，害怕以后就吃不到了。</p><p>这周收到南洋理工CCA的offer了，IS被拒了。其实吧，我更想上IS，但是看了一下IS的课程，感觉除了个别及门，其他的在本科也有学过。<br>CCA的话，就偏向控制之类的，我对这方面兴趣不大吧，以后就想做软件、大数据方面的。在贴吧上看到有学长说，找工作其实看自己的能力，确实也是的，所以CCA上也可以，主要我就是想出去。<br>另外国立大学的申请还没有下来，有点捉急，因为国大有SO，如果国大有的话，我更愿意接受国大的，去签SO。</p><p>这周前四天集中做毕设，效果如图：</p><p><img src="https://wx3.sinaimg.cn/mw1024/6a49516fly1g294xqbiggj21i00ustmi.jpg" alt></p><p><img src="https://wx3.sinaimg.cn/mw1024/6a49516fly1g294xqbic3j21i00us14u.jpg" alt></p><p><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g294xqa08vj21i00usgwg.jpg" alt></p><p>维度细化了，界面交互也有了逻辑。有问题就是分类别统计30分钟窗口的时候，记录的rowkey设计有问题，所以在零点的左右会出现问题，我是按date在hbase中取值，如果window横跨零点左右，前一天就统计不到。</p><p>另外，行为分析还要增添一点东西。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每周记录 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>学习HBase JAVA API</title>
       <link href="/2019/04/19/StudyHBaseJavaAPI/"/>
       <url>/2019/04/19/StudyHBaseJavaAPI/</url>
@@ -185,6 +204,44 @@
     
     
     <entry>
+      <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
+      <link href="/2019/03/18/frontendstudy/"/>
+      <url>/2019/03/18/frontendstudy/</url>
+      
+        <content type="html"><![CDATA[<h2 id="基础知识🚶"><a href="#基础知识🚶" class="headerlink" title="基础知识🚶"></a>基础知识🚶</h2><ul><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">HTML代码练习</a>(第4周-第6周）</li><li><a href="https://wangdoc.com/javascript/" target="_blank" rel="noopener">JavaScript语言入门教程</a></li><li><a href="http://www.imooc.com/learn/36" target="_blank" rel="noopener">Js视频</a></li></ul><h2 id="进阶🏃"><a href="#进阶🏃" class="headerlink" title="进阶🏃"></a>进阶🏃</h2><ul><li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a></li><li><a href="https://www.imooc.com/learn/955" target="_blank" rel="noopener">ES6快速入门</a></li><li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">React入门教程</a></li><li>使用React的网站：<ul><li><a href="http://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li><li><a href="http://instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.zhihu.com/" target="_blank" rel="noopener">知乎</a></li></ul></li></ul><h2 id="React🚕"><a href="#React🚕" class="headerlink" title="React🚕"></a>React🚕</h2><ul><li><a href="https://juejin.im/post/59dcd87451882578c2084515" target="_blank" rel="noopener">从React脚手架工具学习React项目的最佳实践</a></li><li><a href="https://juejin.im/entry/5b3f3c82e51d45190905d3a2" target="_blank" rel="noopener">组件库（了解）</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">React 技术栈系列教程</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react ES6 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Websites Safari</title>
+      <link href="/2019/03/18/websitesafari/"/>
+      <url>/2019/03/18/websitesafari/</url>
+      
+        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于axios的CORS问题的解决</title>
       <link href="/2019/03/18/axioscorsquestions/"/>
       <url>/2019/03/18/axioscorsquestions/</url>
@@ -212,31 +269,6 @@
     
     
     <entry>
-      <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
-      <link href="/2019/03/18/frontendstudy/"/>
-      <url>/2019/03/18/frontendstudy/</url>
-      
-        <content type="html"><![CDATA[<h2 id="基础知识🚶"><a href="#基础知识🚶" class="headerlink" title="基础知识🚶"></a>基础知识🚶</h2><ul><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">HTML代码练习</a>(第4周-第6周）</li><li><a href="https://wangdoc.com/javascript/" target="_blank" rel="noopener">JavaScript语言入门教程</a></li><li><a href="http://www.imooc.com/learn/36" target="_blank" rel="noopener">Js视频</a></li></ul><h2 id="进阶🏃"><a href="#进阶🏃" class="headerlink" title="进阶🏃"></a>进阶🏃</h2><ul><li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a></li><li><a href="https://www.imooc.com/learn/955" target="_blank" rel="noopener">ES6快速入门</a></li><li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">React入门教程</a></li><li>使用React的网站：<ul><li><a href="http://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li><li><a href="http://instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.zhihu.com/" target="_blank" rel="noopener">知乎</a></li></ul></li></ul><h2 id="React🚕"><a href="#React🚕" class="headerlink" title="React🚕"></a>React🚕</h2><ul><li><a href="https://juejin.im/post/59dcd87451882578c2084515" target="_blank" rel="noopener">从React脚手架工具学习React项目的最佳实践</a></li><li><a href="https://juejin.im/entry/5b3f3c82e51d45190905d3a2" target="_blank" rel="noopener">组件库（了解）</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">React 技术栈系列教程</a></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> react ES6 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java中常用API</title>
       <link href="/2019/03/18/JavaUtilsAPI/"/>
       <url>/2019/03/18/JavaUtilsAPI/</url>
@@ -256,19 +288,6 @@
             <tag> Java </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Websites Safari</title>
-      <link href="/2019/03/18/websitesafari/"/>
-      <url>/2019/03/18/websitesafari/</url>
-      
-        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
-      
-      
       
     </entry>
     
