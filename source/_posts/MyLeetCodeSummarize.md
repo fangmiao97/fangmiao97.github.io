@@ -649,3 +649,24 @@ public List<Integer> findDuplicates(int[] nums) {
         return res;
     }
 ```
+## 表达式校验
+
+* [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
+    * 常规做法：用stack保存左括号，遇到右括号检验栈顶是不是对应的左括号，是的话就pop，不是就不正确
+    * 非常规，思想相同：
+
+```java
+    public boolean isValid(String s) {
+            Stack<Character> stack = new Stack<Character>();
+    	for (char c : s.toCharArray()) {
+    		if (c == '(')
+    			stack.push(')');
+    		else if (c == '{')
+    			stack.push('}');
+    		else if (c == '[')
+    			stack.push(']');
+    		else if (stack.isEmpty() || stack.pop() != c)
+    			return false;
+    	}
+    	return stack.isEmpty();
+```
