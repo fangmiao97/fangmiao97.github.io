@@ -1,5 +1,5 @@
 ---
-title: 访问行为mock
+title: 用户行为日志记录方案设计
 date: 2019/04/22
 categories:
     - 技术总结

@@ -1,6 +1,8 @@
 ---
 title: Minions初始化手册✋
 date: 2019/03/27
+categories: 
+    - 毕业设计
 ---
 
 * kill所有进程
