@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>学习KMP</title>
+      <link href="/2019/05/03/KMP/"/>
+      <url>/2019/05/03/KMP/</url>
+      
+        <content type="html"><![CDATA[<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><ul><li><a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="noopener">Implement strStr()</a><ul><li>LeetCode实现String.indexOf()，即返回子串在字符串中第一次出现的索引位置，没有则返回-1，子串为空则返回0</li></ul></li><li>暴力解法<ul><li>从0位置开始，比对与子串是否相同，出现不同则在字符串中往后移一位，再次比较子串，直到找到。</li><li>复杂度<ul><li>设字符串长度为m，要查找的子串长度为n</li><li>时间 O(m*n)</li></ul></li><li>问题<ul><li>每次出现不一致的情况，只向后移动一位，再从头开始比对，很多没有必要</li><li>如：在aaaaaaaaaaaab,查找aaaab</li></ul></li></ul></li></ul><p><img src="https://puui.qpic.cn/fans_admin/0/3_1500912214_1556864943460/0" alt></p><p><img src="https://puui.qpic.cn/fans_admin/0/3_1486517634_1556864983556/0" alt></p><p><img src="https://puui.qpic.cn/fans_admin/0/3_308750603_1556864998323/0" alt></p><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><ul><li><p>概念</p><ul><li>KMP算法要解决的问题就是在字符串（也叫主串）中的模式（pattern）定位问题。说简单点就是我们平时常说的关键字搜索。模式串就是关键字（接下来称它为P），如果它在一个主串（接下来称为T）中出现，就返回它的具体位置，否则返回-1（常用手段）。</li></ul></li><li><p>对于暴力破解的优化思考</p><ul><li>主串不要每次只移一位，可以让它（i）保持不动，移动模式中j的位置</li><li>利用已经部分匹配这个有效信息，保持i指针不回溯，通过修改j指针，让模式串尽量地移动到有效的位置</li></ul></li></ul><p><img src="https://puui.qpic.cn/fans_admin/0/3_308750603_1556865032698/0" alt></p><ul><li>j要怎么移动<ul><li>当匹配失败时，j要移动的下一个位置k。存在着这样的性质：最前面的k个字符和j之前的最后k个字符是一样的</li></ul></li></ul><p><img src="https://puui.qpic.cn/fans_admin/0/3_1486517634_1556865346487/0" alt></p><p><img src="https://puui.qpic.cn/fans_admin/0/3_771348268_1556865899518/0" alt></p><p><img src="https://puui.qpic.cn/fans_admin/0/3_1268522869_1556866125545/0" alt></p><p><img src="https://puui.qpic.cn/fans_admin/0/3_122902507_1556866189608/0" alt></p><ul><li><p>数学表示</p><ul><li>如果k表示不匹配时，j要移动的位置</li><li><p>P[0 ~ k-1] == P[j-k ~ j-1]</p><p><img src="https://puui.qpic.cn/fans_admin/0/3_1268522869_1556866470014/0" alt></p></li><li><p>当T[i] != P[j]时</p><p>有T[i-j ~ i-1] == P[0 ~ j-1]</p><p>由P[0 ~ k-1] == P[j-k ~ j-1]</p><p>必然：T[i-k ~ i-1] == P[0 ~ k-1]</p></li><li><p>因此可以直接将j移动到k而无须再比较前面的k个字符</p></li></ul></li><li><p>怎么找到不匹配时j要移动的k位置</p><ul><li>模式串中每个位置发生不匹配时，所要移动到的k位置都是不同的，每个位置都要计算</li><li>使用next数据来保存模式串中每个位置的k值</li><li>next[j]的值（也就是k）表示，当P[j] != T[i]时，j指针的下一步移动位置</li><li><p>当j为0时，如果这时候不匹配</p><ul><li><p>j已经在最左边了，不可能再移动了，这时候要应该是i指针后移。有next[0] = -1</p><p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869374669/0" alt></p></li></ul></li><li><p>当j为1</p><ul><li><p>j指针一定是后移到0位置的</p><p><img src="https://puui.qpic.cn/fans_admin/0/3_767595719_1556869496396/0" alt></p></li></ul></li><li><p>其他</p><ul><li>当P[k] == P[j]时</li><li><p>next[j+1] == next[j] + 1</p><p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869639696/0" alt></p><p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869662493/0" alt></p></li><li><p>P[k] != P[j]</p></li><li><p>k = next[k]</p><p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869752648/0" alt></p><p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556870613284/0" alt></p></li></ul></li></ul></li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://www.cnblogs.com/yjiyjige/p/3263858.html#top" target="_blank" rel="noopener">https://www.cnblogs.com/yjiyjige/p/3263858.html#top</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【毕业设计Minions一期】可视化部分展示</title>
       <link href="/2019/04/24/Minions-Visualization-first/"/>
       <url>/2019/04/24/Minions-Visualization-first/</url>
@@ -281,31 +300,6 @@
     
     
     <entry>
-      <title>Java中常用API</title>
-      <link href="/2019/03/18/JavaUtilsAPI/"/>
-      <url>/2019/03/18/JavaUtilsAPI/</url>
-      
-        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br></pre></td></tr></table></figure><h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqrt</span></span><br><span class="line">Math.sqrt(num);</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>关于axios的CORS问题的解决</title>
       <link href="/2019/03/18/axioscorsquestions/"/>
       <url>/2019/03/18/axioscorsquestions/</url>
@@ -365,6 +359,31 @@
         <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
       
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java中常用API</title>
+      <link href="/2019/03/18/JavaUtilsAPI/"/>
+      <url>/2019/03/18/JavaUtilsAPI/</url>
+      
+        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br></pre></td></tr></table></figure><h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqrt</span></span><br><span class="line">Math.sqrt(num);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
       
     </entry>
     
