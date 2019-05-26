@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="kill所有进程  启动zooKeeper   zookeeper&amp;gt;bin ./zkServer.sh start  启动Kafka（后台）  kafka&amp;gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties  启动两个flume 对接Python产生的伪日志 对接前端埋点的数据    1234">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-24T09:57:11.465Z">
+<meta property="og:updated_time" content="2019-05-26T01:55:22.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Minions初始化手册✋">
 <meta name="twitter:description" content="kill所有进程  启动zooKeeper   zookeeper&amp;gt;bin ./zkServer.sh start  启动Kafka（后台）  kafka&amp;gt; bin/kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties  启动两个flume 对接Python产生的伪日志 对接前端埋点的数据    1234">
@@ -190,14 +190,15 @@
 <p><code>bin&gt; ./start-hbase.sh</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./hbase shell</span><br><span class="line"></span><br><span class="line">list</span><br><span class="line">scan &apos;table_name&apos;</span><br><span class="line">desc &apos;table_name&apos;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>启动spark作业</p>
-<ul>
+<li>启动spark作业<ul>
 <li>MyStreamingApp : 统计访问量</li>
 <li>KafKaStreamingApp : 处理前端埋点数据（hello_ladygaga_topic)</li>
 </ul>
 </li>
-<li><p>启动Springboot后端和react前端</p>
-</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark-submit --master local[<span class="number">5</span>] --jars $(echo /home/hadoop/app/hbase-<span class="number">1.2</span>.0-cdh5.7.0/lib<span class="comment">/*.jar | tr ' ' ',') --class com.chaoyue.spark.project.scala.MyStreamingApp --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.2.0 /home/hadoop/lib/sparktrain-1.0.jar hadoop000:2181 test streamingtopic 1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动Springboot后端和react前端</li>
 </ul>
 
   </div>

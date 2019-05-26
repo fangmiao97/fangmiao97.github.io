@@ -65,4 +65,8 @@ desc 'table_name'
 	* MyStreamingApp : 统计访问量
 	* KafKaStreamingApp : 处理前端埋点数据（hello_ladygaga_topic)
 
+```java
+spark-submit --master local[5] --jars $(echo /home/hadoop/app/hbase-1.2.0-cdh5.7.0/lib/*.jar | tr ' ' ',') --class com.chaoyue.spark.project.scala.MyStreamingApp --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.2.0 /home/hadoop/lib/sparktrain-1.0.jar hadoop000:2181 test streamingtopic 1
+```
+
 * 启动Springboot后端和react前端
