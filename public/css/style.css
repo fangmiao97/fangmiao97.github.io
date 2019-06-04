@@ -417,16 +417,16 @@ body table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 13px;
+  font-size: 12px;
   overflow: auto;
   display: block;
 }
 body th {
   padding: 8px;
-  border-bottom: 1px dashed $color-code-border;
+  border-bottom: 1px dashed #666;
   color: rgba(86,124,119,0.8);
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
 }
 body td {
   padding: 9px 8px 0;
@@ -457,7 +457,7 @@ body {
   color: #22272a;
   font-display: swap;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   font-family: "Menlo", "Meslo LG", monospace;
   line-height: 1.725;
   text-rendering: geometricPrecision;
@@ -615,7 +615,7 @@ body {
 }
 #header #nav ul a {
   margin-right: 15px;
-  color: color-accent-1;
+  color: #cc2a41;
 }
 #header #nav ul a:hover {
   background-image: linear-gradient(transparent, transparent 5px, #cc2a41 5px, #cc2a41);
@@ -1375,8 +1375,8 @@ article .content .caption {
 }
 .highlight {
   background: #f6f6ae url("./school-book.png");
-  border-top: solid 2px #e82935;
-  border-bottom: solid 2px #e82935;
+  border-top: solid 2px #d2e8b9;
+  border-bottom: solid 1px #d2e8b9;
 }
 .highlight .code .keyword,
 .highlight .code .selector-tag,
