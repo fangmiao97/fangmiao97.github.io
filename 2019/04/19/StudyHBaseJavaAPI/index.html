@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="网站 HBase with Java HBase表概念 Filter 过滤器  概念 Column Family  列族是列的集合 表可以有一个或多个列族 属于同一个列族的所有列前缀相同 containInfo:fname containInfo:lname   表按照列族维度进行存储，一个列族的数据存在一起 对一个列族可以单独定义存储属性调优，比如：一个列族存储图片数据，那么就可以对这个列族进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习HBase JAVA API">
+<meta property="og:url" content="http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/index.html">
+<meta property="og:site_name" content="Chaoyue&#39;s Notes">
+<meta property="og:description" content="网站 HBase with Java HBase表概念 Filter 过滤器  概念 Column Family  列族是列的集合 表可以有一个或多个列族 属于同一个列族的所有列前缀相同 containInfo:fname containInfo:lname   表按照列族维度进行存储，一个列族的数据存在一起 对一个列族可以单独定义存储属性调优，比如：一个列族存储图片数据，那么就可以对这个列族进行">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-04T01:06:18.976Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习HBase JAVA API">
+<meta name="twitter:description" content="网站 HBase with Java HBase表概念 Filter 过滤器  概念 Column Family  列族是列的集合 表可以有一个或多个列族 属于同一个列族的所有列前缀相同 containInfo:fname containInfo:lname   表按照列族维度进行存储，一个列族的数据存在一起 对一个列族可以单独定义存储属性调优，比如：一个列族存储图片数据，那么就可以对这个列族进行">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/FriedEgg.png">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/FriedEgg.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/FriedEgg.png">
+          
+        
+    
+    <!-- title -->
+    <title>学习HBase JAVA API</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/04/20/weekly-report-190420/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/04/14/weekly-report-190414/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&text=学习HBase JAVA API"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&is_video=false&description=学习HBase JAVA API"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=学习HBase JAVA API&body=Check out this article: http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&name=学习HBase JAVA API&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网站"><span class="toc-number">1.</span> <span class="toc-text">网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HBase-Java-API"><span class="toc-number">3.</span> <span class="toc-text">HBase Java API</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        学习HBase JAVA API
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Chaoyue's Notes</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-04-18T16:00:00.000Z" itemprop="datePublished">2019-04-19</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/技术总结/">技术总结</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h2><ul>
+<li><a href="https://www.baeldung.com/hbase" target="_blank" rel="noopener">HBase with Java</a></li>
+<li><a href="https://www.bilibili.com/video/av21911076" target="_blank" rel="noopener">HBase表概念</a></li>
+<li><a href="https://www.jianshu.com/p/fb4bd7a2a23e" target="_blank" rel="noopener">Filter 过滤器</a></li>
+</ul>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li><p>Column Family</p>
+<ul>
+<li>列族是列的集合</li>
+<li>表可以有一个或多个列族</li>
+<li>属于同一个列族的所有列前缀相同<ul>
+<li>containInfo:fname</li>
+<li>containInfo:lname</li>
+</ul>
+</li>
+<li>表按照列族维度进行存储，一个列族的数据存在一起</li>
+<li>对一个列族可以单独定义存储属性调优，比如：一个列族存储图片数据，那么就可以对这个列族进行存储压缩</li>
+<li>一个列族想有多少列都可宜，在进行数据添加操作的时候插入即可。不用修改表定义，在创建表的时候，定好列族就可以<br>*设计原则<ul>
+<li>不经常在一起访问的数据分开设计，比如：一个用户信息的表，可以将用户名、真实姓名、花名放在一个列族，将头像放在另一个列族</li>
+<li>使用不同列族存储设置时分开设计</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Columns 列</p>
+<ul>
+<li>列中包含表的数据</li>
+<li>可以动态实时地创建</li>
+</ul>
+</li>
+<li><p>Rows 行</p>
+<ul>
+<li>每一行有一个行键（RowKey)</li>
+<li>RowKey类似于关系型数据库的主键</li>
+<li>RowKey设计原则：方便scan操作，结合具体业务</li>
+<li>行按照行键排序进行存储，这样就提高了检索效率</li>
+</ul>
+</li>
+<li><p>Cell 单元</p>
+<ul>
+<li>行与列的交叉点</li>
+<li>版本化，支持多个版本，更新之前的数据可以保存（要定义），比如，QQ头像可以看到原来的头像</li>
+<li>内容是不可分割的</li>
+<li>存储的是byte array字节数组，无字段类型。只要能转成byte array的都可以存</li>
+<li>单元为空时，物理上是不存储的</li>
+</ul>
+</li>
+</ul>
+<h2 id="HBase-Java-API"><a href="#HBase-Java-API" class="headerlink" title="HBase Java API"></a>HBase Java API</h2><ul>
+<li><a href="https://www.jianshu.com/p/3c85060901da" target="_blank" rel="noopener">HBase Java API 01：基础操作</a></li>
+<li><a href="https://www.jianshu.com/p/fb4bd7a2a23e" target="_blank" rel="noopener">HBase Java API 02：过滤器</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网站"><span class="toc-number">1.</span> <span class="toc-text">网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HBase-Java-API"><span class="toc-number">3.</span> <span class="toc-text">HBase Java API</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&text=学习HBase JAVA API"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&is_video=false&description=学习HBase JAVA API"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=学习HBase JAVA API&body=Check out this article: http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&title=学习HBase JAVA API"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/04/19/StudyHBaseJavaAPI/&name=学习HBase JAVA API&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Miao Fang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
