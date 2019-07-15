@@ -42,6 +42,13 @@ tags:
     A.equals(B)
     //split任意数目个空格
     s.split("\\s+")
+    //判断是否为空字符串，即 s = ""
+    s.isEmpty()
+    //判断字符是否是字母或数字
+    char.isLetterOrDigit() = true/false
+    if(( c >= 'a' && c <= 'z') && (c >= '0' && c <= '9'))
+    //使用正则表达式替换字符串中的字符
+    s.replaceAll(String regex, String replacement)
 ```
 
 ## 数字操作
