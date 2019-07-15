@@ -38,6 +38,10 @@ tags:
     //大小写转变
     toLowerCase()
     toUpperCase()
+    //字符串比较
+    A.equals(B)
+    //split任意数目个空格
+    s.split("\\s+")
 ```
 
 ## 数字操作
@@ -45,4 +49,19 @@ tags:
 ```java
     //sqrt
     Math.sqrt(num);
+```
+
+## 重要数据结构
+
+### HashSet
+
+```java
+    //创建
+    Set<Object> hSet = new HashSet();
+    //添加元素
+    hSet.add(somethin);
+    //删除
+    hSet.remove(object);
+    //判断包含
+    hSet.contains(object)
 ```
