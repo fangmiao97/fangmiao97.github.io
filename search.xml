@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>学习 Class Arrays</title>
+      <link href="/2019/07/17/learn-Arrays/"/>
+      <url>/2019/07/17/learn-Arrays/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Docs"><a href="#Docs" class="headerlink" title="Docs"></a>Docs</h2><p><a href="https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html" target="_blank" rel="noopener">Class Arrays</a></p><h2 id="Method-Summary"><a href="#Method-Summary" class="headerlink" title="Method Summary"></a>Method Summary</h2><ul><li>asList</li></ul><p>返回固定大小List</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stringList = Arrays.asList(<span class="string">"hello"</span>, <span class="string">"NTU"</span>);</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; intList = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br></pre></td></tr></table></figure><ul><li>binarySearch</li></ul><p>可以在整个数组中查找，也可以在一定范围内查找</p><p>支持Long/int/short/double/char/byte/float/object/T类型数组的查找</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以int为例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//binarySearch(int[] a, int key)</span></span><br><span class="line"><span class="keyword">int</span> index = Arrays.binarySearch(<span class="keyword">new</span> <span class="keyword">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span> &#125;, <span class="number">6</span>);  </span><br><span class="line"></span><br><span class="line"><span class="comment">//binarySearch(int[] a, int fromIndex, int toIndex, int key)</span></span><br><span class="line"><span class="keyword">int</span> index = Arrays.binarySearch(<span class="keyword">new</span> <span class="keyword">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span> &#125;, <span class="number">1</span>, <span class="number">6</span>, <span class="number">6</span>);</span><br></pre></td></tr></table></figure><ul><li>copy &amp; copyRange</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String[] names2 = &#123; <span class="string">"Eric"</span>, <span class="string">"John"</span>, <span class="string">"Alan"</span>, <span class="string">"Liz"</span> &#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//[Eric, John, Alan]  </span></span><br><span class="line">String[] copy = Arrays.copyOf(names2, <span class="number">3</span>);  </span><br><span class="line">          </span><br><span class="line"><span class="comment">//[Alan, Liz]  </span></span><br><span class="line">String[] rangeCopy = Arrays.copyOfRange(names2, <span class="number">2</span>,  </span><br><span class="line">                names2.length);</span><br></pre></td></tr></table></figure><ul><li>sort</li></ul><p>升序排列</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String[] names = &#123; <span class="string">"Liz"</span>, <span class="string">"John"</span>, <span class="string">"Eric"</span>, <span class="string">"Alan"</span> &#125;;  </span><br><span class="line"><span class="comment">//只排序前两个  </span></span><br><span class="line"><span class="comment">//[John, Liz, Eric, Alan]  </span></span><br><span class="line">Arrays.sort(names, <span class="number">0</span>, <span class="number">2</span>);  </span><br><span class="line"><span class="comment">//全部排序  </span></span><br><span class="line"><span class="comment">//[Alan, Eric, John, Liz]  </span></span><br><span class="line">Arrays.sort(names);</span><br></pre></td></tr></table></figure><p>另外，Arrays的sort方法也可以结合比较器，完成更加复杂的排序。</p><ul><li>toString</li></ul><p>返回数组内容的一个String</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String[] name = &#123;<span class="string">"hahah"</span>, <span class="string">"hahah"</span>&#125;;</span><br><span class="line"><span class="comment">//hahah，hahah</span></span><br><span class="line">String s = Arrays.toString(name);</span><br></pre></td></tr></table></figure><ul><li>deepToString</li></ul><p>打印多维数组（multidimensional arrays）的内容</p><ul><li>equls</li></ul><p>比较两个一维数组是否相等</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String[] names1 = &#123; <span class="string">"Eric"</span>, <span class="string">"John"</span>, <span class="string">"Alan"</span>, <span class="string">"Liz"</span> &#125;;  </span><br><span class="line"></span><br><span class="line">String[] names2 = &#123; <span class="string">"Eric"</span>, <span class="string">"John"</span>, <span class="string">"Alan"</span>, <span class="string">"Liz"</span> &#125;;  </span><br><span class="line">  </span><br><span class="line">System.out.println(Arrays.equals(names1, names2));</span><br></pre></td></tr></table></figure><ul><li>deepEquals</li></ul><p>判断更复杂的数组是否相等</p><ul><li>fill</li></ul><p>向整个数组或一定范围内的数组填充指定内容</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>学习StringBuilder、StringBuffer</title>
       <link href="/2019/07/15/learn-StringBuilder-and-StringBuffer/"/>
       <url>/2019/07/15/learn-StringBuilder-and-StringBuffer/</url>
@@ -401,19 +420,6 @@
     
     
     <entry>
-      <title>Websites Safari</title>
-      <link href="/2019/03/18/websitesafari/"/>
-      <url>/2019/03/18/websitesafari/</url>
-      
-        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
       <link href="/2019/03/18/frontendstudy/"/>
       <url>/2019/03/18/frontendstudy/</url>
@@ -431,6 +437,44 @@
         <tags>
             
             <tag> react ES6 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Websites Safari</title>
+      <link href="/2019/03/18/websitesafari/"/>
+      <url>/2019/03/18/websitesafari/</url>
+      
+        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java中常用API</title>
+      <link href="/2019/03/18/JavaUtilsAPI/"/>
+      <url>/2019/03/18/JavaUtilsAPI/</url>
+      
+        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br><span class="line"><span class="comment">//字符串比较</span></span><br><span class="line">A.equals(B)</span><br><span class="line"><span class="comment">//split任意数目个空格</span></span><br><span class="line">s.split(<span class="string">"\\s+"</span>)</span><br><span class="line"><span class="comment">//判断是否为空字符串，即 s = ""</span></span><br><span class="line">s.isEmpty()</span><br><span class="line"><span class="comment">//判断字符是否是字母或数字</span></span><br><span class="line"><span class="keyword">char</span>.isLetterOrDigit() = <span class="keyword">true</span>/<span class="keyword">false</span></span><br><span class="line"><span class="keyword">if</span>(( c &gt;= <span class="string">'a'</span> &amp;&amp; c &lt;= <span class="string">'z'</span>) &amp;&amp; (c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>))</span><br><span class="line"><span class="comment">//使用正则表达式替换字符串中的字符</span></span><br><span class="line">s.replaceAll(String regex, String replacement)</span><br></pre></td></tr></table></figure><h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqrt</span></span><br><span class="line">Math.sqrt(num);</span><br></pre></td></tr></table></figure><h2 id="重要数据结构"><a href="#重要数据结构" class="headerlink" title="重要数据结构"></a>重要数据结构</h2><h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建</span></span><br><span class="line">Set&lt;Object&gt; hSet = <span class="keyword">new</span> HashSet();</span><br><span class="line"><span class="comment">//添加元素</span></span><br><span class="line">hSet.add(somethin);</span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line">hSet.remove(object);</span><br><span class="line"><span class="comment">//判断包含</span></span><br><span class="line">hSet.contains(object)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -458,31 +502,6 @@
             <tag> axios </tag>
             
             <tag> CORS </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java中常用API</title>
-      <link href="/2019/03/18/JavaUtilsAPI/"/>
-      <url>/2019/03/18/JavaUtilsAPI/</url>
-      
-        <content type="html"><![CDATA[<h2 id="转换类型"><a href="#转换类型" class="headerlink" title="转换类型"></a>转换类型</h2><ul><li>String转Char[]:</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Char[] a = string。toCharArray();</span><br></pre></td></tr></table></figure><ul><li>Char[]转String</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只能用</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> String(<span class="keyword">char</span>[])</span><br></pre></td></tr></table></figure><h2 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建String</span></span><br><span class="line">StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加字符</span></span><br><span class="line">res.append(something);</span><br><span class="line"><span class="comment">//转换</span></span><br><span class="line">String(res) stringbuilder.toString()</span><br><span class="line"><span class="comment">//reverse</span></span><br><span class="line">res.reverse();</span><br><span class="line"><span class="comment">//去掉首位空格</span></span><br><span class="line">res.trim();</span><br><span class="line"><span class="comment">//取char</span></span><br><span class="line">string.charAt(<span class="keyword">int</span> i)</span><br><span class="line"><span class="comment">//大小写转变</span></span><br><span class="line">toLowerCase()</span><br><span class="line">toUpperCase()</span><br><span class="line"><span class="comment">//字符串比较</span></span><br><span class="line">A.equals(B)</span><br><span class="line"><span class="comment">//split任意数目个空格</span></span><br><span class="line">s.split(<span class="string">"\\s+"</span>)</span><br><span class="line"><span class="comment">//判断是否为空字符串，即 s = ""</span></span><br><span class="line">s.isEmpty()</span><br><span class="line"><span class="comment">//判断字符是否是字母或数字</span></span><br><span class="line"><span class="keyword">char</span>.isLetterOrDigit() = <span class="keyword">true</span>/<span class="keyword">false</span></span><br><span class="line"><span class="keyword">if</span>(( c &gt;= <span class="string">'a'</span> &amp;&amp; c &lt;= <span class="string">'z'</span>) &amp;&amp; (c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>))</span><br><span class="line"><span class="comment">//使用正则表达式替换字符串中的字符</span></span><br><span class="line">s.replaceAll(String regex, String replacement)</span><br></pre></td></tr></table></figure><h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqrt</span></span><br><span class="line">Math.sqrt(num);</span><br></pre></td></tr></table></figure><h2 id="重要数据结构"><a href="#重要数据结构" class="headerlink" title="重要数据结构"></a>重要数据结构</h2><h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建</span></span><br><span class="line">Set&lt;Object&gt; hSet = <span class="keyword">new</span> HashSet();</span><br><span class="line"><span class="comment">//添加元素</span></span><br><span class="line">hSet.add(somethin);</span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line">hSet.remove(object);</span><br><span class="line"><span class="comment">//判断包含</span></span><br><span class="line">hSet.contains(object)</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
             
         </tags>
       
