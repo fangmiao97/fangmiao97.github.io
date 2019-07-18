@@ -352,6 +352,9 @@ public double pow(double x, int n) {
 ```
 
 * sqrt(x)
+
+使用二分查找到最接近的平方根
+
     * I have seen many variants using Binary Search, the key difference is the search range. It seems easy to do it but actually there are some traps we need to take care. I made this just for a note for me.
       Search range summary:
       
@@ -516,7 +519,22 @@ public ListNode removeElements(ListNode head, int val) {
             else
                 head = head.next;
         }
+        return dummy.next;
     }
+    
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        if(head == null)
+            return null;
+        ListNode res = removeElements(head.next, val);
+        if(head.val == val) {
+            return res;
+        }else {
+            head.next = res;
+            return head;
+        }
+    }
+}
 ```
 
 * middle ListNode

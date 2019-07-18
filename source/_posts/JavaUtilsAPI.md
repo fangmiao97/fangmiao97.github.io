@@ -51,6 +51,15 @@ tags:
     s.replaceAll(String regex, String replacement)
 ```
 
+## Character
+
+```java
+    //是否为数字
+    Character.isDigit(char c)
+    //判断字符是否是字母或数字
+        char.isLetterOrDigit() = true/false
+```
+
 ## 数字操作
 
 ```java
