@@ -27,6 +27,8 @@ tags:
     StringBuilder res = new StringBuilder();
     //添加字符
     res.append(something);
+    //插入
+    res.insert(int index, string);
     //转换
     String(res) stringbuilder.toString()
     //reverse
@@ -65,6 +67,8 @@ tags:
 ```java
     //sqrt
     Math.sqrt(num);
+    //绝对值
+    Math.abs(num);
 ```
 
 ## 重要数据结构

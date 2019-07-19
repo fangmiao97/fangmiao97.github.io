@@ -130,11 +130,14 @@ class Solution {
         next[0] = -1;
         
         int j = 0;
-        int  k = -1;
+        int k = -1;
         
         while(j < p.length - 1) {//减一是因为下面会有++j
             if(k == -1 || p[j] == p[k]) {//k==-1是next[1]=0
-                next[++j] = ++k;
+                if(p[++j] == p[++k])
+                    next[j] = next[k];
+                else
+                    next[j] = k;
             }else {
                 k = next[k];
             }

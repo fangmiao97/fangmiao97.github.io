@@ -571,28 +571,32 @@ public ListNode reverse(ListNode head) {
 
 ```java
 public ListNode reverseBetween(ListNode head, int m, int n) {
-        
-        if(head == null || n == 1) return head;
+        if(head == null)
+            return null;
         
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode p = dummy;
-        while(m > 1) {
-            p = p.next;
-            m--;
-            n--;
-        }
-        ListNode tail = p.next;
         
-        ListNode tmp = p;
-        while(n > 1) {
-            tmp = p.next;
-            p.next = tail.next;
-            tail.next = tail.next.next;
-            p.next.next = tmp;
-            n--;
+        ListNode pre = dummy;
+        for(int i = 0; i < m - 1; i++)
+            pre = pre.next;//反转链表前面一个节点
+        
+        ListNode start = pre.next;//要反转链表的头一个节点
+        ListNode then = start.next;//目前正要反转的节点
+        
+        // 1 - 2 -3 - 4 - 5 ; m=2; n =4 ---> pre = 1, start = 2, then = 3
+        // dummy-> 1 -> 2 -> 3 -> 4 -> 5
+        
+        for(int i = 0; i < n - m; i++) {
+            start.next = then.next;
+            then.next = pre.next;
+            pre.next = then;
+            then = start.next;
         }
-         
+        
+        // first reversing : dummy->1 - 3 - 2 - 4 - 5; pre = 1, start = 2, then = 4
+        // second reversing: dummy->1 - 4 - 3 - 2 - 5; pre = 1, start = 2, then = 5 (finish)
+        
         return dummy.next;
     }
 ```
@@ -628,19 +632,22 @@ public ListNode reverseBetween(ListNode head, int m, int n) {
 ```java
     public String addBinary(String a, String b) {
             StringBuilder sb = new StringBuilder();
-            int i = a.length(), j = b.lengthg(), carry = 0;
-            
-            while(i >= 0 || j >= 0) {
+                    
+            int carry = 0;
+                    
+            for(int i = a.length() - 1, j = b.length() - 1; i >= 0 || j >= 0; i--, j--) {
                 int sum = carry;
-                if(j >= 0) sum += b.charAt(j--) - '0';
-                if(i >= 0) sum += a.charAt(i--) - '0'；
-                sb.insert(0, sum % 2);
+                if(i >= 0)
+                    sum += a.charAt(i) - '0';
+                if(j >= 0)
+                    sum += b.charAt(j) - '0';
+                sb.append(sum % 2);
                 carry = sum / 2;
             }
-            
-            if(carry ！= 0)
-                sb.insert(0, carry);
-            return sb.toString();
+                    
+            if(carry != 0)
+                sb.append(carry);
+            return sb.reverse().toString();
         }
 ```
     
@@ -680,6 +687,24 @@ public List<Integer> findDuplicates(int[] nums) {
                 res.add(i+1);
             }
         }
+        return res;
+    }
+    
+    //使用普通的额外的数据结构
+    public List<Integer> findDuplicates(int[] nums) {
+        List<Integer> res = new ArrayList<>();
+        
+        int[] seen = new int[nums.length];
+        
+        for(int i = 0; i < nums.length; i++) {
+            seen[nums[i] - 1]++;
+        }
+        
+        for(int i = 0; i < seen.length; i++) {
+            if(seen[i] >= 2)
+                res.add(i + 1);
+        }
+        
         return res;
     }
 ```
