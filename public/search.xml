@@ -124,6 +124,25 @@
     
     
     <entry>
+      <title>计数排序</title>
+      <link href="/2019/05/03/learn-count-sort/"/>
+      <url>/2019/05/03/learn-count-sort/</url>
+      
+        <content type="html"><![CDATA[<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ul><li><p>找出待排序的数组中最大和最小的元素</p></li><li><p>统计数组中每个值为 {\displaystyle i} i的元素出现的次数，存入数组 {\displaystyle C}  C 的第 {\displaystyle i} i项</p></li><li><p>对所有的计数累加（从 {\displaystyle C}  C 中的第一个元素开始，每一项和前一项相加）</p></li><li><p>反向填充目标数组：将每个元素 {\displaystyle i} i放在新数组的第 {\displaystyle C[i]} {\displaystyle C[i]}项，每放一个元素就将 {\displaystyle C[i]} {\displaystyle C[i]}减去1</p></li></ul><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountingSort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] argv)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] A = CountingSort.countingSort(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">16</span>, <span class="number">4</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">1</span>&#125;);</span><br><span class="line">        Utils.print(A);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] countingSort(<span class="keyword">int</span>[] A) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] B = <span class="keyword">new</span> <span class="keyword">int</span>[A.length];</span><br><span class="line">        <span class="comment">// 假设A中的数据a'有，0&lt;=a' &amp;&amp; a' &lt; k并且k=100</span></span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">100</span>;</span><br><span class="line">        countingSort(A, B, k);</span><br><span class="line">        <span class="keyword">return</span> B;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">countingSort</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] C = <span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">        <span class="comment">// 计数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; A.length; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> a = A[j];</span><br><span class="line">            C[a] += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Utils.print(C);</span><br><span class="line">        <span class="comment">// 求计数和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++) &#123;</span><br><span class="line">            C[i] = C[i] + C[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        Utils.print(C);</span><br><span class="line">        <span class="comment">// 整理</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = A.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">            <span class="keyword">int</span> a = A[j];</span><br><span class="line">            B[C[a] - <span class="number">1</span>] = a;</span><br><span class="line">            C[a] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//针对c数组的大小，优化过的计数排序</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountSort</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String []args)</span></span>&#123;</span><br><span class="line"><span class="comment">//排序的数组</span></span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">100</span>, <span class="number">93</span>, <span class="number">97</span>, <span class="number">92</span>, <span class="number">96</span>, <span class="number">99</span>, <span class="number">92</span>, <span class="number">89</span>, <span class="number">93</span>, <span class="number">97</span>, <span class="number">90</span>, <span class="number">94</span>, <span class="number">92</span>, <span class="number">95</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> b[] = countSort(a);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i : b)&#123;</span><br><span class="line">System.out.print(i + <span class="string">"  "</span>);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] countSort(<span class="keyword">int</span> []a)&#123;</span><br><span class="line"><span class="keyword">int</span> b[] = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</span><br><span class="line"><span class="keyword">int</span> max = a[<span class="number">0</span>], min = a[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i : a)&#123;</span><br><span class="line"><span class="keyword">if</span>(i &gt; max)&#123;</span><br><span class="line">max = i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(i &lt; min)&#123;</span><br><span class="line">min = i;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里k的大小是要排序的数组中，元素大小的极值差+1</span></span><br><span class="line"><span class="keyword">int</span> k = max - min + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> c[] = <span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length; ++i)&#123;</span><br><span class="line">c[a[i]-min] += <span class="number">1</span>;<span class="comment">//优化过的地方，减小了数组c的大小</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; c.length; ++i)&#123;</span><br><span class="line">c[i] = c[i] + c[i-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = a.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)&#123;</span><br><span class="line">b[--c[a[i]-min]] = a[i];<span class="comment">//按存取的方式取出c的元素</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="运用"><a href="#运用" class="headerlink" title="运用"></a>运用</h2><ul><li><a href="https://leetcode.com/problems/matrix-cells-in-distance-order/" target="_blank" rel="noopener">1030. Matrix Cells in Distance Order</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>学习KMP</title>
       <link href="/2019/05/03/KMP/"/>
       <url>/2019/05/03/KMP/</url>
@@ -420,6 +439,31 @@
     
     
     <entry>
+      <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
+      <link href="/2019/03/18/frontendstudy/"/>
+      <url>/2019/03/18/frontendstudy/</url>
+      
+        <content type="html"><![CDATA[<h2 id="基础知识🚶"><a href="#基础知识🚶" class="headerlink" title="基础知识🚶"></a>基础知识🚶</h2><ul><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">HTML代码练习</a>(第4周-第6周）</li><li><a href="https://wangdoc.com/javascript/" target="_blank" rel="noopener">JavaScript语言入门教程</a></li><li><a href="http://www.imooc.com/learn/36" target="_blank" rel="noopener">Js视频</a></li></ul><h2 id="进阶🏃"><a href="#进阶🏃" class="headerlink" title="进阶🏃"></a>进阶🏃</h2><ul><li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a></li><li><a href="https://www.imooc.com/learn/955" target="_blank" rel="noopener">ES6快速入门</a></li><li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">React入门教程</a></li><li>使用React的网站：<ul><li><a href="http://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li><li><a href="http://instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.zhihu.com/" target="_blank" rel="noopener">知乎</a></li></ul></li></ul><h2 id="React🚕"><a href="#React🚕" class="headerlink" title="React🚕"></a>React🚕</h2><ul><li><a href="https://juejin.im/post/59dcd87451882578c2084515" target="_blank" rel="noopener">从React脚手架工具学习React项目的最佳实践</a></li><li><a href="https://juejin.im/entry/5b3f3c82e51d45190905d3a2" target="_blank" rel="noopener">组件库（了解）</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">React 技术栈系列教程</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react ES6 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java中常用API</title>
       <link href="/2019/03/18/JavaUtilsAPI/"/>
       <url>/2019/03/18/JavaUtilsAPI/</url>
@@ -439,19 +483,6 @@
             <tag> Java </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Websites Safari</title>
-      <link href="/2019/03/18/websitesafari/"/>
-      <url>/2019/03/18/websitesafari/</url>
-      
-        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
-      
-      
       
     </entry>
     
@@ -485,25 +516,13 @@
     
     
     <entry>
-      <title>移动互联实验室-前端组-参考培训计划🖥（1期）</title>
-      <link href="/2019/03/18/frontendstudy/"/>
-      <url>/2019/03/18/frontendstudy/</url>
+      <title>Websites Safari</title>
+      <link href="/2019/03/18/websitesafari/"/>
+      <url>/2019/03/18/websitesafari/</url>
       
-        <content type="html"><![CDATA[<h2 id="基础知识🚶"><a href="#基础知识🚶" class="headerlink" title="基础知识🚶"></a>基础知识🚶</h2><ul><li><a href="http://www.imooc.com/code/49" target="_blank" rel="noopener">HTML代码练习</a>(第4周-第6周）</li><li><a href="https://wangdoc.com/javascript/" target="_blank" rel="noopener">JavaScript语言入门教程</a></li><li><a href="http://www.imooc.com/learn/36" target="_blank" rel="noopener">Js视频</a></li></ul><h2 id="进阶🏃"><a href="#进阶🏃" class="headerlink" title="进阶🏃"></a>进阶🏃</h2><ul><li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a></li><li><a href="https://www.imooc.com/learn/955" target="_blank" rel="noopener">ES6快速入门</a></li><li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">React入门教程</a></li><li>使用React的网站：<ul><li><a href="http://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li><li><a href="http://instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.zhihu.com/" target="_blank" rel="noopener">知乎</a></li></ul></li></ul><h2 id="React🚕"><a href="#React🚕" class="headerlink" title="React🚕"></a>React🚕</h2><ul><li><a href="https://juejin.im/post/59dcd87451882578c2084515" target="_blank" rel="noopener">从React脚手架工具学习React项目的最佳实践</a></li><li><a href="https://juejin.im/entry/5b3f3c82e51d45190905d3a2" target="_blank" rel="noopener">组件库（了解）</a></li><li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">React 技术栈系列教程</a></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术总结 </category>
-          
-      </categories>
+        <content type="html"><![CDATA[<h2 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h2><ul><li><a href="http://scaffold.ant.design/#/" target="_blank" rel="noopener">antd脚手架市场</a></li></ul><h2 id="图解IT"><a href="#图解IT" class="headerlink" title="图解IT"></a>图解IT</h2><ul><li><a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies 大型网络扩展</a></li><li><a href="https://visualgo.net/zh" target="_blank" rel="noopener">算法可视化</a></li></ul><h2 id="React-Framework"><a href="#React-Framework" class="headerlink" title="React Framework"></a>React Framework</h2><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li></ul><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul><li><a href="https://ponyfoo.com/articles/brief-history-of-modularity" target="_blank" rel="noopener">JS变化历史</a></li><li><a href="https://iconsvg.xyz/" target="_blank" rel="noopener">图标定制</a></li><li><a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank" rel="noopener">纯CSS图片</a></li></ul><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">领域驱动设计在互联网业务开发中的实践</a></li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li><a href="https://dbdiagram.io/home" target="_blank" rel="noopener">画ER图的</a></li></ul>]]></content>
       
       
-        <tags>
-            
-            <tag> react ES6 </tag>
-            
-        </tags>
       
     </entry>
     
