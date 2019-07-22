@@ -1,6 +1,6 @@
 ---
 title: 计数排序
-date: 2019/05/03
+date: 2019/07/21
 categories: 
     - 算法
 ---
@@ -9,11 +9,13 @@ categories:
 
 - 找出待排序的数组中最大和最小的元素
  
-- 统计数组中每个值为 {\displaystyle i} i的元素出现的次数，存入数组 {\displaystyle C}  C 的第 {\displaystyle i} i项
+- 统计数组中每个值为i的元素出现的次数，存入数组C的第i项
  
-- 对所有的计数累加（从 {\displaystyle C}  C 中的第一个元素开始，每一项和前一项相加）
+- 对所有的计数累加（从C 中的第一个元素开始，每一项和前一项相加）
 
-- 反向填充目标数组：将每个元素 {\displaystyle i} i放在新数组的第 {\displaystyle C[i]} {\displaystyle C[i]}项，每放一个元素就将 {\displaystyle C[i]} {\displaystyle C[i]}减去1
+- 反向填充目标数组：将每个元素i放在新数组的第 C[i]项，每放一个元素就将 C[i]减去1
+
+- 场景：要排序的量大，但是取值范围小，比如：高考分数对应的排名
 
 ## 实现
 
@@ -97,3 +99,5 @@ public class CountSort{
 ## 运用
 
 * [1030. Matrix Cells in Distance Order](https://leetcode.com/problems/matrix-cells-in-distance-order/)
+
+* [1122. Relative Sort Array](https://leetcode.com/problems/relative-sort-array/)

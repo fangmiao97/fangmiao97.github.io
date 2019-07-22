@@ -380,6 +380,48 @@ class Solution {
 }
 ```
 
+* String number add
+
+```java
+class Solution {
+    public String addStrings(String num1, String num2) {
+        //num1 < num2
+        if(num1.length()>num2.length()){
+            String temp = num1;
+            num1 = num2;
+            num2 = temp;
+        }
+        int l1 = num1.length();
+        int l2 = num2.length();
+        char[] res = new char[l2+1];
+        int carry = 0;
+        for(int i=0;i<l1;i++){
+            res[l2-i] = (char)(carry + num1.charAt(l1-i-1)+num2.charAt(l2-i-1)-'0');
+            if(res[l2-i]>'9'){
+                carry=1;
+                res[l2-i]-=10;
+            }else{
+                carry=0;
+            }
+            
+        }
+        for(int i=l1;i<l2;i++){
+            res[l2-i] = (char)(carry + num2.charAt(l2-i-1));
+            if(res[l2-i]>'9'){
+                carry=1;
+                res[l2-i]-=10;                
+            }else{
+                carry=0;
+            }
+        }
+        res[0] = (char)(carry+'0');
+        String result = String.valueOf(res);
+        if(res[0]=='0') return result.substring(1);
+        else return result;
+    }
+}
+```
+
 * 计算加减式
     * [basic-calculator](https://leetcode.com/problems/basic-calculator/)
   
