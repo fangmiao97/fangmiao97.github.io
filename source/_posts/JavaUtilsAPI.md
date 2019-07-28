@@ -20,6 +20,13 @@ tags:
     return new String(char[])
 ```
 
+## Collections
+
+```java
+    //将List的内容翻转
+    Collections.reverse(List)
+```
+
 ## String操作
 
 ```java
