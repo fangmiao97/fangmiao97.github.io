@@ -58,6 +58,10 @@ tags:
     if(( c >= 'a' && c <= 'z') && (c >= '0' && c <= '9'))
     //使用正则表达式替换字符串中的字符
     s.replaceAll(String regex, String replacement)
+    //不适用正则表达式
+    s.replace(char1/Stirng, char2/String)
+    //是否以某个开头
+    s.startsWith(String)
 ```
 
 ## Character
