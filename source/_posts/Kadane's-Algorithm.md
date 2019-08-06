@@ -90,5 +90,32 @@ a6 - a2 is the required solution.
 
 so we need to find the largest sub array sum to get the most profit
 
+## 最大乘积
+
+[maximum-product-subarray](https://leetcode.com/problems/maximum-product-subarray/)
+
+注意数列中有负数，这样就会出现偶数个负数乘积会出现正数，但是还像上面只是记录每一步的最大值的话，就会错过一些负数的情况。所以我们要把最大值和最小值都记录下来，这样就不会出现一个负数结果乘另一个负数，成为最大值这个情况了。
+
+```java
+class Solution {
+    public int maxProduct(int[] nums) {
+        if(nums == null || nums.length == 0) {
+            return 0;
+        }
+        
+        int max = nums[0], min = nums[0], result = nums[0];
+        
+        for(int i = 1; i < nums.length; i++) {
+            int temp = max;
+            max = Math.max(Math.max(max * nums[i], min * nums[i]), nums[i]);
+            min = Math.min(Math.min(temp * nums[i], min * nums[i]), nums[i]);
+            if(max > result)
+                result = max;
+        }
+        return result;
+    }
+}
+```
+
 
 

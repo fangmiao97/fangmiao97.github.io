@@ -1,5 +1,5 @@
 ---
-title: 学习KMP
+title: 学习KMP && Sunday算法
 date: 2019/05/03
 categories: 
     - 算法
@@ -147,6 +147,57 @@ class Solution {
     }
 }
 ```
+
+## Sunday算法
+
+[字符串匹配算法之Sunday算法](https://www.jianshu.com/p/2e6eb7386cd3)
+
+```java
+public class Solution {
+    public int strStr(String haystack, String needle) {
+        char[] hString = haystack.toCharArray();
+        char[] nString = needle.toCharArray();
+        int hLen = hString.length;
+        int nLen = nString.length;
+        
+        if(hLen < nLen) return -1;
+        
+        int hIndex = 0;
+        int nIndex = 0;
+        
+        char next = 0;
+        if(hLen != nLen) next = hString[nLen];
+        
+        while(hIndex < hLen && nIndex < nLen) {
+            if(hString[hIndex] != nString[nIndex]) {
+                if(hIndex - nIndex + nLen >= hLen) return -1;
+                
+                int i = nLen - 1;
+                while(i >= 0) {
+                    if(nString[i] == next) break;
+                    i--;
+                }
+                
+                hIndex += nLen - nIndex - i;
+                nIndex = 0;
+                
+                if(hIndex + nLen < hLen)
+                    next = hString[hIndex + nLen];
+                else
+                    next = 0;
+            }
+            else {
+                hIndex++;
+                nIndex++;
+            }
+        }
+        
+        if(nIndex == nLen) return hIndex - nIndex;
+        return -1;
+    }
+}
+```
+
     
     
 
