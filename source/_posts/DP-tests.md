@@ -1,8 +1,8 @@
 ---
-title: 几道相似相通的DP问题
+title: 几道相似相通的DP问题（当前状态与前两个状态有关的类型）
 date: 2019/8/4 
 tags:
-    - Java
+    - LeetCode
 categories:
     - 技术总结
 ---
@@ -135,3 +135,33 @@ class Solution {
     }
 }
 ```
+
+## [house-robber](https://leetcode.com/problems/house-robber/)
+
+```
+class Solution {
+    public int rob(int[] nums) {
+    
+        if(nums.length == 0)
+            return 0;
+        if(nums.length == 1)
+            return nums[0];
+        
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        
+        for(int i = 2; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+        }
+        
+        return dp[nums.length - 1];
+    }
+}
+```
+
+## [Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
+
+解释：https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75931/Easiest-JAVA-solution-with-explanations
+
+合理使用状态表示，以及状态的转换

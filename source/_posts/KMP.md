@@ -153,48 +153,31 @@ class Solution {
 [字符串匹配算法之Sunday算法](https://www.jianshu.com/p/2e6eb7386cd3)
 
 ```java
-public class Solution {
+class Solution {
     public int strStr(String haystack, String needle) {
-        char[] hString = haystack.toCharArray();
-        char[] nString = needle.toCharArray();
-        int hLen = hString.length;
-        int nLen = nString.length;
-        
-        if(hLen < nLen) return -1;
-        
-        int hIndex = 0;
-        int nIndex = 0;
-        
-        char next = 0;
-        if(hLen != nLen) next = hString[nLen];
-        
-        while(hIndex < hLen && nIndex < nLen) {
-            if(hString[hIndex] != nString[nIndex]) {
-                if(hIndex - nIndex + nLen >= hLen) return -1;
-                
-                int i = nLen - 1;
-                while(i >= 0) {
-                    if(nString[i] == next) break;
-                    i--;
-                }
-                
-                hIndex += nLen - nIndex - i;
-                nIndex = 0;
-                
-                if(hIndex + nLen < hLen)
-                    next = hString[hIndex + nLen];
-                else
-                    next = 0;
-            }
-            else {
-                hIndex++;
-                nIndex++;
-            }
+        int m = haystack.length(), n = needle.length();
+        int[] occ = getOCC(needle);
+        int jump = 0;//不能匹配时，匹配位置向后移动的长度
+        for(int i = 0; i <= m - n; i += jump) {
+            int j = 0;//模式串中已经匹配到的位置
+            while(j < n && haystack.charAt(i + j) == needle.charAt(j))
+                j++;//当前这一位匹配成功
+            if(j == n)
+                return i;
+            jump = i + n < m ? n - occ[haystack.charAt(i + n)] : 1;
         }
-        
-        if(nIndex == nLen) return hIndex - nIndex;
         return -1;
     }
+    
+    public int[] getOCC(String p) {
+        int[] occ = new int[128];
+        Arrays.fill(occ, -1);
+        for(int i = 0; i < p.length(); i++) {
+            occ[p.charAt(i)] = i;//从串尾到最后出现该字符的长度 
+        }
+        return occ;
+    }
+    
 }
 ```
 

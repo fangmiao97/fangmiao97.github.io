@@ -7,16 +7,16 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="context当前状态是由前面两个相邻的状态决定的 状态可以用array来保存，或者用常量保存，但是要知道变更状态 dp[i] = option(dp[i - 1], dp[i - 2]) fibonacci-number123456789101112131415161718192021222324252627282930313233class Solution //自上而下&amp;#123;    i">
-<meta name="keywords" content="Java">
+<meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几道相似相通的DP问题">
+<meta property="og:title" content="几道相似相通的DP问题（当前状态与前两个状态有关的类型）">
 <meta property="og:url" content="http://yoursite.com/2019/08/04/DP-tests/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="context当前状态是由前面两个相邻的状态决定的 状态可以用array来保存，或者用常量保存，但是要知道变更状态 dp[i] = option(dp[i - 1], dp[i - 2]) fibonacci-number123456789101112131415161718192021222324252627282930313233class Solution //自上而下&amp;#123;    i">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-05T08:00:10.322Z">
+<meta property="og:updated_time" content="2019-08-08T08:00:17.690Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几道相似相通的DP问题">
+<meta name="twitter:title" content="几道相似相通的DP问题（当前状态与前两个状态有关的类型）">
 <meta name="twitter:description" content="context当前状态是由前面两个相邻的状态决定的 状态可以用array来保存，或者用常量保存，但是要知道变更状态 dp[i] = option(dp[i - 1], dp[i - 2]) fibonacci-number123456789101112131415161718192021222324252627282930313233class Solution //自上而下&amp;#123;    i">
     
     
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>几道相似相通的DP问题</title>
+    <title>几道相似相通的DP问题（当前状态与前两个状态有关的类型）</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -79,6 +79,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/08/08/decode/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2019/08/03/learn-priorityQueue-in-java/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -94,20 +96,20 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/04/DP-tests/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/04/DP-tests/&text=几道相似相通的DP问题"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/04/DP-tests/&is_video=false&description=几道相似相通的DP问题"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=几道相似相通的DP问题&body=Check out this article: http://yoursite.com/2019/08/04/DP-tests/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/04/DP-tests/&name=几道相似相通的DP问题&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/04/DP-tests/&text=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/04/DP-tests/&is_video=false&description=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=几道相似相通的DP问题（当前状态与前两个状态有关的类型）&body=Check out this article: http://yoursite.com/2019/08/04/DP-tests/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/04/DP-tests/&name=几道相似相通的DP问题（当前状态与前两个状态有关的类型）&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-number">1.</span> <span class="toc-text">context</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fibonacci-number"><span class="toc-number">2.</span> <span class="toc-text">fibonacci-number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#climbing-stairs"><span class="toc-number">3.</span> <span class="toc-text">climbing-stairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#min-cost-climbing-stairs"><span class="toc-number">4.</span> <span class="toc-text">min-cost-climbing-stairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decode-Ways"><span class="toc-number">5.</span> <span class="toc-text">Decode Ways</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-number">1.</span> <span class="toc-text">context</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fibonacci-number"><span class="toc-number">2.</span> <span class="toc-text">fibonacci-number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#climbing-stairs"><span class="toc-number">3.</span> <span class="toc-text">climbing-stairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#min-cost-climbing-stairs"><span class="toc-number">4.</span> <span class="toc-text">min-cost-climbing-stairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decode-Ways"><span class="toc-number">5.</span> <span class="toc-text">Decode Ways</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#house-robber"><span class="toc-number">6.</span> <span class="toc-text">house-robber</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><span class="toc-number">7.</span> <span class="toc-text">Best Time to Buy and Sell Stock with Cooldown</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -119,7 +121,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        几道相似相通的DP问题
+        几道相似相通的DP问题（当前状态与前两个状态有关的类型）
     </h1>
 
 
@@ -147,7 +149,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/Java/">Java</a>
+        <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
     </div>
 
 
@@ -177,6 +179,9 @@
 <h2 id="Decode-Ways"><a href="#Decode-Ways" class="headerlink" title="Decode Ways"></a><a href="https://leetcode.com/problems/decode-ways/" target="_blank" rel="noopener">Decode Ways</a></h2><p>从0位置到当前位置长度能够解码出字符串的数目，由当前位置长度减一和减二的数目决定。</p>
 <p>如果当前的位置能够解码出一个字母就算上前面一位的数目，如果当前位置和前一位能够组成另一个字母就算上更前面的数目。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numDecodings</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() &lt; <span class="number">1</span> || s.charAt(<span class="number">0</span>) == <span class="string">'0'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i) != <span class="string">'0'</span>)</span><br><span class="line">                dp[i] = dp[i - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i - <span class="number">1</span>) != <span class="string">'0'</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> num = (s.charAt(i - <span class="number">1</span>) - <span class="string">'0'</span>) * <span class="number">10</span> + (s.charAt(i) - <span class="string">'0'</span>);</span><br><span class="line">                <span class="keyword">if</span>(num &lt;= <span class="number">26</span>)</span><br><span class="line">                    dp[i] += i - <span class="number">2</span> &gt;= <span class="number">0</span> ? dp[i - <span class="number">2</span>] : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dp[s.length() - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="house-robber"><a href="#house-robber" class="headerlink" title="house-robber"></a><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="noopener">house-robber</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int rob(int[] nums) &#123;</span><br><span class="line">    </span><br><span class="line">        if(nums.length == 0)</span><br><span class="line">            return 0;</span><br><span class="line">        if(nums.length == 1)</span><br><span class="line">            return nums[0];</span><br><span class="line">        </span><br><span class="line">        int[] dp = new int[nums.length];</span><br><span class="line">        dp[0] = nums[0];</span><br><span class="line">        dp[1] = Math.max(nums[0], nums[1]);</span><br><span class="line">        </span><br><span class="line">        for(int i = 2; i &lt; nums.length; i++) &#123;</span><br><span class="line">            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return dp[nums.length - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><a href="#Best-Time-to-Buy-and-Sell-Stock-with-Cooldown" class="headerlink" title="Best Time to Buy and Sell Stock with Cooldown"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">Best Time to Buy and Sell Stock with Cooldown</a></h2><p>解释：<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75931/Easiest-JAVA-solution-with-explanations" target="_blank" rel="noopener">https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75931/Easiest-JAVA-solution-with-explanations</a></p>
+<p>合理使用状态表示，以及状态的转换</p>
 
   </div>
 </article>
@@ -208,21 +213,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-number">1.</span> <span class="toc-text">context</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fibonacci-number"><span class="toc-number">2.</span> <span class="toc-text">fibonacci-number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#climbing-stairs"><span class="toc-number">3.</span> <span class="toc-text">climbing-stairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#min-cost-climbing-stairs"><span class="toc-number">4.</span> <span class="toc-text">min-cost-climbing-stairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decode-Ways"><span class="toc-number">5.</span> <span class="toc-text">Decode Ways</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-number">1.</span> <span class="toc-text">context</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fibonacci-number"><span class="toc-number">2.</span> <span class="toc-text">fibonacci-number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#climbing-stairs"><span class="toc-number">3.</span> <span class="toc-text">climbing-stairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#min-cost-climbing-stairs"><span class="toc-number">4.</span> <span class="toc-text">min-cost-climbing-stairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decode-Ways"><span class="toc-number">5.</span> <span class="toc-text">Decode Ways</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#house-robber"><span class="toc-number">6.</span> <span class="toc-text">house-robber</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><span class="toc-number">7.</span> <span class="toc-text">Best Time to Buy and Sell Stock with Cooldown</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/04/DP-tests/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/04/DP-tests/&text=几道相似相通的DP问题"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/04/DP-tests/&is_video=false&description=几道相似相通的DP问题"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=几道相似相通的DP问题&body=Check out this article: http://yoursite.com/2019/08/04/DP-tests/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/04/DP-tests/&name=几道相似相通的DP问题&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/04/DP-tests/&text=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/04/DP-tests/&is_video=false&description=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=几道相似相通的DP问题（当前状态与前两个状态有关的类型）&body=Check out this article: http://yoursite.com/2019/08/04/DP-tests/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/04/DP-tests/&title=几道相似相通的DP问题（当前状态与前两个状态有关的类型）"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/04/DP-tests/&name=几道相似相通的DP问题（当前状态与前两个状态有关的类型）&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
