@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="contextLeetCode上面遇到一题guess-number-higher-or-lower-ii 其中讲到了minimax这个算法。 首先这个题目的意思是说，要付多少钱（多少代价）才能保证猜对数字，这个代价是最小的，但是能够保证，即使是猜序列中的所有数字，这个代价都是够用的。 这里就出现一个零和游戏的状况，也就是说游戏的结果不是双赢的，你赢10元我就输10元。那么这个游戏，我想要花最少的钱">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-10T02:37:10.932Z">
+<meta property="og:updated_time" content="2019-08-15T08:22:07.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="minimax">
 <meta name="twitter:description" content="contextLeetCode上面遇到一题guess-number-higher-or-lower-ii 其中讲到了minimax这个算法。 首先这个题目的意思是说，要付多少钱（多少代价）才能保证猜对数字，这个代价是最小的，但是能够保证，即使是猜序列中的所有数字，这个代价都是够用的。 这里就出现一个零和游戏的状况，也就是说游戏的结果不是双赢的，你赢10元我就输10元。那么这个游戏，我想要花最少的钱">
@@ -107,8 +107,8 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-number">1.</span> <span class="toc-text">context</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-i-win"><span class="toc-number">2.</span> <span class="toc-text">can-i-win</span></a></li></ol>
-    </div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-number">1.</span> <span class="toc-text">context</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-i-win"><span class="toc-number">2.</span> <span class="toc-text">can-i-win</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#有点难，先缓一缓"><span class="toc-number"></span> <span class="toc-text">有点难，先缓一缓</span></a>
+    </li></div>
   </span>
 </div>
 
@@ -163,7 +163,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMoneyAmount</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> miniMax(<span class="number">1</span>, n, dp);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">miniMax</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span>[][] dp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= j)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(dp[i][j] != <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> dp[i][j];</span><br><span class="line">        dp[i][j] = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = i; k &lt;= j; k++) &#123;</span><br><span class="line">            dp[i][j] = Math.min(dp[i][j], Math.max(miniMax(i, k - <span class="number">1</span>, dp), miniMax(k + <span class="number">1</span>, j, dp)) + k);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="can-i-win"><a href="#can-i-win" class="headerlink" title="can-i-win"></a><a href="https://leetcode.com/problems/can-i-win/" target="_blank" rel="noopener">can-i-win</a></h2><p>Given an integer maxChoosableInteger and another integer desiredTotal, determine if the first player to move can force a win, assuming both players play optimally.</p>
 <p>Game Playing博弈</p>
-
+<h1 id="有点难，先缓一缓"><a href="#有点难，先缓一缓" class="headerlink" title="有点难，先缓一缓"></a>有点难，先缓一缓</h1>
   </div>
 </article>
 
@@ -194,8 +194,8 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-number">1.</span> <span class="toc-text">context</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-i-win"><span class="toc-number">2.</span> <span class="toc-text">can-i-win</span></a></li></ol>
-    </div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#context"><span class="toc-number">1.</span> <span class="toc-text">context</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#can-i-win"><span class="toc-number">2.</span> <span class="toc-text">can-i-win</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#有点难，先缓一缓"><span class="toc-number"></span> <span class="toc-text">有点难，先缓一缓</span></a>
+    </li></div>
 
     <div id="share-footer" style="display: none">
       <ul>
