@@ -14,7 +14,7 @@
 <meta property="og:description" content="context周日面了字节跳动大数据开发岗的前两面，第三面还没有约时间，我觉得有点要凉的意思。 不过也没啥，算是秋招的第一场面试，怎么可能一上来就过呢？没有啥是一帆风顺的，遇到坎才能认清自己。希望三面给我一锤，让我认清现实，好好复习。 先回顾一下自己的状态吧，现在只在LeetCode上面刷了题，操作系统、网络、java都没有系统的复习，每天还要上难的一批的课，哎，真不知道该怎么办。跟同学聊天说，人">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1601981367_1566441221101/0">
-<meta property="og:updated_time" content="2019-08-22T02:34:03.207Z">
+<meta property="og:updated_time" content="2019-08-22T03:28:35.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字节跳动12面">
 <meta name="twitter:description" content="context周日面了字节跳动大数据开发岗的前两面，第三面还没有约时间，我觉得有点要凉的意思。 不过也没啥，算是秋招的第一场面试，怎么可能一上来就过呢？没有啥是一帆风顺的，遇到坎才能认清自己。希望三面给我一锤，让我认清现实，好好复习。 先回顾一下自己的状态吧，现在只在LeetCode上面刷了题，操作系统、网络、java都没有系统的复习，每天还要上难的一批的课，哎，真不知道该怎么办。跟同学聊天说，人">
@@ -212,6 +212,14 @@
 <p><a href="http://blog.didispace.com/springbootasync/" target="_blank" rel="noopener">Spring Boot中使用@Async实现异步调用</a></p>
 <p><a href="http://blog.didispace.com/springbootasync-2/" target="_blank" rel="noopener">Spring Boot使用@Async实现异步调用：自定义线程池</a></p>
 <p><a href="http://blog.didispace.com/springbootasync-4/" target="_blank" rel="noopener">Spring Boot使用@Async实现异步调用：使用Future以及定义超时</a></p>
+<ul>
+<li>java GC</li>
+</ul>
+<p>什么时候？程序员不能具体控制时间，系统在不可预测的时间调用System.gc()函数的时候；当然可以通过调优，用NewRatio控制newObject和oldObject的比例，用MaxTenuringThreshold 控制进入oldObject的次数，使得oldObject 存储空间延迟达到full gc,从而使得计时器引发gc时间延迟OOM的时间延迟，以延长对象生存期。 </p>
+<p>对什么东西？超出了作用域或引用计数为空的对象；从gc root开始搜索找不到的对象，而且经过一次标记、清理，仍然没有复活的对象。</p>
+<p>做什么？ 删除不使用的对象，回收内存空间；运行默认的finalize,当然程序员想立刻调用就用dipose调用以释放资源如文件句柄，JVM用from survivor、to survivor对它进行标记清理，对象序列化后也可以使它复活。</p>
+<p>finalize is a method that the Garbage Collector always calls just before the deletion/destroying the object which is eligible for Garbage Collection, so as to perform clean-up activity. Clean-up activity means closing the resources associated with that object like Database Connection, Network Connection or we can say resource de-allocation. Remember it is not a reserved keyword.<br>Once finalize method completes immediately Garbage Collector destroy that object.</p>
+<p>我们自己的类，要override finalize方法         </p>
 
   </div>
 </article>
