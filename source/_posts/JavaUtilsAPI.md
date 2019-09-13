@@ -30,6 +30,7 @@ tags:
 ## String操作
 
 ```java
+    String1.compareTo(string2)//按字典序比较
     //创建String
     StringBuilder res = new StringBuilder();
     //添加字符

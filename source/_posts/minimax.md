@@ -42,3 +42,5 @@ class Solution {
 Given an integer maxChoosableInteger and another integer desiredTotal, determine if the first player to move can force a win, assuming both players play optimally.
 
 Game Playing博弈
+
+# 有点难，先缓一缓
