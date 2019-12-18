@@ -20,6 +20,8 @@ categories:
 
 - 任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；
 
+![](https://pic3.superbed.cn/item/5df9e53d76085c32898ed7bc.jpg)
+
 ## TreeMap
 
 ### 使用

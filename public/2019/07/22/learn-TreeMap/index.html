@@ -6,17 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="参考 简书  红黑树 树中每个节点必须是有颜色的，要么红色，要么黑色；  树中的根节点必须是黑色的；  树中的叶节点必须是黑色的，也就是树尾的NIL节点或者为null的节点；  树中任意一个节点如果是红色的，那么它的两个子节点一点是黑色的；  任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；   TreeMap使用 可以自行实现Comparator来进行比较，这个在插">
+    <meta name="description" content="参考 简书  红黑树 树中每个节点必须是有颜色的，要么红色，要么黑色；  树中的根节点必须是黑色的；  树中的叶节点必须是黑色的，也就是树尾的NIL节点或者为null的节点；  树中任意一个节点如果是红色的，那么它的两个子节点一点是黑色的；  任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；    TreeMap使用 可以自行实现Comparator来进行比较，这个在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TreeMap-红黑树在java中的实现">
 <meta property="og:url" content="http://yoursite.com/2019/07/22/learn-TreeMap/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
-<meta property="og:description" content="参考 简书  红黑树 树中每个节点必须是有颜色的，要么红色，要么黑色；  树中的根节点必须是黑色的；  树中的叶节点必须是黑色的，也就是树尾的NIL节点或者为null的节点；  树中任意一个节点如果是红色的，那么它的两个子节点一点是黑色的；  任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；   TreeMap使用 可以自行实现Comparator来进行比较，这个在插">
+<meta property="og:description" content="参考 简书  红黑树 树中每个节点必须是有颜色的，要么红色，要么黑色；  树中的根节点必须是黑色的；  树中的叶节点必须是黑色的，也就是树尾的NIL节点或者为null的节点；  树中任意一个节点如果是红色的，那么它的两个子节点一点是黑色的；  任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；    TreeMap使用 可以自行实现Comparator来进行比较，这个在">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-22T05:05:03.638Z">
+<meta property="og:image" content="https://pic3.superbed.cn/item/5df9e53d76085c32898ed7bc.jpg">
+<meta property="og:updated_time" content="2019-12-18T08:38:00.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TreeMap-红黑树在java中的实现">
-<meta name="twitter:description" content="参考 简书  红黑树 树中每个节点必须是有颜色的，要么红色，要么黑色；  树中的根节点必须是黑色的；  树中的叶节点必须是黑色的，也就是树尾的NIL节点或者为null的节点；  树中任意一个节点如果是红色的，那么它的两个子节点一点是黑色的；  任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；   TreeMap使用 可以自行实现Comparator来进行比较，这个在插">
+<meta name="twitter:description" content="参考 简书  红黑树 树中每个节点必须是有颜色的，要么红色，要么黑色；  树中的根节点必须是黑色的；  树中的叶节点必须是黑色的，也就是树尾的NIL节点或者为null的节点；  树中任意一个节点如果是红色的，那么它的两个子节点一点是黑色的；  任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；    TreeMap使用 可以自行实现Comparator来进行比较，这个在">
+<meta name="twitter:image" content="https://pic3.superbed.cn/item/5df9e53d76085c32898ed7bc.jpg">
     
     
         
@@ -167,6 +169,7 @@
 <li><p>任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；</p>
 </li>
 </ul>
+<p><img src="https://pic3.superbed.cn/item/5df9e53d76085c32898ed7bc.jpg" alt></p>
 <h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
 <li>可以自行实现Comparator来进行比较，这个在插入，搜索等方法是都会用到。不自行实现的话，就是自然比较。</li>
 </ul>
