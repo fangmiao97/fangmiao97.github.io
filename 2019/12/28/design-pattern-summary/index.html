@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="context设计模式终于看完了，23种比较多。总结一下。  创建型模式  工厂方法模式 Factory Method Pattern：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式使一个类的实例化延迟到其子类。 抽象工厂模式(Abstract Factory): 提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。 单例模式(Singleton): 保证一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式总结">
+<meta property="og:url" content="http://yoursite.com/2019/12/28/design-pattern-summary/index.html">
+<meta property="og:site_name" content="Chaoyue&#39;s Notes">
+<meta property="og:description" content="context设计模式终于看完了，23种比较多。总结一下。  创建型模式  工厂方法模式 Factory Method Pattern：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式使一个类的实例化延迟到其子类。 抽象工厂模式(Abstract Factory): 提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。 单例模式(Singleton): 保证一">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06bb1576085c3289ecd736.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06bb4d76085c3289ecdee7.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06bc6e76085c3289ed0387.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06bda576085c3289ed2da2.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06be0b76085c3289ed3cfa.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06bee176085c3289ed5ca3.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06c04876085c3289ed8dc6.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06c1be76085c3289edbee7.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06c42f76085c3289ee3e56.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06c74d76085c3289ef11c0.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06c81476085c3289ef403a.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06c8fd76085c3289ef7617.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06ca1176085c3289efb3bf.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06cb1476085c3289efeb76.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e06cba576085c3289f00e73.jpg">
+<meta property="og:updated_time" content="2019-12-28T03:27:43.513Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式总结">
+<meta name="twitter:description" content="context设计模式终于看完了，23种比较多。总结一下。  创建型模式  工厂方法模式 Factory Method Pattern：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式使一个类的实例化延迟到其子类。 抽象工厂模式(Abstract Factory): 提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。 单例模式(Singleton): 保证一">
+<meta name="twitter:image" content="https://pic.downk.cc/item/5e06bb1576085c3289ecd736.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>设计模式总结</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/12/05/NTU-Semester-1-summary/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/28/design-pattern-summary/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/28/design-pattern-summary/&text=设计模式总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/28/design-pattern-summary/&is_video=false&description=设计模式总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=设计模式总结&body=Check out this article: http://yoursite.com/2019/12/28/design-pattern-summary/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/28/design-pattern-summary/&name=设计模式总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        设计模式总结
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Chaoyue's Notes</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-27T16:00:00.000Z" itemprop="datePublished">2019-12-28</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/设计模式/">设计模式</a> › <a class="category-link" href="/categories/设计模式/总结/">总结</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <ul>
+<li><p>context<br>设计模式终于看完了，23种比较多。总结一下。</p>
+</li>
+<li><p>创建型模式</p>
+<ul>
+<li>工厂方法模式 Factory Method Pattern：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式使一个类的实例化延迟到其子类。<br><img src="https://pic.downk.cc/item/5e06bb1576085c3289ecd736.jpg" alt></li>
+<li>抽象工厂模式(Abstract Factory): 提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。<br><img src="https://pic.downk.cc/item/5e06bb4d76085c3289ecdee7.jpg" alt></li>
+<li>单例模式(Singleton): 保证一个类仅有一个实例，并提供一个访问它的全局访问点。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IoDHSingletonLoadBalancer</span> </span>&#123;</span><br><span class="line"><span class="comment">//可用服务器集合</span></span><br><span class="line"><span class="keyword">private</span> List serverList = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//私有构造方法</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">IoDHSingletonLoadBalancer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    serverList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态类，直到jvm确定其会被使用，才会初始化</span></span><br><span class="line"><span class="comment">//也就是在执行getInstance的时候，才会初始化LazyHolder，并初始化静态变量instance</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyHolder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> IoDHSingletonLoadBalancer instance = <span class="keyword">new</span> IoDHSingletonLoadBalancer();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IoDHSingletonLoadBalancer <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> LazyHolder.instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//增加服务器</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addServer</span><span class="params">(String server)</span> </span>&#123;</span><br><span class="line">    serverList.add(server);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeServer</span><span class="params">(String server)</span> </span>&#123;</span><br><span class="line">    serverList.remove(server);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//分配服务器（随机）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getServer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Random random = <span class="keyword">new</span> Random();</span><br><span class="line">    <span class="keyword">int</span> i = random.nextInt(serverList.size());</span><br><span class="line">    <span class="keyword">return</span> (String) serverList.get(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    IoDHSingletonLoadBalancer LB1, LB2, LB3;</span><br><span class="line">    LB1 = IoDHSingletonLoadBalancer.getInstance();</span><br><span class="line">    LB2 = IoDHSingletonLoadBalancer.getInstance();</span><br><span class="line">    LB3 = IoDHSingletonLoadBalancer.getInstance();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(LB1 == LB2 &amp;&amp; LB2 == LB3 &amp;&amp; LB1 == LB3) &#123;</span><br><span class="line">        System.out.println(<span class="string">"same instance"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LB1.addServer(<span class="string">"server 1"</span>);</span><br><span class="line">    LB1.addServer(<span class="string">"server 2"</span>);</span><br><span class="line">    LB1.addServer(<span class="string">"server 3"</span>);</span><br><span class="line">    LB1.addServer(<span class="string">"server 4"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        String server = LB1.getServer();</span><br><span class="line">        System.out.println(<span class="string">"get server"</span> + server);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>建造者模式(Builder): 将一个<strong>复杂对象</strong>的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。<br><img src="https://pic.downk.cc/item/5e06bc6e76085c3289ed0387.jpg" alt></li>
+<li>原型模式(Prototype):用原型实例指定创建对象的种类，并且通过<strong>拷贝</strong>这个原型来创建新的对象。</li>
+</ul>
+</li>
+<li><p>结构型模式</p>
+<ul>
+<li>适配器模式(Adapter): 将一个类的接口转换成用户希望的另一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。<br><img src="https://pic.downk.cc/item/5e06bda576085c3289ed2da2.jpg" alt></li>
+<li>桥接模式(Bridge): <strong>（两个变化维度的组合）</strong>将抽象部分与实现部分分离，使它们都可以独立地变化。<br><img src="https://pic.downk.cc/item/5e06be0b76085c3289ed3cfa.jpg" alt></li>
+<li>组合模式(Composite): 将对象组合成树形结构以表示“部分-整体”的层次结构，它使得客户对单个对象和复合对象的使用具有一致性。<br><img src="https://pic.downk.cc/item/5e06bee176085c3289ed5ca3.jpg" alt></li>
+<li>装饰模式(Decorator): 动态地给一个对象添加一些额外的职责，就扩展功能而言， 它比生成子类的方式更为灵活。<br><img src="https://pic.downk.cc/item/5e06c04876085c3289ed8dc6.jpg" alt></li>
+<li>外观模式(Facade): <strong>子系统</strong>中的一组接口提供一个一致的界面，定义一个高层接口，这个接口使得这一子系统更加容易使用。<br><img src="https://pic.downk.cc/item/5e06c1be76085c3289edbee7.jpg" alt></li>
+<li>享元模式(Flyweight)/轻量级模式: 运用共享技术有效地支持大量细粒度的对象。<br><img src="https://pic.downk.cc/item/5e06c42f76085c3289ee3e56.jpg" alt></li>
+<li>代理模式(Proxy)：为其他对象提供一个代理以控制对这个对象的访问。<br><img src="https://pic.downk.cc/item/5e06c74d76085c3289ef11c0.jpg" alt></li>
+</ul>
+</li>
+<li><p>行为型模式</p>
+<ul>
+<li>职责链模式(Chain of Responsibility): 为解除请求的发送者和接收者之间耦合，而使多个对象都有机会处理这个请求；将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它。在客户端中设置链。<br><img src="https://pic.downk.cc/item/5e06c81476085c3289ef403a.jpg" alt></li>
+<li>命令模式(Command): 将一个请求封装为一个对象，从而可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可取消的操作。<br><img src="https://pic.downk.cc/item/5e06c8fd76085c3289ef7617.jpg" alt></li>
+<li>解释器模式(Interpreter): <strong>定义语言的文法</strong>，并且建立一个解释器来解释该语言中的句子。<br><img src="https://pic.downk.cc/item/5e06ca1176085c3289efb3bf.jpg" alt></li>
+<li>迭代器模式(Iterator): 提供一种方法顺序访问一个聚合对象中各个元素，而又不需暴露该对象的内部表示。<br><img src="https://pic.downk.cc/item/5e06cb1476085c3289efeb76.jpg" alt></li>
+<li>中介者模式(Mediator): 用一个中介对象来封装一系列的对象交互；中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。<br>多对多关系转换成一对多关系。<br><img src="https://pic.downk.cc/item/5e06cba576085c3289f00e73.jpg" alt></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="vcomments" class="blog-post-comments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            visitor: true,
+            appId: '',
+            appKey: '',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            avatar: 'robohash'
+        })
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/28/design-pattern-summary/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/28/design-pattern-summary/&text=设计模式总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/28/design-pattern-summary/&is_video=false&description=设计模式总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=设计模式总结&body=Check out this article: http://yoursite.com/2019/12/28/design-pattern-summary/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/28/design-pattern-summary/&title=设计模式总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/28/design-pattern-summary/&name=设计模式总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Miao Fang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cactus-1-2';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
