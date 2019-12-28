@@ -80,3 +80,9 @@ theme: cactus
 deploy:
   type: git
   repo: https://github.com/fangmiao97/fangmiao97.github.io.git
+
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
