@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="引入 Implement strStr() LeetCode实现String.indexOf()，即返回子串在字符串中第一次出现的索引位置，没有则返回-1，子串为空则返回0   暴力解法 从0位置开始，比对与子串是否相同，出现不同则在字符串中往后移一位，再次比较子串，直到找到。 复杂度 设字符串长度为m，要查找的子串长度为n 时间 O(m*n)   问题 每次出现不一致的情况，只向后移动一位，再从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习KMP &amp;&amp; Sunday算法">
+<meta property="og:url" content="https://fangmiao97.github.io/2019/05/03/KMP/index.html">
+<meta property="og:site_name" content="Chaoyue&#39;s Notes">
+<meta property="og:description" content="引入 Implement strStr() LeetCode实现String.indexOf()，即返回子串在字符串中第一次出现的索引位置，没有则返回-1，子串为空则返回0   暴力解法 从0位置开始，比对与子串是否相同，出现不同则在字符串中往后移一位，再次比较子串，直到找到。 复杂度 设字符串长度为m，要查找的子串长度为n 时间 O(m*n)   问题 每次出现不一致的情况，只向后移动一位，再从">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1500912214_1556864943460/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1486517634_1556864983556/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_308750603_1556864998323/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_308750603_1556865032698/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1486517634_1556865346487/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_771348268_1556865899518/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1268522869_1556866125545/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_122902507_1556866189608/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1268522869_1556866470014/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869374669/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_767595719_1556869496396/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869639696/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869662493/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869752648/0">
+<meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_912665407_1556870613284/0">
+<meta property="og:updated_time" content="2019-08-06T02:51:28.886Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习KMP &amp;&amp; Sunday算法">
+<meta name="twitter:description" content="引入 Implement strStr() LeetCode实现String.indexOf()，即返回子串在字符串中第一次出现的索引位置，没有则返回-1，子串为空则返回0   暴力解法 从0位置开始，比对与子串是否相同，出现不同则在字符串中往后移一位，再次比较子串，直到找到。 复杂度 设字符串长度为m，要查找的子串长度为n 时间 O(m*n)   问题 每次出现不一致的情况，只向后移动一位，再从">
+<meta name="twitter:image" content="https://puui.qpic.cn/fans_admin/0/3_1500912214_1556864943460/0">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>学习KMP &amp;&amp; Sunday算法</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/05/27/Kadane's-Algorithm/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/04/24/Minions-Visualization-first/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fangmiao97.github.io/2019/05/03/KMP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2019/05/03/KMP/&text=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2019/05/03/KMP/&is_video=false&description=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=学习KMP &amp;&amp; Sunday算法&body=Check out this article: https://fangmiao97.github.io/2019/05/03/KMP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2019/05/03/KMP/&name=学习KMP &amp;&amp; Sunday算法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KMP"><span class="toc-number">2.</span> <span class="toc-text">KMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">4.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sunday算法"><span class="toc-number">5.</span> <span class="toc-text">Sunday算法</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        学习KMP &amp;&amp; Sunday算法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Chaoyue's Notes</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-05-02T16:00:00.000Z" itemprop="datePublished">2019-05-03</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/算法/">算法</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><ul>
+<li><a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="noopener">Implement strStr()</a><ul>
+<li>LeetCode实现String.indexOf()，即返回子串在字符串中第一次出现的索引位置，没有则返回-1，子串为空则返回0</li>
+</ul>
+</li>
+<li>暴力解法<ul>
+<li>从0位置开始，比对与子串是否相同，出现不同则在字符串中往后移一位，再次比较子串，直到找到。</li>
+<li>复杂度<ul>
+<li>设字符串长度为m，要查找的子串长度为n</li>
+<li>时间 O(m*n)</li>
+</ul>
+</li>
+<li>问题<ul>
+<li>每次出现不一致的情况，只向后移动一位，再从头开始比对，很多没有必要</li>
+<li>如：在aaaaaaaaaaaab,查找aaaab</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_1500912214_1556864943460/0" alt></p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_1486517634_1556864983556/0" alt></p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_308750603_1556864998323/0" alt></p>
+<h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><ul>
+<li><p>概念</p>
+<ul>
+<li>KMP算法要解决的问题就是在字符串（也叫主串）中的模式（pattern）定位问题。说简单点就是我们平时常说的关键字搜索。模式串就是关键字（接下来称它为P），如果它在一个主串（接下来称为T）中出现，就返回它的具体位置，否则返回-1（常用手段）。</li>
+</ul>
+</li>
+<li><p>对于暴力破解的优化思考</p>
+<ul>
+<li>主串不要每次只移一位，可以让它（i）保持不动，移动模式中j的位置</li>
+<li>利用已经部分匹配这个有效信息，保持i指针不回溯，通过修改j指针，让模式串尽量地移动到有效的位置</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_308750603_1556865032698/0" alt></p>
+<ul>
+<li>j要怎么移动<ul>
+<li>当匹配失败时，j要移动的下一个位置k。存在着这样的性质：最前面的k个字符和j之前的最后k个字符是一样的</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_1486517634_1556865346487/0" alt></p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_771348268_1556865899518/0" alt></p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_1268522869_1556866125545/0" alt></p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_122902507_1556866189608/0" alt></p>
+<ul>
+<li><p>数学表示</p>
+<ul>
+<li>如果k表示不匹配时，j要移动的位置</li>
+<li><p>P[0 ~ k-1] == P[j-k ~ j-1]</p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_1268522869_1556866470014/0" alt></p>
+</li>
+<li><p>当T[i] != P[j]时</p>
+<p>有T[i-j ~ i-1] == P[0 ~ j-1]</p>
+<p>由P[0 ~ k-1] == P[j-k ~ j-1]</p>
+<p>必然：T[i-k ~ i-1] == P[0 ~ k-1]</p>
+</li>
+<li><p>因此可以直接将j移动到k而无须再比较前面的k个字符</p>
+</li>
+</ul>
+</li>
+<li><p>怎么找到不匹配时j要移动的k位置</p>
+<ul>
+<li>模式串中每个位置发生不匹配时，所要移动到的k位置都是不同的，每个位置都要计算</li>
+<li>使用next数据来保存模式串中每个位置的k值</li>
+<li>next[j]的值（也就是k）表示，当P[j] != T[i]时，j指针的下一步移动位置</li>
+<li><p>当j为0时，如果这时候不匹配</p>
+<ul>
+<li><p>j已经在最左边了，不可能再移动了，这时候要应该是i指针后移。有next[0] = -1</p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869374669/0" alt></p>
+</li>
+</ul>
+</li>
+<li><p>当j为1</p>
+<ul>
+<li><p>j指针一定是后移到0位置的</p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_767595719_1556869496396/0" alt></p>
+</li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li>当P[k] == P[j]时</li>
+<li><p>next[j+1] == next[j] + 1</p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869639696/0" alt></p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869662493/0" alt></p>
+</li>
+<li><p>P[k] != P[j]</p>
+</li>
+<li><p>k = next[k]</p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556869752648/0" alt></p>
+<p><img src="https://puui.qpic.cn/fans_admin/0/3_912665407_1556870613284/0" alt></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.cnblogs.com/yjiyjige/p/3263858.html#top" target="_blank" rel="noopener">https://www.cnblogs.com/yjiyjige/p/3263858.html#top</a></li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(needle.length() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] t = haystack.toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] p = needle.toCharArray();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] next = getNext(needle);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; t.length &amp;&amp; j &lt; p.length) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j == -<span class="number">1</span> || t[i] == p[j]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(j == p.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> i - j;</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">          </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getNext(String needle) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] p = needle.toCharArray();</span><br><span class="line">        <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[p.length];</span><br><span class="line">        </span><br><span class="line">        next[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> k = -<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(j &lt; p.length - <span class="number">1</span>) &#123;<span class="comment">//减一是因为下面会有++j</span></span><br><span class="line">            <span class="keyword">if</span>(k == -<span class="number">1</span> || p[j] == p[k]) &#123;<span class="comment">//k==-1是next[1]=0</span></span><br><span class="line">                <span class="keyword">if</span>(p[++j] == p[++k])</span><br><span class="line">                    next[j] = next[k];</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    next[j] = k;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                k = next[k];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Sunday算法"><a href="#Sunday算法" class="headerlink" title="Sunday算法"></a>Sunday算法</h2><p><a href="https://www.jianshu.com/p/2e6eb7386cd3" target="_blank" rel="noopener">字符串匹配算法之Sunday算法</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = haystack.length(), n = needle.length();</span><br><span class="line">        <span class="keyword">int</span>[] occ = getOCC(needle);</span><br><span class="line">        <span class="keyword">int</span> jump = <span class="number">0</span>;<span class="comment">//不能匹配时，匹配位置向后移动的长度</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m - n; i += jump) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = <span class="number">0</span>;<span class="comment">//模式串中已经匹配到的位置</span></span><br><span class="line">            <span class="keyword">while</span>(j &lt; n &amp;&amp; haystack.charAt(i + j) == needle.charAt(j))</span><br><span class="line">                j++;<span class="comment">//当前这一位匹配成功</span></span><br><span class="line">            <span class="keyword">if</span>(j == n)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            jump = i + n &lt; m ? n - occ[haystack.charAt(i + n)] : <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getOCC(String p) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] occ = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        Arrays.fill(occ, -<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p.length(); i++) &#123;</span><br><span class="line">            occ[p.charAt(i)] = i;<span class="comment">//从串尾到最后出现该字符的长度 </span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> occ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="vcomments" class="blog-post-comments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            visitor: true,
+            appId: '',
+            appKey: '',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            avatar: 'robohash'
+        })
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KMP"><span class="toc-number">2.</span> <span class="toc-text">KMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">4.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sunday算法"><span class="toc-number">5.</span> <span class="toc-text">Sunday算法</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fangmiao97.github.io/2019/05/03/KMP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2019/05/03/KMP/&text=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2019/05/03/KMP/&is_video=false&description=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=学习KMP &amp;&amp; Sunday算法&body=Check out this article: https://fangmiao97.github.io/2019/05/03/KMP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2019/05/03/KMP/&title=学习KMP &amp;&amp; Sunday算法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2019/05/03/KMP/&name=学习KMP &amp;&amp; Sunday算法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Miao Fang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cactus-1-2';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
