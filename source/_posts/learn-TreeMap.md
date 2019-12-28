@@ -22,7 +22,9 @@ categories:
 
 ![](https://pic3.superbed.cn/item/5df9e53d76085c32898ed7bc.jpg)
 
-## TreeMap
+* 增删改查时间复杂度 O(logn)
+* key不重复，不为null
+## TreeMa
 
 ### 使用
 
