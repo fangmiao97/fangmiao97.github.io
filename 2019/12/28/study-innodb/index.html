@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="约束数据完整性关系型数据库系统和文件系统的一个不同点是，关系数据库本身能保证存储数据的完整性，不需要应用程序的控制，而文件系统一般需要在程序端进行控制 数据完整性3种形式：  实体完整性  保证表中有一个主键。在InnoDB存储引擎表中，用户可以通过定义PrimaryKey或Unique Key约束来保证实体的完整性。用户还可以通过编写一个触发器来保证数据完整性。  域完整性   保证数据每列的值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-29T05:45:57.409Z">
+<meta property="og:updated_time" content="2019-12-29T07:37:17.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="innodb学习笔记">
 <meta name="twitter:description" content="约束数据完整性关系型数据库系统和文件系统的一个不同点是，关系数据库本身能保证存储数据的完整性，不需要应用程序的控制，而文件系统一般需要在程序端进行控制 数据完整性3种形式：  实体完整性  保证表中有一个主键。在InnoDB存储引擎表中，用户可以通过定义PrimaryKey或Unique Key约束来保证实体的完整性。用户还可以通过编写一个触发器来保证数据完整性。  域完整性   保证数据每列的值">
@@ -78,10 +78,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/12/28/design-pattern-summary/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2019/12/05/NTU-Semester-1-summary/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/12/28/design-pattern-summary/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -108,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#约束"><span class="toc-number">1.</span> <span class="toc-text">约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据完整性"><span class="toc-number">1.1.</span> <span class="toc-text">数据完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建约束"><span class="toc-number">1.2.</span> <span class="toc-text">创建约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENUM和SET约束"><span class="toc-number">1.3.</span> <span class="toc-text">ENUM和SET约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#触发器与约束"><span class="toc-number">1.4.</span> <span class="toc-text">触发器与约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外键约束"><span class="toc-number">2.</span> <span class="toc-text">外键约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图"><span class="toc-number">3.</span> <span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#物化视图"><span class="toc-number">3.1.</span> <span class="toc-text">物化视图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分区"><span class="toc-number">4.</span> <span class="toc-text">分区</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#约束"><span class="toc-number">1.</span> <span class="toc-text">约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据完整性"><span class="toc-number">1.1.</span> <span class="toc-text">数据完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建约束"><span class="toc-number">1.2.</span> <span class="toc-text">创建约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENUM和SET约束"><span class="toc-number">1.3.</span> <span class="toc-text">ENUM和SET约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#触发器与约束"><span class="toc-number">1.4.</span> <span class="toc-text">触发器与约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外键约束"><span class="toc-number">2.</span> <span class="toc-text">外键约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图"><span class="toc-number">3.</span> <span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#物化视图"><span class="toc-number">3.1.</span> <span class="toc-text">物化视图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分区"><span class="toc-number">4.</span> <span class="toc-text">分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分区类型"><span class="toc-number">4.1.</span> <span class="toc-text">分区类型</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -199,6 +197,30 @@
 <p>MySQL数据库本身并不支持物化视图，换句话说，MySQL数据库中的视图总是虚拟的。</p>
 <p>通过触发器，在MySQL数据库中实现了类似物化视图的功能。</p>
 <h2 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h2><p>分区的过程是将一个表或索引分解为多个更小、更可管理的部分。就访问数据库的应用而言，从逻辑上讲，只有一个表或一个索引，但是在物理上这个表或索引可能由数十个物理分区组成。每个分区都是独立的对象，可以独自处理，也可以作为一个更大对象的一部分进行处理。</p>
+<p>MySQL数据库支持的分区类型为水平分（不同行的数据分在不同的区），并不支持垂直分（不同列）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1 (</span><br><span class="line">col1 <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">col2 <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">col3 <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line"><span class="keyword">unique</span> <span class="keyword">key</span> (col1, col2)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">hash</span>(col1)//分区列必须是<span class="keyword">unique</span> <span class="keyword">key</span>的一部分</span><br><span class="line"><span class="keyword">partitions</span> <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+<p>如果建表时没有指定主键，唯一索引，可以指定任何一个列为分区列。</p>
+<h3 id="分区类型"><a href="#分区类型" class="headerlink" title="分区类型"></a>分区类型</h3><ul>
+<li>RANGE分区</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1 (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span> </span><br><span class="line">)<span class="keyword">engine</span> = <span class="keyword">innodb</span></span><br><span class="line"><span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">range</span>(<span class="keyword">id</span>)</span><br><span class="line"><span class="keyword">partition</span> p0 <span class="keyword">values</span> <span class="keyword">less</span> <span class="keyword">than</span> (<span class="number">10</span>)</span><br><span class="line"><span class="keyword">partition</span> p1 <span class="keyword">values</span> <span class="keyword">less</span> <span class="keyword">than</span> (<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<p>当插入一个不在分区中定义的值时，MySQL数据库会抛出一个异常。如，我们向表t中插入30这个值.</p>
+<p>解决：可以对分区添加一个MAXVALUE值的分区。</p>
+<p>分区使用：通过EXPLAIN PARTITION命令我们可以发现，在上述语句中，SQL优化器只需要去搜索p2008这个分区，而不会去搜索所有的分区。在查询语句前加explain partition，同时查询条件要符合要求。</p>
+<ul>
+<li>LIST分区</li>
+</ul>
+<p>LIST分区和RANGE分区非常相似，只是分区列的值是离散的，而非连续的。</p>
+<p>不同于RANGE分区中定义的VALUES LESS THAN语句，LIST分区使用VALUES IN。因为每个分区的值是离散的，因此只能定义值。</p>
+<ul>
+<li>HASH分区</li>
+</ul>
+<p>HASH分区的目的是将数据均匀地分布到预先定义的各个分区中，保证各分区的数据数量大致都是一样的。用户所要做的只是基于将要进行哈希分区的列值指定一个列值或表达式，以及指定被分区的表将要被分割成的分区数量。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</span><br><span class="line">a <span class="built_in">int</span>,</span><br><span class="line">b <span class="built_in">date</span> </span><br><span class="line">)<span class="keyword">engine</span> = <span class="keyword">innodb</span></span><br><span class="line"><span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">hash</span>(<span class="keyword">year</span>(b))</span><br><span class="line"><span class="keyword">partitions</span> <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>KEY分区</li>
+</ul>
+<p>KEY分区和HASH分区相似，不同之处在于HASH分区使用用户定义的函数进行分区，KEY分区使用MySQL数据库提供的函数进行分区。</p>
 
   </div>
 </article>
@@ -251,7 +273,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#约束"><span class="toc-number">1.</span> <span class="toc-text">约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据完整性"><span class="toc-number">1.1.</span> <span class="toc-text">数据完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建约束"><span class="toc-number">1.2.</span> <span class="toc-text">创建约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENUM和SET约束"><span class="toc-number">1.3.</span> <span class="toc-text">ENUM和SET约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#触发器与约束"><span class="toc-number">1.4.</span> <span class="toc-text">触发器与约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外键约束"><span class="toc-number">2.</span> <span class="toc-text">外键约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图"><span class="toc-number">3.</span> <span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#物化视图"><span class="toc-number">3.1.</span> <span class="toc-text">物化视图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分区"><span class="toc-number">4.</span> <span class="toc-text">分区</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#约束"><span class="toc-number">1.</span> <span class="toc-text">约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据完整性"><span class="toc-number">1.1.</span> <span class="toc-text">数据完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建约束"><span class="toc-number">1.2.</span> <span class="toc-text">创建约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENUM和SET约束"><span class="toc-number">1.3.</span> <span class="toc-text">ENUM和SET约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#触发器与约束"><span class="toc-number">1.4.</span> <span class="toc-text">触发器与约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外键约束"><span class="toc-number">2.</span> <span class="toc-text">外键约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图"><span class="toc-number">3.</span> <span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#物化视图"><span class="toc-number">3.1.</span> <span class="toc-text">物化视图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分区"><span class="toc-number">4.</span> <span class="toc-text">分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分区类型"><span class="toc-number">4.1.</span> <span class="toc-text">分区类型</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
