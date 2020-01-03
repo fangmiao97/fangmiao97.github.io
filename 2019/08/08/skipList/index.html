@@ -9,7 +9,7 @@
     <meta name="description" content="介绍Skip list是一个“概率型”的数据结构，可以在很多应用场景中替代平衡树。Skip list是一个分层结构多级链表，最下层是原始的链表，每个层级都是下一个层级的“高速跑道”。  跳跃的表的性质包括： 某个i层的元素，出现在i+1层的概率p是固定的，例如常取p=1/2或p=1/4； 平均来讲，每个元素出现在1/(1-p)个链表中； 最高的元素，例如head通常采用Int.MIN_VALUE作">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="调表skipList">
+<meta property="og:title" content="跳表skipList">
 <meta property="og:url" content="https://fangmiao97.github.io/2019/08/08/skipList/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="介绍Skip list是一个“概率型”的数据结构，可以在很多应用场景中替代平衡树。Skip list是一个分层结构多级链表，最下层是原始的链表，每个层级都是下一个层级的“高速跑道”。  跳跃的表的性质包括： 某个i层的元素，出现在i+1层的概率p是固定的，例如常取p=1/2或p=1/4； 平均来讲，每个元素出现在1/(1-p)个链表中； 最高的元素，例如head通常采用Int.MIN_VALUE作">
@@ -17,9 +17,9 @@
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1699886445_1565678576166/0">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1680187318_1565678828622/0">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1680187318_1565679815107/0">
-<meta property="og:updated_time" content="2019-08-13T07:28:51.259Z">
+<meta property="og:updated_time" content="2020-01-01T14:18:13.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="调表skipList">
+<meta name="twitter:title" content="跳表skipList">
 <meta name="twitter:description" content="介绍Skip list是一个“概率型”的数据结构，可以在很多应用场景中替代平衡树。Skip list是一个分层结构多级链表，最下层是原始的链表，每个层级都是下一个层级的“高速跑道”。  跳跃的表的性质包括： 某个i层的元素，出现在i+1层的概率p是固定的，例如常取p=1/2或p=1/4； 平均来讲，每个元素出现在1/(1-p)个链表中； 最高的元素，例如head通常采用Int.MIN_VALUE作">
 <meta name="twitter:image" content="https://puui.qpic.cn/fans_admin/0/3_1699886445_1565678576166/0">
     
@@ -41,7 +41,7 @@
         
     
     <!-- title -->
-    <title>调表skipList</title>
+    <title>跳表skipList</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -83,10 +83,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/08/08/decode/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/08/08/DP-2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/08/04/DP-tests/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/08/08/decode/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -100,15 +100,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fangmiao97.github.io/2019/08/08/skipList/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2019/08/08/skipList/&text=调表skipList"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2019/08/08/skipList/&is_video=false&description=调表skipList"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=调表skipList&body=Check out this article: https://fangmiao97.github.io/2019/08/08/skipList/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2019/08/08/skipList/&name=调表skipList&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2019/08/08/skipList/&text=跳表skipList"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2019/08/08/skipList/&is_video=false&description=跳表skipList"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=跳表skipList&body=Check out this article: https://fangmiao97.github.io/2019/08/08/skipList/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2019/08/08/skipList/&name=跳表skipList&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -125,7 +125,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        调表skipList
+        跳表skipList
     </h1>
 
 
@@ -231,15 +231,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fangmiao97.github.io/2019/08/08/skipList/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2019/08/08/skipList/&text=调表skipList"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2019/08/08/skipList/&is_video=false&description=调表skipList"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=调表skipList&body=Check out this article: https://fangmiao97.github.io/2019/08/08/skipList/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=调表skipList"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2019/08/08/skipList/&name=调表skipList&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2019/08/08/skipList/&text=跳表skipList"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2019/08/08/skipList/&is_video=false&description=跳表skipList"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=跳表skipList&body=Check out this article: https://fangmiao97.github.io/2019/08/08/skipList/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2019/08/08/skipList/&title=跳表skipList"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2019/08/08/skipList/&name=跳表skipList&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
