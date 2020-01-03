@@ -1,5 +1,5 @@
 ---
-title: 调表skipList
+title: 跳表skipList
 date: 2019/8/8 
 tags:
     - java

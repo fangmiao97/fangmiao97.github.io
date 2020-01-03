@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/12/31/2019-review/</loc>
+    <loc>https://fangmiao97.github.io/2019/12/28/study-innodb/</loc>
     
-    <lastmod>2019-12-31T12:01:34.453Z</lastmod>
+    <lastmod>2020-01-01T08:21:38.699Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/12/28/study-innodb/</loc>
+    <loc>https://fangmiao97.github.io/2019/12/31/2019-review/</loc>
     
-    <lastmod>2019-12-31T11:35:34.997Z</lastmod>
+    <lastmod>2019-12-31T12:01:34.453Z</lastmod>
     
   </url>
   
@@ -240,13 +240,6 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/16/weeklyReport190316/</loc>
-    
-    <lastmod>2019-06-04T01:06:18.986Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://fangmiao97.github.io/2019/03/23/weeklyReport190323/</loc>
     
     <lastmod>2019-06-04T01:06:18.986Z</lastmod>
@@ -254,14 +247,21 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/16/weeklyReport190316/</loc>
+    
+    <lastmod>2019-06-04T01:06:18.986Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
     
@@ -296,14 +296,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/27/minionsUsage/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/22/mock-accesslog-python/</loc>
     
     <lastmod>2019-06-04T01:06:18.980Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/04/22/mock-accesslog-python/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/27/minionsUsage/</loc>
     
     <lastmod>2019-06-04T01:06:18.980Z</lastmod>
     
@@ -338,14 +338,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/04/19/StudyHBaseJavaAPI/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/18/axioscorsquestions/</loc>
     
     <lastmod>2019-06-04T01:06:18.976Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/axioscorsquestions/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/19/StudyHBaseJavaAPI/</loc>
     
     <lastmod>2019-06-04T01:06:18.976Z</lastmod>
     
