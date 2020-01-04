@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d0e276085c3289f144da.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d35876085c3289f1d63d.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d3b976085c3289f1ee66.jpg">
-<meta property="og:updated_time" content="2020-01-04T06:43:37.377Z">
+<meta property="og:updated_time" content="2020-01-04T06:48:19.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式总结">
 <meta name="twitter:description" content="context设计模式终于看完了，23种比较多。总结一下。 设计原则 如何同时提高一个软件系统的可维护性和可复用性是面向对象设计需要解决的核心问题之一  单一职责原则Single Responsibility Principle。一个类只负责一个功能领域中的相应职责，或者可以定义为：就一个类而言，应该只有一个引起它变化的原因。 比如，迭代器模式，将迭代的功能与容器的存储分离开。java中的coll">
@@ -182,7 +182,7 @@
 <p>比如，迭代器模式，将迭代的功能与容器的存储分离开。java中的collection接口和Iterator接口充当抽象聚合类和抽象迭代器。各司其职。</p>
 <h2 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h2><p>(Open-Closed Principle, OCP)：一个软件实体应当<strong>对扩展开放，对修改关闭</strong>。即软件<br>实体应尽量在不修改原有代码的情况下进行扩展。</p>
 <p>如果一个软件设计符合开闭原则，那么可以非常方便地对系统进行扩展，而且在扩展时无须修改现有代码，使得软件系统在拥有适应性和灵活性的同时具备较好的稳定性和延续性。</p>
-<p>如：1.使用配置文件更改一些信息，不用在代码中改。<br>2.客户端针对抽象类编程，具体类继承抽象类或实现抽象接口。增添新的具体实现来扩展新的业务功能，而不需要修改抽象层。<br>减少代码中的if else这样的判断逻辑，使用关联关系/对象引用。</p>
+<p>如：1.使用配置文件更改一些信息，不用在代码中改。<br>2.客户端针对抽象类编程，具体类继承抽象类或实现抽象接口。增添新的具体实现来扩展新的业务功能，而不需要修改抽象层。<br><strong>减少代码中的if else这样的选择、判断逻辑，使用关联关系/对象引用。</strong></p>
 <h2 id="里氏代换原则"><a href="#里氏代换原则" class="headerlink" title="里氏代换原则"></a>里氏代换原则</h2><p>(Liskov Substitution Principle, LSP)：所有引用基类（父类）的地方必须能透明地使用其子类的对象。</p>
 <p><strong>里氏代换原则是实现开闭原则的重要方式之一</strong>，由于使用基类对象的地方都可以使用子类对<br>象，因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用<br>子类对象来替换父类对象。</p>
 <h2 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h2><p>(Dependency Inversion Principle, DIP)：抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。</p>
