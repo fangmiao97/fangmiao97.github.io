@@ -18,6 +18,7 @@ date: 2019-03-15 15:04:35
 - Master of Science
 - Computer Control & Automation
 - 预计2020/07毕业
+- 积点：4.30（5.0）
 
 ## 合肥工业大学
 
