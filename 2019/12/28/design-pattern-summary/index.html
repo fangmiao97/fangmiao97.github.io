@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d0e276085c3289f144da.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d35876085c3289f1d63d.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d3b976085c3289f1ee66.jpg">
-<meta property="og:updated_time" content="2020-01-04T12:15:14.019Z">
+<meta property="og:updated_time" content="2020-01-04T12:24:57.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式总结">
 <meta name="twitter:description" content="context设计模式终于看完了，23种比较多。总结一下。 设计原则 如何同时提高一个软件系统的可维护性和可复用性是面向对象设计需要解决的核心问题之一  单一职责原则Single Responsibility Principle。一个类只负责一个功能领域中的相应职责，或者可以定义为：就一个类而言，应该只有一个引起它变化的原因。 比如，迭代器模式，将迭代的功能与容器的存储分离开。java中的coll">
@@ -242,8 +242,8 @@
 <h2 id="备忘录模式-Memento"><a href="#备忘录模式-Memento" class="headerlink" title="备忘录模式(Memento):"></a>备忘录模式(Memento):</h2><p> 在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样以后就可将该对象恢复到先前保存的状态。<br>    <strong>撤销，游戏存档，ctrlZ，数据库undo</strong><br>    <img src="https://pic.downk.cc/item/5e06cc5876085c3289f036af.jpg" alt></p>
 <h2 id="观察者模式-Observer"><a href="#观察者模式-Observer" class="headerlink" title="观察者模式(Observer):"></a>观察者模式(Observer):</h2><p> 定义对象间的一种<strong>一对多</strong>的依赖关系，以便当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并自动更新。<br> <strong>发布订阅模式、源-监听模式</strong><br> java.util中提供了observable类以及observer接口<br>    <img src="https://pic.downk.cc/item/5e06cee376085c3289f0ce6d.jpg" alt></p>
 <h2 id="状态模式-State"><a href="#状态模式-State" class="headerlink" title="状态模式(State):"></a>状态模式(State):</h2><p>允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它所属的类。状态模式将一个对象的状态从该对象中分离出来，封装到专门的状态类中，使得对象状态可以灵活变化，对于客户端而言，无须关心对象状态的转换以及对象所处的当前状态，无论对于何种状态的对象，客户端都可以一致处理。<br>    <img src="https://pic.downk.cc/item/5e06d05b76085c3289f12543.jpg" alt></p>
-<h2 id="策略模式-Strategy"><a href="#策略模式-Strategy" class="headerlink" title="策略模式(Strategy):"></a>策略模式(Strategy):</h2><p>定义一系列的算法,把它们一个个封装起来，并且使它们可相互替换，策略模式使得算法的变化可独立于使用它的客户。策略模式的主要目的是将算法的定义与使用分开，也就是将算法的行为和环境分开，将算法的定义放在专门的策略类中，每一个策略类封装了一种实现算法，使用算法的环境类针对抽象策略类进行编程，符合“依赖倒转原则”。<br>    <img src="https://pic.downk.cc/item/5e06d0e276085c3289f144da.jpg" alt></p>
-<h2 id="模板方法模式-Template-Method"><a href="#模板方法模式-Template-Method" class="headerlink" title="模板方法模式(Template Method):"></a>模板方法模式(Template Method):</h2><p> 定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。<br>    <img src="https://pic.downk.cc/item/5e06d35876085c3289f1d63d.jpg" alt></p>
+<h2 id="策略模式-Strategy"><a href="#策略模式-Strategy" class="headerlink" title="策略模式(Strategy):"></a>策略模式(Strategy):</h2><p>定义一系列的算法,把它们一个个封装起来，并且使它们可相互替换，策略模式使得算法的变化可独立于使用它的客户。策略模式的主要目的是将算法的定义与使用分开，也就是将算法的行为和环境分开，将算法的定义放在专门的策略类中，每一个策略类封装了一种实现算法，使用算法的环境类针对抽象策略类进行编程，符合“依赖倒转原则”。<br>java SE中有不同的布局算法，使用抽象布局算法编程，在使用时注入具体布局算法。是的算法可以复用，以及开闭原则。<br>    <img src="https://pic.downk.cc/item/5e06d0e276085c3289f144da.jpg" alt></p>
+<h2 id="模板方法模式-Template-Method"><a href="#模板方法模式-Template-Method" class="headerlink" title="模板方法模式(Template Method):"></a>模板方法模式(Template Method):</h2><p> <strong>定义一个操作中的算法的骨架</strong>，而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。<br>    <img src="https://pic.downk.cc/item/5e06d35876085c3289f1d63d.jpg" alt></p>
 <h2 id="访问者模式-Visitor"><a href="#访问者模式-Visitor" class="headerlink" title="访问者模式(Visitor):"></a>访问者模式(Visitor):</h2><p> 表示一个作用于某对象结构中的各元素的操作，可以在不改变各元素的类的前提下定义作用于这些元素的新操作。<br>    <img src="https://pic.downk.cc/item/5e06d3b976085c3289f1ee66.jpg" alt></p>
 
   </div>
