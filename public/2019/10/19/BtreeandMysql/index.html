@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="context这一个月忙到爆炸，研究生课程很难，有好多课的作业即使花了很多时间也和别人有很大差距。peer pressure。感觉别人都是信手拈来，数学算式这么那么就出来我，我就什么都不会。国内秋招也在我忙作业的过程中要结束了。面试在九月上旬就停了，感觉我的这个项目有点坑，开始上课就要准备毕业找工作，而且是要在学比较有挑战的课程之间找工作。我太难了。 下周阿里有个面试，虽然我知道不会过，但是还要在">
+    <meta name="description" content="context这一个月忙到爆炸，研究生课程很难，有好多课的作业即使花了很多时间也和别人有很大差距。peer pressure。感觉别人都是信手拈来，数学算式这么那么就出来我，我就什么都不会。国内秋招也在我忙作业的过程中要结束了。面试在九月上旬就停了，感觉我的这个项目有点坑，开始上课就要准备毕业找工作，而且是要在学比较有挑战的课程之间找工作。我太难了。 像西西弗。 问题引入 某个sql查询比较慢，为">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="B+索引与数据库">
 <meta property="og:url" content="https://fangmiao97.github.io/2019/10/19/BtreeandMysql/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
-<meta property="og:description" content="context这一个月忙到爆炸，研究生课程很难，有好多课的作业即使花了很多时间也和别人有很大差距。peer pressure。感觉别人都是信手拈来，数学算式这么那么就出来我，我就什么都不会。国内秋招也在我忙作业的过程中要结束了。面试在九月上旬就停了，感觉我的这个项目有点坑，开始上课就要准备毕业找工作，而且是要在学比较有挑战的课程之间找工作。我太难了。 下周阿里有个面试，虽然我知道不会过，但是还要在">
+<meta property="og:description" content="context这一个月忙到爆炸，研究生课程很难，有好多课的作业即使花了很多时间也和别人有很大差距。peer pressure。感觉别人都是信手拈来，数学算式这么那么就出来我，我就什么都不会。国内秋招也在我忙作业的过程中要结束了。面试在九月上旬就停了，感觉我的这个项目有点坑，开始上课就要准备毕业找工作，而且是要在学比较有挑战的课程之间找工作。我太难了。 像西西弗。 问题引入 某个sql查询比较慢，为">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1192510060_1571404504782/0">
-<meta property="og:updated_time" content="2019-10-20T01:56:22.860Z">
+<meta property="og:updated_time" content="2020-01-04T15:23:08.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="B+索引与数据库">
-<meta name="twitter:description" content="context这一个月忙到爆炸，研究生课程很难，有好多课的作业即使花了很多时间也和别人有很大差距。peer pressure。感觉别人都是信手拈来，数学算式这么那么就出来我，我就什么都不会。国内秋招也在我忙作业的过程中要结束了。面试在九月上旬就停了，感觉我的这个项目有点坑，开始上课就要准备毕业找工作，而且是要在学比较有挑战的课程之间找工作。我太难了。 下周阿里有个面试，虽然我知道不会过，但是还要在">
+<meta name="twitter:description" content="context这一个月忙到爆炸，研究生课程很难，有好多课的作业即使花了很多时间也和别人有很大差距。peer pressure。感觉别人都是信手拈来，数学算式这么那么就出来我，我就什么都不会。国内秋招也在我忙作业的过程中要结束了。面试在九月上旬就停了，感觉我的这个项目有点坑，开始上课就要准备毕业找工作，而且是要在学比较有挑战的课程之间找工作。我太难了。 像西西弗。 问题引入 某个sql查询比较慢，为">
 <meta name="twitter:image" content="https://puui.qpic.cn/fans_admin/0/3_1192510060_1571404504782/0">
     
     
@@ -161,7 +161,7 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="context"><a href="#context" class="headerlink" title="context"></a>context</h2><p>这一个月忙到爆炸，研究生课程很难，有好多课的作业即使花了很多时间也和别人有很大差距。<br>peer pressure。感觉别人都是信手拈来，数学算式这么那么就出来我，我就什么都不会。<br>国内秋招也在我忙作业的过程中要结束了。面试在九月上旬就停了，感觉我的这个项目有点坑，开始上课就要准备毕业找工作，<br>而且是要在学比较有挑战的课程之间找工作。我太难了。</p>
-<p>下周阿里有个面试，虽然我知道不会过，但是还要在一种无力感中复习。像西西弗。</p>
+<p>像西西弗。</p>
 <h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h2><ul>
 <li>某个sql查询比较慢，为条件字段加索引</li>
 <li>使用B+数做索引，查询时间log(n)。 hash存索引，查询时间log(1).</li>
