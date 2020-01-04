@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d0e276085c3289f144da.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d35876085c3289f1d63d.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e06d3b976085c3289f1ee66.jpg">
-<meta property="og:updated_time" content="2020-01-04T06:48:19.855Z">
+<meta property="og:updated_time" content="2020-01-04T06:52:02.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式总结">
 <meta name="twitter:description" content="context设计模式终于看完了，23种比较多。总结一下。 设计原则 如何同时提高一个软件系统的可维护性和可复用性是面向对象设计需要解决的核心问题之一  单一职责原则Single Responsibility Principle。一个类只负责一个功能领域中的相应职责，或者可以定义为：就一个类而言，应该只有一个引起它变化的原因。 比如，迭代器模式，将迭代的功能与容器的存储分离开。java中的coll">
@@ -184,15 +184,15 @@
 <p>如果一个软件设计符合开闭原则，那么可以非常方便地对系统进行扩展，而且在扩展时无须修改现有代码，使得软件系统在拥有适应性和灵活性的同时具备较好的稳定性和延续性。</p>
 <p>如：1.使用配置文件更改一些信息，不用在代码中改。<br>2.客户端针对抽象类编程，具体类继承抽象类或实现抽象接口。增添新的具体实现来扩展新的业务功能，而不需要修改抽象层。<br><strong>减少代码中的if else这样的选择、判断逻辑，使用关联关系/对象引用。</strong></p>
 <h2 id="里氏代换原则"><a href="#里氏代换原则" class="headerlink" title="里氏代换原则"></a>里氏代换原则</h2><p>(Liskov Substitution Principle, LSP)：所有引用基类（父类）的地方必须能透明地使用其子类的对象。</p>
-<p><strong>里氏代换原则是实现开闭原则的重要方式之一</strong>，由于使用基类对象的地方都可以使用子类对<br>象，因此在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型，用<br>子类对象来替换父类对象。</p>
+<p><strong>里氏代换原则是实现开闭原则的重要方式之一</strong>，由于使用基类对象的地方都可以使用子类对象，因此在程序中尽量使用基类类型来对对象进行定义，而<strong>在运行时再确定其子类类型</strong>，用子类对象来替换父类对象。</p>
 <h2 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h2><p>(Dependency Inversion Principle, DIP)：抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。</p>
 <p>依赖倒转原则要求我们在程序代码中传递参数时或在关联关系中，尽量引用层次高的抽象层类，即使用接口和抽象类进行变量类型声明、参数类型声明、方法返回类型声明，以及数据类型的转换等，而不要用具体类来做这些事情。</p>
 <h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>(Interface Segregation Principle, ISP)：使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。</p>
 <p>在使用接口隔离原则时，我们需要注意控制接口的粒度，接口不能太小，如果太小会导致系统中接口泛滥，不利于维护；接口也不能太大，太大的接口将违背接口隔离原则，灵活性较差，使用起来很不方便。一般而言，接口中仅包含为某一类用户定制的方法即可，不应该强迫客户依赖于那些它们不用的方法。</p>
 <h2 id="合成复用原则"><a href="#合成复用原则" class="headerlink" title="合成复用原则"></a>合成复用原则</h2><p>(Composite Reuse Principle, CRP)：尽量使用对象组合，而不是继承来达到复用的目的。</p>
-<p>合成复用原则就是在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些<br>已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用功能<br>的目的。简言之：复用时要尽量使用组合/聚合关系（关联关系），少用继承。</p>
+<p>合成复用原则就是在一个新的对象里通过<strong>关联关系</strong>（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用功能的目的。简言之：复用时要尽量使用组合/聚合关系（关联关系），少用继承。</p>
 <h2 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h2><p>(Law of Demeter, LoD)：一个软件实体应当尽可能少地与其他实体发生相互作用。</p>
-<p>迪米特法则要求我们在设计系统时，应该尽量减少对象之间的交互，如果两个对象之间不必<br>彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需<br>要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用。简言之，就是通过引<br>入一个合理的第三者来降低现有对象之间的耦合度。</p>
+<p>迪米特法则要求我们在设计系统时，应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用。简言之，就是通过引入一个合理的第三者来降低现有对象之间的耦合度。</p>
 <h1 id="创建型模式"><a href="#创建型模式" class="headerlink" title="创建型模式"></a>创建型模式</h1><h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><p>   Factory Method Pattern：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式使一个类的实例化延迟到其子类。<br>   <img src="https://pic.downk.cc/item/5e06bb1576085c3289ecd736.jpg" alt></p>
 <h2 id="抽象工厂模式-Abstract-Factory"><a href="#抽象工厂模式-Abstract-Factory" class="headerlink" title="抽象工厂模式(Abstract Factory):"></a>抽象工厂模式(Abstract Factory):</h2><p>提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。<br><img src="https://pic.downk.cc/item/5e06bb4d76085c3289ecdee7.jpg" alt></p>
 <h2 id="单例模式-Singleton"><a href="#单例模式-Singleton" class="headerlink" title="单例模式(Singleton):"></a>单例模式(Singleton):</h2><p> 保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
