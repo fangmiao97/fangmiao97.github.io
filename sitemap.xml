@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fangmiao97.github.io/2020/01/07/study-rpc/</loc>
+    
+    <lastmod>2020-01-07T06:47:45.739Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://fangmiao97.github.io/2019/12/28/design-pattern-summary/</loc>
     
     <lastmod>2020-01-05T08:12:54.674Z</lastmod>
@@ -219,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/search/index.html</loc>
+    <loc>https://fangmiao97.github.io/categories/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/categories/index.html</loc>
+    <loc>https://fangmiao97.github.io/search/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
@@ -261,6 +268,13 @@
   </url>
   
   <url>
+    <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
+    
+    <lastmod>2019-06-04T01:06:18.985Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
@@ -269,13 +283,6 @@
   
   <url>
     <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
-    
-    <lastmod>2019-06-04T01:06:18.985Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
     
