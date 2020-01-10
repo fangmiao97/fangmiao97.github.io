@@ -38,9 +38,9 @@ class Solution {
 
 ## [coin change](https://leetcode.com/problems/coin-change/)
 
-给定一定的数字集合，再给一个数，判断这个数是否可以由前面的数字集合组成，会出现很多种组合，但是找出分解数目最小的值。
+给定一定的数字集合，再给一个数，判断这个数是否可以由前面的数字集合组成，会出现很多种组合，但是找出分解数目**最小的值**。
 
-对于一个数A能否被正确分解，需要看A - 数字集合中某个数能否被分解（子问题）。数字集中的数字本身可以被分解。
+对于一个数A能否被正确分解，需要看A - **数字集合中某个数**能否被分解（子问题）。数字集中的数字本身可以被分解。
 
 找最小的分解数目，需要从A-数字集合中出现的数的分解数目中找到最小的值。初始数字0的分解数目为0。记录数组需要将所有的位置初始化为一个大值。
 如果最后的结果还是那个大值，就说明不能分解。
@@ -93,6 +93,8 @@ class Solution {
 
 ## [343. Integer Break](https://leetcode.com/problems/integer-break/)
 
+Given a positive integer n, break it into the sum of at least two positive integers and maximize the product of those integers. Return the maximum product you can get.
+
 ```java
 class Solution {
     public int integerBreak(int n) {
@@ -107,5 +109,12 @@ class Solution {
         return n % 3 == 0 ? (int)Math.pow(3, tnum) : (int)Math.pow(3, tnum) * (n % 3);
         
     }
+}
+
+public int minCostClimbingStairs(int[] cost) {
+        for (int i = 2; i < cost.length; i++) {
+            cost[i] += Math.min(cost[i-1], cost[i-2]);
+        }
+        return Math.min(cost[cost.length-1], cost[cost.length-2]);
 }
 ```

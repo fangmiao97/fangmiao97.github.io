@@ -48,16 +48,16 @@ class Solution {
 ```java
 class Solution {
     public void sortColors(int[] nums) {
-        int n0 = -1, n1 = -1, n2 = -1;
+        int n0 = -1, n1 = -1, n2 = -1;//三个数的index
         for(int i = 0; i < nums.length; i++) {
-            if(nums[i] == 0) {
+            if(nums[i] == 0) {//当是0是三个数都往后写
                 nums[++n2] = 2;
                 nums[++n1] = 1;
                 nums[++n0] = 0;
             }else if(nums[i] == 1) {
                 nums[++n2] = 2;
                 nums[++n1] = 1;
-            }else{
+            }else{//当是二的时候，只要2往后写就可以
                 nums[++n2] = 2;
             }
         }
