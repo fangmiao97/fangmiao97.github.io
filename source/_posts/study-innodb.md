@@ -94,7 +94,7 @@ ib_logfile0和ib_logfile1
 
 ### 事务
 
-原子性、一致性、持久性通过数据库的redo log和undo log来完成。redo log称为重做日志，用来保证事务的原子性和持久性。undolog用来保证事务的一致性。
+原子性、一致性、持久性通过数据库的redo log和undo log来完成。redo log称为重做日志，用来保证事务的原子性和持久性。undolog用来保证事务的一致性（write ahead log），在数据真正持久化之前先把变更写入 log 的方式就叫做 WAL（Write Ahead Logging）,除了带来事务一致性的保证，由于只需要把操作写到 WAL 里就可以认为操作完成而无需等待持久化真正的数据库变更完成就可以返回，数据库操作的效率也得到了一些提升。
 
 
 ## 索引组织表

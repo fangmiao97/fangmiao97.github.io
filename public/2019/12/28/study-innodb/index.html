@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e0ab3fa76085c3289f4a111.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e0afa3976085c3289013b80.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e0c560876085c3289382f12.jpg">
-<meta property="og:updated_time" content="2020-01-13T06:10:38.318Z">
+<meta property="og:updated_time" content="2020-01-16T15:49:26.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="innodb学习笔记">
 <meta name="twitter:description" content="总结问题数据库引擎结构和区别数据库是由一个个文件组成的，存储引擎是底层物理结构的实现。使用存储引擎使得数据库能够对事务进行支持（不同于文件系统的地方）存储引擎是基于表的，不是基于数据库的。 主要对比Innodb和MyISAM  Innodb支持事务，myisam不支持（因为设计它的用处不需要事务，看第二点）； Innodb适合OLTP在线事务处理应用，which is 频繁修改和安全性要求高的应用">
@@ -216,7 +216,7 @@
 <p>ib_logfile0和ib_logfile1</p>
 <p>它们记录了对于InnoDB存储引擎的事务日志。</p>
 <p>当实例或介质失败（media failure）时，重做日志文件就能派上用场。例如，数据库由于所在主机掉电导致实例失败，InnoDB存储引擎会使用重做日志恢复到掉电前的时刻，以此来保证数据的完整性。</p>
-<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>原子性、一致性、持久性通过数据库的redo log和undo log来完成。redo log称为重做日志，用来保证事务的原子性和持久性。undolog用来保证事务的一致性。</p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>原子性、一致性、持久性通过数据库的redo log和undo log来完成。redo log称为重做日志，用来保证事务的原子性和持久性。undolog用来保证事务的一致性（write ahead log），在数据真正持久化之前先把变更写入 log 的方式就叫做 WAL（Write Ahead Logging）。</p>
 <h2 id="索引组织表"><a href="#索引组织表" class="headerlink" title="索引组织表"></a>索引组织表</h2><p>在InnoDB存储引擎中，表都是根据主键顺序组织存放的，这种存储方式的表称为索引组织表（index organized table）。在InnoDB存储引擎表中，每张表都有个主键（Primary Key），如果在创建表时没有显式地定义主键，则InnoDB存储引擎会按如下方式选择或创建主键：</p>
 <ul>
 <li><p>首先判断表中是否有非空的唯一索引（Unique NOT NULL），如果有，则该列即为主键。</p>

@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="分布式ID生成器 应用场景  生成用户ID、微博ID、帖子ID、聊天信息ID等等  需求  生成的ID作为数据库的主键，unique, auto increasing, primary key clustered index, as short as possible, 64bits prefer. sortable by time, but not absolute, which means i">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-16T06:47:41.951Z">
+<meta property="og:updated_time" content="2020-01-16T08:28:23.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="系统设计学习 System design">
 <meta name="twitter:description" content="分布式ID生成器 应用场景  生成用户ID、微博ID、帖子ID、聊天信息ID等等  需求  生成的ID作为数据库的主键，unique, auto increasing, primary key clustered index, as short as possible, 64bits prefer. sortable by time, but not absolute, which means i">
@@ -107,7 +107,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式ID生成器"><span class="toc-number">1.</span> <span class="toc-text">分布式ID生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#短网址TinyURL生成"><span class="toc-number">2.</span> <span class="toc-text">短网址TinyURL生成</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式ID生成器"><span class="toc-number">1.</span> <span class="toc-text">分布式ID生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#短网址TinyURL生成"><span class="toc-number">2.</span> <span class="toc-text">短网址TinyURL生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#feed信息流"><span class="toc-number">3.</span> <span class="toc-text">feed信息流</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -213,7 +213,36 @@
 </ul>
 </li>
 </ul>
-<p>##</p>
+<h2 id="feed信息流"><a href="#feed信息流" class="headerlink" title="feed信息流"></a>feed信息流</h2><ul>
+<li><p>场景<br>微博抖音淘宝都是feed信息流，用户之间有关注和粉丝的关系，每个人都能看到自己的发布信息列表和关注人发布信息的列表。</p>
+</li>
+<li><p>消息news传递的模式</p>
+<ul>
+<li>推模式push<br>  一个用户发布了一条信息，比方说微博，就把这条信息推送/写入到粉丝的动态列表里。<br>  但是如果是大V的话，粉丝超级多，一条微博的话全写到粉丝的动态列表（inbox收件箱）里面，时间会比较长。</li>
+<li>拉模式pull<br>  一个用户刷新动态时，根据自己的关注列表来得到新的信息。如果这个人关注很多人的话，时间也会很长。</li>
+<li>混合<ul>
+<li>在线推，离线拉<br>大V发动态，只同步发布动态给同时在线的粉丝，离线的粉丝上线后，再去拉取动态。来完成推与拉。</li>
+<li>定时推，离线拉<br>大V发动态之后，以常驻进程的方式定时推送到粉丝动态表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li>多账号内容流，每个账户之间存在关注、取关、拉黑、好友等关系</li>
+<li>读写不平衡，多读少写</li>
+</ul>
+</li>
+<li><p>关键实现</p>
+<ul>
+<li>存储<br>用户关系的存储和feed消息的存储<ul>
+<li>用户关系的存储<br>使用分布式NoSQL数据库，因为这里没有很复杂的功能，比如join之类的，还可以存储海量信息。可以选择HBASE。</li>
+<li>feed消息存储<br>数据量大，消息格式简单。可以选择关系型数据库+分库分表或者结合NoSQL数据库来实现。当然要根据产品的特点来选择。<br>要根据数据本身的特点以及读写的特点（吞吐量？读写比例？）来选择实现的方案。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
   </div>
 </article>
@@ -266,7 +295,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式ID生成器"><span class="toc-number">1.</span> <span class="toc-text">分布式ID生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#短网址TinyURL生成"><span class="toc-number">2.</span> <span class="toc-text">短网址TinyURL生成</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式ID生成器"><span class="toc-number">1.</span> <span class="toc-text">分布式ID生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#短网址TinyURL生成"><span class="toc-number">2.</span> <span class="toc-text">短网址TinyURL生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#feed信息流"><span class="toc-number">3.</span> <span class="toc-text">feed信息流</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
