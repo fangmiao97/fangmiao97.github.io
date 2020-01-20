@@ -13,7 +13,7 @@ tags:
 
 使用前缀和，每次把一个路径看成一个数组，计算前缀和，两个点的差值为sum时即找到。
 
-```
+```java
     public int pathSum(TreeNode root, int sum) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, 1);  //Default sum = 0 has one count，一个节点的val刚好等于sum也是答案
@@ -64,3 +64,171 @@ class Solution {
     }
 }
 ```
+
+## Sum Root to Leaf Numbers
+
+![](https://pic.downk.cc/item/5e245b2d2fb38b8c3c7c8b76.jpg)
+
+```java
+class Solution {
+    
+    int res = 0;
+    
+    public int sumNumbers(TreeNode root) {
+        helper(root, 0);
+        return res;
+    }
+    
+    public void helper(TreeNode root, int temp) {
+        if(root == null) {
+            return;
+        }
+        if(root.left == null && root.right == null) {
+            temp = temp * 10 + root.val;
+            res += temp;
+        }
+        
+        helper(root.left, temp * 10 + root.val);
+        helper(root.right, temp * 10 + root.val);
+    }
+}
+```
+
+## Compares two strings lexicographically字典序比较两String
+
+```java
+    //相等时返回0，String < anotherString 一个负数（第一个差值）, 
+    // String > anotherString 正数
+    //String是用char array保存的    
+    public int compareTo(String anotherString) {
+        int len1 = value.length;
+        int len2 = anotherString.value.length;
+        int lim = Math.min(len1, len2);
+        char v1[] = value;
+        char v2[] = anotherString.value;
+
+        int k = 0;
+        while (k < lim) {//从前往后比较
+            char c1 = v1[k];
+            char c2 = v2[k];
+            if (c1 != c2) {//不相等就比较
+                return c1 - c2;//返回的是差值
+            }
+            k++;
+        }
+        return len1 - len2;
+    }
+```
+## [Smallest String Starting From Leaf](https://leetcode.com/problems/smallest-string-starting-from-leaf/)
+
+```java
+class Solution {
+    String ans = "~";//注意这个
+    public String smallestFromLeaf(TreeNode root) {
+        dfs(root, new StringBuilder());
+        return ans;
+    }
+    
+    public void dfs(TreeNode root, StringBuilder sb) {
+        if(root == null)
+            return;
+        
+        if(root.left == null && root.right == null) {
+            sb.insert(0, (char)('a' + root.val));
+            String s = sb.toString();
+            if (s.compareTo(ans) < 0)
+                ans = s;
+            sb.deleteCharAt(0);
+        }
+        
+        sb.insert(0, (char)('a' + root.val));
+        dfs(root.left, sb);
+        dfs(root.right, sb);
+        sb.deleteCharAt(0);
+    }
+}
+```
+## [Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/)
+
+![](https://pic.downk.cc/item/5e253e3a2fb38b8c3c955904.jpg)
+
+使用String和StringBuilder的区别
+"StringBuilder" is a mutable object, it will hold its value after returning.Whereas String creates a copy in every recursion, you don't need to worry about the "side-effect" when backtrack.
+
+
+```java
+class Solution {
+    public List<String> binaryTreePaths(TreeNode root) {
+        List<String> res = new ArrayList<>();
+        //dfs(res, "", root);
+        helper(res, new StringBuilder(), root);
+        return res;
+    }
+    
+    //使用String，因为这里都是符号应用生成新的String（immutable）
+    public void dfs(List<String> res, String temp, TreeNode root) {
+        if(root == null)
+            return;
+        
+        if(root.left == null && root.right == null) {
+            res.add(temp + root.val);
+        }
+        dfs(res, temp+root.val+"->", root.left);
+        dfs(res, temp+root.val+"->", root.right);
+    }
+    
+    //使用StringBuilder的话，操作的都是同一个StringBuilder，
+    // 所以要注意怎么恢复成原来的状态
+    public void helper(List<String> res, StringBuilder temp, TreeNode root) {
+        if(root == null)
+            return;
+       
+        //记录原来的长度 
+        int len = temp.length();
+        temp.append(root.val);
+        if(root.left == null && root.right == null) {
+            res.add(temp.toString());
+        }
+        temp.append("->");
+        helper(res, temp, root.left);
+        helper(res, temp, root.right);
+        temp.setLength(len);//截取成原来的长度，再返回
+    }
+}
+```
+
+## Delete Node in a BST
+
+```java
+class Solution {
+    public TreeNode deleteNode(TreeNode root, int key) {
+    if(root == null){
+        return null;
+    }
+    if(key < root.val){
+        root.left = deleteNode(root.left, key);
+    }else if(key > root.val){
+        root.right = deleteNode(root.right, key);
+    }else{
+        if(root.left == null){
+            return root.right;
+        }else if(root.right == null){
+            return root.left;
+        }
+        
+        TreeNode minNode = findMin(root.right);
+        root.val = minNode.val;
+        root.right = deleteNode(root.right, root.val);
+    }
+    return root;
+}
+
+private TreeNode findMin(TreeNode node){
+    while(node.left != null){
+        node = node.left;
+    }
+    return node;
+}
+}
+```
+

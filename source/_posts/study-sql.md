@@ -91,3 +91,33 @@ mysqldump -u [username] –p[password] –no-data [database_name] > [dump_file.s
 ![](https://pic.downk.cc/item/5e214d4d2fb38b8c3c318370.jpg)
 
 * decimal 定点数，账户余额（金融类）
+
+## CTE Common table expression
+
+mysql8.0新增公共表表达式CTE
+
+公用表表达式是一个命名的临时结果集，仅在单个SQL语句(例如SELECT，INSERT，UPDATE或DELETE)的执行范围内存在。
+
+```sql
+WITH customers_in_usa AS (
+	SELECT 
+	    customerName, state
+	from
+	    customers
+	where
+	    country = 'USA'
+)SELECT 
+	customerName
+FROM 
+	customers_in_usa
+where
+	state = 'CA'
+ORDER BY customerName;
+```
+### [遍历分层数据](https://www.yiibai.com/mysql/recursive-cte.html)
+
+递归公用表表达式(CTE)是一个具有引用CTE名称本身的子查询的CTE
+
+## 邻接列表模型管理MySQL中的分层数据
+
+本表中的主键作为外键（自身循环作为外键），最顶层的外键为null。
