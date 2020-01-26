@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://fangmiao97.github.io/2020/01/19/algorithm-review/</loc>
+    <lastmod>2020-01-26</lastmod>
+  </url>  <url>
     <loc>https://fangmiao97.github.io/2020/01/17/study-sql/</loc>
     <lastmod>2020-01-22</lastmod>
-  </url>  <url>
-    <loc>https://fangmiao97.github.io/2020/01/19/algorithm-review/</loc>
-    <lastmod>2020-01-20</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/12/28/study-innodb/</loc>
     <lastmod>2020-01-16</lastmod>
@@ -106,16 +106,16 @@
     <loc>https://fangmiao97.github.io/2019/03/30/weeklyReport190330/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/03/23/weeklyReport190323/</loc>
-    <lastmod>2019-06-04</lastmod>
-  </url>  <url>
     <loc>https://fangmiao97.github.io/2019/03/16/weeklyReport190316/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/23/weeklyReport190323/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
+    <lastmod>2019-06-04</lastmod>
+  </url>  <url>
+    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
@@ -130,16 +130,16 @@
     <loc>https://fangmiao97.github.io/2019/04/13/tanslate-Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction%E2%80%93for-In-Memory-Cluster-Computing/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/04/22/mock-accesslog-python/</loc>
-    <lastmod>2019-06-04</lastmod>
-  </url>  <url>
     <loc>https://fangmiao97.github.io/2019/03/27/minionsUsage/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/03/19/graduationDesignReferences/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/22/mock-accesslog-python/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/03/21/minions-frontend-overview/</loc>
+    <lastmod>2019-06-04</lastmod>
+  </url>  <url>
+    <loc>https://fangmiao97.github.io/2019/03/19/graduationDesignReferences/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/06/01/graduation-design-paper/</loc>
@@ -148,10 +148,10 @@
     <loc>https://fangmiao97.github.io/2019/03/18/frontendstudy/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/04/19/StudyHBaseJavaAPI/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/18/axioscorsquestions/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/axioscorsquestions/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/19/StudyHBaseJavaAPI/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/24/Minions-Visualization-first/</loc>

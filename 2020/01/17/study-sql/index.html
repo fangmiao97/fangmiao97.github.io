@@ -16,7 +16,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://pic.downk.cc/item/5e214d4d2fb38b8c3c318370.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e25d2072fb38b8c3ca5a6bb.jpg">
-<meta property="og:updated_time" content="2020-01-22T05:18:32.490Z">
+<meta property="og:image" content="https://pic.downk.cc/item/5e27dc912fb38b8c3cdc278f.jpg">
+<meta property="og:updated_time" content="2020-01-22T05:28:01.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql要点复习">
 <meta name="twitter:description" content="外键与on delete cascadebuilding表和room表，由building_no键连接，并且设置on delete cascade。 这样在删除building时会通过级联将room中相关building的数据也删掉。楼倒了，屋子也就没了。 1234567891011121314CREATE TABLE if NOT EXISTS buildings(	building_no IN">
@@ -200,7 +201,9 @@
 <p><img src="https://pic.downk.cc/item/5e25d2072fb38b8c3ca5a6bb.jpg" alt></p>
 <h2 id="查找表中重复数据"><a href="#查找表中重复数据" class="headerlink" title="查找表中重复数据"></a>查找表中重复数据</h2><p>GROUP BY子句通过列或表达式的值将一组行分组为一个小分组的汇总行记录。 GROUP BY子句为每个分组返回一行。换句话说，它减少了结果集中的行数。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> contacts;</span><br><span class="line"><span class="keyword">SELECT</span> first_name, <span class="keyword">COUNT</span>(first_name)</span><br><span class="line"><span class="keyword">FROM</span> contacts</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> first_name</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(first_name) &gt; <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-
+<p><img src="https://pic.downk.cc/item/5e27dc912fb38b8c3cdc278f.jpg" alt></p>
+<p>多列重复值查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	first_name, <span class="keyword">COUNT</span>(first_name),</span><br><span class="line">	second_name,<span class="keyword">COUNT</span>(second_name),</span><br><span class="line">	email, <span class="keyword">COUNT</span>(email)</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	contacts</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	first_name,second_name,email</span><br><span class="line"><span class="keyword">having</span></span><br><span class="line">    <span class="keyword">count</span>(first_name) &gt; <span class="number">2</span> <span class="keyword">and</span> <span class="keyword">count</span> (second_name) &gt; <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 
