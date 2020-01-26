@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="分布式ID生成器 应用场景  生成用户ID、微博ID、帖子ID、聊天信息ID等等  需求  生成的ID作为数据库的主键，unique, auto increasing, primary key clustered index, as short as possible, 64bits prefer. sortable by time, but not absolute, which means i">
+<meta name="keywords" content="系统设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统设计学习 System design">
+<meta property="og:url" content="https://fangmiao97.github.io/2020/01/15/system-design/index.html">
+<meta property="og:site_name" content="Chaoyue&#39;s Notes">
+<meta property="og:description" content="分布式ID生成器 应用场景  生成用户ID、微博ID、帖子ID、聊天信息ID等等  需求  生成的ID作为数据库的主键，unique, auto increasing, primary key clustered index, as short as possible, 64bits prefer. sortable by time, but not absolute, which means i">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-16T08:28:23.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统设计学习 System design">
+<meta name="twitter:description" content="分布式ID生成器 应用场景  生成用户ID、微博ID、帖子ID、聊天信息ID等等  需求  生成的ID作为数据库的主键，unique, auto increasing, primary key clustered index, as short as possible, 64bits prefer. sortable by time, but not absolute, which means i">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>系统设计学习 System design</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/01/17/study-sql/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/01/08/study-hashMap/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fangmiao97.github.io/2020/01/15/system-design/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2020/01/15/system-design/&text=系统设计学习 System design"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2020/01/15/system-design/&is_video=false&description=系统设计学习 System design"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=系统设计学习 System design&body=Check out this article: https://fangmiao97.github.io/2020/01/15/system-design/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2020/01/15/system-design/&name=系统设计学习 System design&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式ID生成器"><span class="toc-number">1.</span> <span class="toc-text">分布式ID生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#短网址TinyURL生成"><span class="toc-number">2.</span> <span class="toc-text">短网址TinyURL生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#feed信息流"><span class="toc-number">3.</span> <span class="toc-text">feed信息流</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        系统设计学习 System design
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Chaoyue's Notes</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-14T16:00:00.000Z" itemprop="datePublished">2020-01-15</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/系统设计/">系统设计</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/系统设计/">系统设计</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="分布式ID生成器"><a href="#分布式ID生成器" class="headerlink" title="分布式ID生成器"></a>分布式ID生成器</h2><ul>
+<li>应用场景</li>
+</ul>
+<p>生成用户ID、微博ID、帖子ID、聊天信息ID等等</p>
+<ul>
+<li><p>需求</p>
+<ul>
+<li>生成的ID作为数据库的主键，unique, auto increasing, primary key</li>
+<li>clustered index, as short as possible, 64bits prefer.</li>
+<li>sortable by time, but not absolute, which means in the distributed system, we can never get strictly time-sorted ID.</li>
+</ul>
+</li>
+<li><p>解决方案</p>
+<ul>
+<li><p>UUID</p>
+<ul>
+<li>一类算法的统称，使用一串可以分成不同部分的标志符来表示资源，标准的是128位。MongoDB中使用的是12字节。</li>
+<li>标志符由几部分组成：时间戳timestamp、机器ID、进程ID、自增计数器</li>
+<li>每台机器可以独立产生ID，理论上保证不会重复，所以天然是<br>分布式的，缺点是生成的ID太长，不仅占用内存，而且索引查询效率低</li>
+</ul>
+</li>
+<li><p>多台mysql服务器</p>
+<ul>
+<li>不同的机器从不同的初始值开始增加数字，比方说两台话，就是一台奇数一台偶数。</li>
+<li>在mysql机器前用round robin load-balancer循环负载均衡器来选择mysql服务器。</li>
+<li>实现简单，但是不是严格递增的。</li>
+</ul>
+</li>
+<li><p>Twitter(snowflake)和ins的方案</p>
+<ul>
+<li>用一个长串标识符表示ID，标识符由不同的部分组成，比如时间戳、机器id和序列号。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="短网址TinyURL生成"><a href="#短网址TinyURL生成" class="headerlink" title="短网址TinyURL生成"></a>短网址TinyURL生成</h2><ul>
+<li>场景</li>
+</ul>
+<p>微博Twitter有字数限制，需要将长的URL转成短网址。另外通过短网址的转换，记录一些信息，比方说时间发布的用户等等（电商）。</p>
+<ul>
+<li><p>需求</p>
+<ul>
+<li>尽可能的短，使用长度为7，62进制的字符组成（大小写字母＋数字）</li>
+<li>一对多映射，即一个长网址可以对应多个短网址，因为短网址还有另一个功能就是数据统计，一个短网址ID之下可以挂多种信息，比如生成该网站的用户名、时间等等信息，用于以后数据分析。</li>
+</ul>
+</li>
+<li><p>解决方案</p>
+<ul>
+<li>计算短网址？不是用hash算法，使用分布式ID生成器，也就是上面一个设计</li>
+<li>存储，使用关系型数据库mysql或者分布式KV数据库。</li>
+<li>如果用了301，Google，百度等搜索引擎，搜索的时候会直接展示真实地址，那我们就无法统计到短地址被点击的次数了，也无法收集用户的Cookie, User Agent 等信息，这些信息可以用来做很多有意思的大数据分析，也是短网址服务商的主要盈利来源。</li>
+<li>使用302临时重定向，新浪微博用的就是302</li>
+<li>预防攻击，限制IP的单日请求总数，另外使用一个缓存服务器，存储长网址-》短网址的数据，这样如果同一个长网址请求很多次短网址，就根据LRU机制来返回短网址ID，不至于消耗很多短网址ID。</li>
+</ul>
+</li>
+</ul>
+<h2 id="feed信息流"><a href="#feed信息流" class="headerlink" title="feed信息流"></a>feed信息流</h2><ul>
+<li><p>场景<br>微博抖音淘宝都是feed信息流，用户之间有关注和粉丝的关系，每个人都能看到自己的发布信息列表和关注人发布信息的列表。</p>
+</li>
+<li><p>消息news传递的模式</p>
+<ul>
+<li>推模式push<br>  一个用户发布了一条信息，比方说微博，就把这条信息推送/写入到粉丝的动态列表里。<br>  但是如果是大V的话，粉丝超级多，一条微博的话全写到粉丝的动态列表（inbox收件箱）里面，时间会比较长。</li>
+<li>拉模式pull<br>  一个用户刷新动态时，根据自己的关注列表来得到新的信息。如果这个人关注很多人的话，时间也会很长。</li>
+<li>混合<ul>
+<li>在线推，离线拉<br>大V发动态，只同步发布动态给同时在线的粉丝，离线的粉丝上线后，再去拉取动态。来完成推与拉。</li>
+<li>定时推，离线拉<br>大V发动态之后，以常驻进程的方式定时推送到粉丝动态表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li>多账号内容流，每个账户之间存在关注、取关、拉黑、好友等关系</li>
+<li>读写不平衡，多读少写</li>
+</ul>
+</li>
+<li><p>关键实现</p>
+<ul>
+<li>存储<br>用户关系的存储和feed消息的存储<ul>
+<li>用户关系的存储<br>使用分布式NoSQL数据库，因为这里没有很复杂的功能，比如join之类的，还可以存储海量信息。可以选择HBASE。</li>
+<li>feed消息存储<br>数据量大，消息格式简单。可以选择关系型数据库+分库分表或者结合NoSQL数据库来实现。当然要根据产品的特点来选择。<br>要根据数据本身的特点以及读写的特点（吞吐量？读写比例？）来选择实现的方案。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="vcomments" class="blog-post-comments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            visitor: true,
+            appId: '',
+            appKey: '',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            avatar: 'robohash'
+        })
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式ID生成器"><span class="toc-number">1.</span> <span class="toc-text">分布式ID生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#短网址TinyURL生成"><span class="toc-number">2.</span> <span class="toc-text">短网址TinyURL生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#feed信息流"><span class="toc-number">3.</span> <span class="toc-text">feed信息流</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fangmiao97.github.io/2020/01/15/system-design/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2020/01/15/system-design/&text=系统设计学习 System design"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2020/01/15/system-design/&is_video=false&description=系统设计学习 System design"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=系统设计学习 System design&body=Check out this article: https://fangmiao97.github.io/2020/01/15/system-design/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2020/01/15/system-design/&title=系统设计学习 System design"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2020/01/15/system-design/&name=系统设计学习 System design&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Fang Miao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cactus-1-2';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

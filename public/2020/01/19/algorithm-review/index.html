@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Path Sum 3 二叉树中任意起点和终点上的路径和等于sum  使用前缀和，每次把一个路径看成一个数组，计算前缀和，两个点的差值为sum时即找到。 1234567891011121314151617public int pathSum(TreeNode root, int sum) &amp;#123;    Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1月算法复习">
+<meta property="og:url" content="https://fangmiao97.github.io/2020/01/19/algorithm-review/index.html">
+<meta property="og:site_name" content="Chaoyue&#39;s Notes">
+<meta property="og:description" content="Path Sum 3 二叉树中任意起点和终点上的路径和等于sum  使用前缀和，每次把一个路径看成一个数组，计算前缀和，两个点的差值为sum时即找到。 1234567891011121314151617public int pathSum(TreeNode root, int sum) &amp;#123;    Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pic.downk.cc/item/5e245b2d2fb38b8c3c7c8b76.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e253e3a2fb38b8c3c955904.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e2d30bb2fb38b8c3c8fbc9f.jpg">
+<meta property="og:updated_time" content="2020-01-26T09:01:54.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1月算法复习">
+<meta name="twitter:description" content="Path Sum 3 二叉树中任意起点和终点上的路径和等于sum  使用前缀和，每次把一个路径看成一个数组，计算前缀和，两个点的差值为sum时即找到。 1234567891011121314151617public int pathSum(TreeNode root, int sum) &amp;#123;    Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;">
+<meta name="twitter:image" content="https://pic.downk.cc/item/5e245b2d2fb38b8c3c7c8b76.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>1月算法复习</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/01/17/study-sql/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fangmiao97.github.io/2020/01/19/algorithm-review/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&text=1月算法复习"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&is_video=false&description=1月算法复习"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=1月算法复习&body=Check out this article: https://fangmiao97.github.io/2020/01/19/algorithm-review/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&name=1月算法复习&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Path-Sum-3"><span class="toc-number">1.</span> <span class="toc-text">Path Sum 3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binary-Tree-Maximum-Path-Sum"><span class="toc-number">2.</span> <span class="toc-text">Binary Tree Maximum Path Sum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-Root-to-Leaf-Numbers"><span class="toc-number">3.</span> <span class="toc-text">Sum Root to Leaf Numbers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Compares-two-strings-lexicographically字典序比较两String"><span class="toc-number">4.</span> <span class="toc-text">Compares two strings lexicographically字典序比较两String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smallest-String-Starting-From-Leaf"><span class="toc-number">5.</span> <span class="toc-text">Smallest String Starting From Leaf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binary-Tree-Paths"><span class="toc-number">6.</span> <span class="toc-text">Binary Tree Paths</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Delete-Node-in-a-BST"><span class="toc-number">7.</span> <span class="toc-text">Delete Node in a BST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#138-Copy-List-with-Random-Pointer"><span class="toc-number">8.</span> <span class="toc-text">138. Copy List with Random Pointer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图clone"><span class="toc-number">9.</span> <span class="toc-text">图clone</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        1月算法复习
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Chaoyue's Notes</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-18T16:00:00.000Z" itemprop="datePublished">2020-01-19</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/算法/">算法</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/LeetCode/">LeetCode</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Path-Sum-3"><a href="#Path-Sum-3" class="headerlink" title="Path Sum 3"></a>Path Sum 3</h2><ul>
+<li>二叉树中任意起点和终点上的路径和等于sum</li>
+</ul>
+<p>使用前缀和，每次把一个路径看成一个数组，计算前缀和，两个点的差值为sum时即找到。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="number">0</span>, <span class="number">1</span>);  <span class="comment">//Default sum = 0 has one count，一个节点的val刚好等于sum也是答案</span></span><br><span class="line">    <span class="keyword">return</span> backtrack(root, <span class="number">0</span>, sum, map); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//BackTrack one pass</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">backtrack</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum, <span class="keyword">int</span> target, Map&lt;Integer, Integer&gt; map)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    sum += root.val;</span><br><span class="line">    <span class="keyword">int</span> res = map.getOrDefault(sum - target, <span class="number">0</span>);<span class="comment">//See if there is a subarray sum equals to target</span></span><br><span class="line">    map.put(sum, map.getOrDefault(sum, <span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">    <span class="comment">//Extend to left and right child</span></span><br><span class="line">    res += backtrack(root.left, sum, target, map) + backtrack(root.right, sum, target, map);</span><br><span class="line">    map.put(sum, map.get(sum)-<span class="number">1</span>);   <span class="comment">//Remove the current node so it wont affect other path</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后一定要注意有一个将map中sum对应值减一的操作</p>
+<h2 id="Binary-Tree-Maximum-Path-Sum"><a href="#Binary-Tree-Maximum-Path-Sum" class="headerlink" title="Binary Tree Maximum Path Sum"></a>Binary Tree Maximum Path Sum</h2><p>找到二叉树里面具有最大和（max sum）的路径，这个路径不一定要从上到下，就是二叉树中随便一条路径，但是不能有分叉，也就是说路径是一条，不会分开。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">//全局最大值，最终返回的值</span></span><br><span class="line">    <span class="keyword">int</span> max = Integer.MIN_VALUE;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        helper(root);</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回包括这个root在内的最大路径，3中选择：root本身，root+left的值，root+right的值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helper</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//默认都会有返回值，最小值为0</span></span><br><span class="line">        <span class="keyword">int</span> left = Math.max(<span class="number">0</span>, helper(root.left));</span><br><span class="line">        <span class="keyword">int</span> right = Math.max(<span class="number">0</span>, helper(root.right));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//更新max</span></span><br><span class="line">        max = Math.max(max, root.val + left + right);</span><br><span class="line">        <span class="keyword">return</span> root.val+Math.max(left,right);<span class="comment">//只能返回一边，而且包括root</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Sum-Root-to-Leaf-Numbers"><a href="#Sum-Root-to-Leaf-Numbers" class="headerlink" title="Sum Root to Leaf Numbers"></a>Sum Root to Leaf Numbers</h2><p><img src="https://pic.downk.cc/item/5e245b2d2fb38b8c3c7c8b76.jpg" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumNumbers</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        helper(root, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root, <span class="keyword">int</span> temp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            temp = temp * <span class="number">10</span> + root.val;</span><br><span class="line">            res += temp;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        helper(root.left, temp * <span class="number">10</span> + root.val);</span><br><span class="line">        helper(root.right, temp * <span class="number">10</span> + root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Compares-two-strings-lexicographically字典序比较两String"><a href="#Compares-two-strings-lexicographically字典序比较两String" class="headerlink" title="Compares two strings lexicographically字典序比较两String"></a>Compares two strings lexicographically字典序比较两String</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//相等时返回0，String &lt; anotherString 一个负数（第一个差值）, </span></span><br><span class="line"><span class="comment">// String &gt; anotherString 正数</span></span><br><span class="line"><span class="comment">//String是用char array保存的    </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(String anotherString)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len1 = value.length;</span><br><span class="line">    <span class="keyword">int</span> len2 = anotherString.value.length;</span><br><span class="line">    <span class="keyword">int</span> lim = Math.min(len1, len2);</span><br><span class="line">    <span class="keyword">char</span> v1[] = value;</span><br><span class="line">    <span class="keyword">char</span> v2[] = anotherString.value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (k &lt; lim) &#123;<span class="comment">//从前往后比较</span></span><br><span class="line">        <span class="keyword">char</span> c1 = v1[k];</span><br><span class="line">        <span class="keyword">char</span> c2 = v2[k];</span><br><span class="line">        <span class="keyword">if</span> (c1 != c2) &#123;<span class="comment">//不相等就比较</span></span><br><span class="line">            <span class="keyword">return</span> c1 - c2;<span class="comment">//返回的是差值</span></span><br><span class="line">        &#125;</span><br><span class="line">        k++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len1 - len2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Smallest-String-Starting-From-Leaf"><a href="#Smallest-String-Starting-From-Leaf" class="headerlink" title="Smallest String Starting From Leaf"></a><a href="https://leetcode.com/problems/smallest-string-starting-from-leaf/" target="_blank" rel="noopener">Smallest String Starting From Leaf</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    String ans = <span class="string">"~"</span>;<span class="comment">//注意这个</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">smallestFromLeaf</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        dfs(root, <span class="keyword">new</span> StringBuilder());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode root, StringBuilder sb)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            sb.insert(<span class="number">0</span>, (<span class="keyword">char</span>)(<span class="string">'a'</span> + root.val));</span><br><span class="line">            String s = sb.toString();</span><br><span class="line">            <span class="keyword">if</span> (s.compareTo(ans) &lt; <span class="number">0</span>)</span><br><span class="line">                ans = s;</span><br><span class="line">            sb.deleteCharAt(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        sb.insert(<span class="number">0</span>, (<span class="keyword">char</span>)(<span class="string">'a'</span> + root.val));</span><br><span class="line">        dfs(root.left, sb);</span><br><span class="line">        dfs(root.right, sb);</span><br><span class="line">        sb.deleteCharAt(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Binary-Tree-Paths"><a href="#Binary-Tree-Paths" class="headerlink" title="Binary Tree Paths"></a><a href="https://leetcode.com/problems/binary-tree-paths/" target="_blank" rel="noopener">Binary Tree Paths</a></h2><p><img src="https://pic.downk.cc/item/5e253e3a2fb38b8c3c955904.jpg" alt></p>
+<p>使用String和StringBuilder的区别<br>“StringBuilder” is a mutable object, it will hold its value after returning.Whereas String creates a copy in every recursion, you don’t need to worry about the “side-effect” when backtrack.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">binaryTreePaths</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//dfs(res, "", root);</span></span><br><span class="line">        helper(res, <span class="keyword">new</span> StringBuilder(), root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//使用String，因为这里都是符号应用生成新的String（immutable）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(List&lt;String&gt; res, String temp, TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            res.add(temp + root.val);</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(res, temp+root.val+<span class="string">"-&gt;"</span>, root.left);</span><br><span class="line">        dfs(res, temp+root.val+<span class="string">"-&gt;"</span>, root.right);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//使用StringBuilder的话，操作的都是同一个StringBuilder，</span></span><br><span class="line">    <span class="comment">// 所以要注意怎么恢复成原来的状态</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(List&lt;String&gt; res, StringBuilder temp, TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">       </span><br><span class="line">        <span class="comment">//记录原来的长度 </span></span><br><span class="line">        <span class="keyword">int</span> len = temp.length();</span><br><span class="line">        temp.append(root.val);</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            res.add(temp.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        temp.append(<span class="string">"-&gt;"</span>);</span><br><span class="line">        helper(res, temp, root.left);</span><br><span class="line">        helper(res, temp, root.right);</span><br><span class="line">        temp.setLength(len);<span class="comment">//截取成原来的长度，再返回</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Delete-Node-in-a-BST"><a href="#Delete-Node-in-a-BST" class="headerlink" title="Delete Node in a BST"></a>Delete Node in a BST</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">deleteNode</span><span class="params">(TreeNode root, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(key &lt; root.val)&#123;</span><br><span class="line">        root.left = deleteNode(root.left, key);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(key &gt; root.val)&#123;</span><br><span class="line">        root.right = deleteNode(root.right, key);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> root.right;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> root.left;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        TreeNode minNode = findMin(root.right);</span><br><span class="line">        root.val = minNode.val;</span><br><span class="line">        root.right = deleteNode(root.right, root.val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> TreeNode <span class="title">findMin</span><span class="params">(TreeNode node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(node.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">        node = node.left;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="138-Copy-List-with-Random-Pointer"><a href="#138-Copy-List-with-Random-Pointer" class="headerlink" title="138. Copy List with Random Pointer"></a><a href="https://leetcode.com/problems/copy-list-with-random-pointer/" target="_blank" rel="noopener">138. Copy List with Random Pointer</a></h2><p>使用map先保存新创建的node，再连接节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// Definition for a Node.</span></span><br><span class="line"><span class="comment">class Node &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    Node next;</span></span><br><span class="line"><span class="comment">    Node random;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public Node(int val) &#123;</span></span><br><span class="line"><span class="comment">        this.val = val;</span></span><br><span class="line"><span class="comment">        this.next = null;</span></span><br><span class="line"><span class="comment">        this.random = null;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">copyRandomList</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">        Map&lt;Node, Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        Node node = head;</span><br><span class="line">        <span class="keyword">while</span>(node != <span class="keyword">null</span>) &#123;</span><br><span class="line">            map.put(node, <span class="keyword">new</span> Node(node.val));</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        node = head;</span><br><span class="line">        <span class="keyword">while</span>(node != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//注意这两句！！！！！！</span></span><br><span class="line">            map.get(node).next = map.get(node.next);</span><br><span class="line">            map.get(node).random = map.get(node.random);</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> map.get(head);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>法二，不使用map</p>
+<p><img src="https://pic.downk.cc/item/5e2d30bb2fb38b8c3c8fbc9f.jpg" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">copyRandomList</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        Node node = head;</span><br><span class="line">        <span class="keyword">while</span>(node != <span class="keyword">null</span>) &#123;</span><br><span class="line">            Node next = node.next;</span><br><span class="line">            node.next = <span class="keyword">new</span> Node(node.val);</span><br><span class="line">            node.next.next = next;</span><br><span class="line">            node = next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        node = head;</span><br><span class="line">        <span class="keyword">while</span>(node != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(node.random != <span class="keyword">null</span>) &#123;</span><br><span class="line">                node.next.random = node.random.next;</span><br><span class="line">            &#125;</span><br><span class="line">            node = node.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        node = head;</span><br><span class="line">        Node copyHead = head.next;</span><br><span class="line">        Node copy = copyHead;</span><br><span class="line">        <span class="keyword">while</span>(copy.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            node.next = node.next.next;</span><br><span class="line">            node = node.next;</span><br><span class="line">            </span><br><span class="line">            copy.next = copy.next.next;</span><br><span class="line">            copy = copy.next;</span><br><span class="line">        &#125;</span><br><span class="line">        node.next =node.next.next;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> copyHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="图clone"><a href="#图clone" class="headerlink" title="图clone"></a><a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">图clone</a></h2><ul>
+<li><p>dfs</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// Definition for a Node.</span></span><br><span class="line"><span class="comment">class Node &#123;</span></span><br><span class="line"><span class="comment">    public int val;</span></span><br><span class="line"><span class="comment">    public List&lt;Node&gt; neighbors;</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    public Node() &#123;</span></span><br><span class="line"><span class="comment">        val = 0;</span></span><br><span class="line"><span class="comment">        neighbors = new ArrayList&lt;Node&gt;();</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    public Node(int _val) &#123;</span></span><br><span class="line"><span class="comment">        val = _val;</span></span><br><span class="line"><span class="comment">        neighbors = new ArrayList&lt;Node&gt;();</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    public Node(int _val, ArrayList&lt;Node&gt; _neighbors) &#123;</span></span><br><span class="line"><span class="comment">        val = _val;</span></span><br><span class="line"><span class="comment">        neighbors = _neighbors;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Map&lt;Node, Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">cloneGraph</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dfsClone(node);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">Node <span class="title">dfsClone</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(node))</span><br><span class="line">            <span class="keyword">return</span> map.get(node);</span><br><span class="line">        </span><br><span class="line">        Node newNode = <span class="keyword">new</span> Node(node.val);</span><br><span class="line">        map.put(node, newNode);</span><br><span class="line">        <span class="keyword">for</span>(Node neighbor: node.neighbors) &#123;</span><br><span class="line">            newNode.neighbors.add(dfsClone(neighbor));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bfs</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">cloneGraph</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span>  <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">        Queue&lt;Node&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.add(node);</span><br><span class="line">        </span><br><span class="line">        Map&lt;Node, Node&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(node, <span class="keyword">new</span> Node(node.val));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            Node curr = queue.poll();</span><br><span class="line">            <span class="keyword">for</span>(Node neighbor: curr.neighbors) &#123;</span><br><span class="line">                <span class="keyword">if</span>(!map.containsKey(neighbor)) &#123;</span><br><span class="line">                    map.put(neighbor, <span class="keyword">new</span> Node(neighbor.val));</span><br><span class="line">                    queue.add(neighbor);</span><br><span class="line">                &#125;</span><br><span class="line">                map.get(curr).neighbors.add(map.get(neighbor));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> map.get(node);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <div id="vcomments" class="blog-post-comments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            visitor: true,
+            appId: '',
+            appKey: '',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+            avatar: 'robohash'
+        })
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Path-Sum-3"><span class="toc-number">1.</span> <span class="toc-text">Path Sum 3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binary-Tree-Maximum-Path-Sum"><span class="toc-number">2.</span> <span class="toc-text">Binary Tree Maximum Path Sum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-Root-to-Leaf-Numbers"><span class="toc-number">3.</span> <span class="toc-text">Sum Root to Leaf Numbers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Compares-two-strings-lexicographically字典序比较两String"><span class="toc-number">4.</span> <span class="toc-text">Compares two strings lexicographically字典序比较两String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smallest-String-Starting-From-Leaf"><span class="toc-number">5.</span> <span class="toc-text">Smallest String Starting From Leaf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binary-Tree-Paths"><span class="toc-number">6.</span> <span class="toc-text">Binary Tree Paths</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Delete-Node-in-a-BST"><span class="toc-number">7.</span> <span class="toc-text">Delete Node in a BST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#138-Copy-List-with-Random-Pointer"><span class="toc-number">8.</span> <span class="toc-text">138. Copy List with Random Pointer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图clone"><span class="toc-number">9.</span> <span class="toc-text">图clone</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://fangmiao97.github.io/2020/01/19/algorithm-review/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&text=1月算法复习"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&is_video=false&description=1月算法复习"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=1月算法复习&body=Check out this article: https://fangmiao97.github.io/2020/01/19/algorithm-review/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&title=1月算法复习"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2020/01/19/algorithm-review/&name=1月算法复习&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Fang Miao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+         
+          <li><a href="https://github.com/fangmiao97">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cactus-1-2';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

@@ -232,3 +232,174 @@ private TreeNode findMin(TreeNode node){
 }
 ```
 
+## [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)
+
+使用map先保存新创建的node，再连接节点。
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+class Solution {
+    public Node copyRandomList(Node head) {
+        if(head == null)
+            return null;
+        
+        Map<Node, Node> map = new HashMap<>();
+        
+        Node node = head;
+        while(node != null) {
+            map.put(node, new Node(node.val));
+            node = node.next;
+        }
+        
+        node = head;
+        while(node != null) {
+            //注意这两句！！！！！！
+            map.get(node).next = map.get(node.next);
+            map.get(node).random = map.get(node.random);
+            node = node.next;
+        }
+
+        return map.get(head);
+    }
+}
+```
+
+法二，不使用map
+
+![](https://pic.downk.cc/item/5e2d30bb2fb38b8c3c8fbc9f.jpg)
+
+```java
+class Solution {
+    public Node copyRandomList(Node head) {
+        if(head == null)
+            return null;
+        Node node = head;
+        while(node != null) {
+            Node next = node.next;
+            node.next = new Node(node.val);
+            node.next.next = next;
+            node = next;
+        }
+        
+        node = head;
+        while(node != null) {
+            if(node.random != null) {
+                node.next.random = node.random.next;
+            }
+            node = node.next.next;
+        }
+        
+        node = head;
+        Node copyHead = head.next;
+        Node copy = copyHead;
+        while(copy.next != null) {
+            node.next = node.next.next;
+            node = node.next;
+            
+            copy.next = copy.next.next;
+            copy = copy.next;
+        }
+        node.next =node.next.next;
+        
+        return copyHead;
+    }
+}
+```
+
+## [图clone](https://leetcode.com/problems/clone-graph/)
+
+* dfs
+```java
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+*/
+class Solution {
+    
+    private Map<Node, Node> map = new HashMap<>();
+    public Node cloneGraph(Node node) {
+        return dfsClone(node);
+    }
+    
+    Node dfsClone(Node node) {
+        if(node == null)
+            return null;
+        
+        if(map.containsKey(node))
+            return map.get(node);
+        
+        Node newNode = new Node(node.val);
+        map.put(node, newNode);
+        for(Node neighbor: node.neighbors) {
+            newNode.neighbors.add(dfsClone(neighbor));
+        }
+        return newNode;
+    }
+}
+```
+
+* bfs
+
+```java
+class Solution {
+    public Node cloneGraph(Node node) {
+        if(node == null)
+            return  null;
+        
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        
+        Map<Node, Node> map = new HashMap<>();
+        map.put(node, new Node(node.val));
+        
+        while(!queue.isEmpty()) {
+            Node curr = queue.poll();
+            for(Node neighbor: curr.neighbors) {
+                if(!map.containsKey(neighbor)) {
+                    map.put(neighbor, new Node(neighbor.val));
+                    queue.add(neighbor);
+                }
+                map.get(curr).neighbors.add(map.get(neighbor));
+            }
+        }
+        return map.get(node);
+    }
+}
+```
+
+
+
+
+
+

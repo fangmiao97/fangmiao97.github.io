@@ -121,3 +121,48 @@ ORDER BY customerName;
 ## 邻接列表模型管理MySQL中的分层数据
 
 本表中的主键作为外键（自身循环作为外键），最顶层的外键为null。
+
+## 比较两个表不同的数据
+
+```sql
+SELECT id,title,COUNT(*) FROM (
+SELECT id, title FROM t1
+UNION ALL
+SELECT id, title FROM t2
+) tb1
+GROUP BY id,title
+HAVING COUNT(*) = 2
+ORDER BY id;
+```
+
+![](https://pic.downk.cc/item/5e25d2072fb38b8c3ca5a6bb.jpg)
+
+## 查找表中重复数据
+
+
+GROUP BY子句通过列或表达式的值将一组行分组为一个小分组的汇总行记录。 GROUP BY子句为每个分组返回一行。换句话说，它减少了结果集中的行数。
+
+```sql
+SELECT * FROM contacts;
+SELECT first_name, COUNT(first_name)
+FROM contacts
+GROUP BY first_name
+HAVING COUNT(first_name) > 2;
+```
+![](https://pic.downk.cc/item/5e27dc912fb38b8c3cdc278f.jpg)
+
+
+多列重复值查询
+
+```sql
+SELECT 
+	first_name, COUNT(first_name),
+	second_name,COUNT(second_name),
+	email, COUNT(email)
+FROM 
+	contacts
+GROUP BY
+	first_name,second_name,email
+having
+    count(first_name) > 2 and count (second_name) > 2;
+```
