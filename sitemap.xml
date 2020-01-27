@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fangmiao97.github.io/2020/01/27/study-jvm/</loc>
+    
+    <lastmod>2020-01-27T13:11:07.113Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://fangmiao97.github.io/2020/01/19/algorithm-review/</loc>
     
     <lastmod>2020-01-26T09:01:54.511Z</lastmod>
@@ -254,14 +261,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/categories/index.html</loc>
+    <loc>https://fangmiao97.github.io/search/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/search/index.html</loc>
+    <loc>https://fangmiao97.github.io/categories/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
@@ -282,14 +289,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/23/weeklyReport190323/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/16/weeklyReport190316/</loc>
     
     <lastmod>2019-06-04T01:06:18.986Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/16/weeklyReport190316/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/23/weeklyReport190323/</loc>
     
     <lastmod>2019-06-04T01:06:18.986Z</lastmod>
     
@@ -380,14 +387,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/axioscorsquestions/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/19/StudyHBaseJavaAPI/</loc>
     
     <lastmod>2019-06-04T01:06:18.976Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/04/19/StudyHBaseJavaAPI/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/18/axioscorsquestions/</loc>
     
     <lastmod>2019-06-04T01:06:18.976Z</lastmod>
     
