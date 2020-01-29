@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://pic.downk.cc/item/5e2ef3e62fb38b8c3cb2f8a7.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e2ef41e2fb38b8c3cb2fd16.jpg">
-<meta property="og:updated_time" content="2020-01-27T14:31:14.758Z">
+<meta property="og:updated_time" content="2020-01-29T03:14:07.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机学习">
 <meta name="twitter:description" content="运行时数据区域 程序计数器  此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域  java虚拟机栈  每个方法在执行的同时都会创建一个栈帧（Stack Frame)用于存储局部变量表、操作数栈、动态链接、方法出口等信息。 局部变量表存放了编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、dou">
@@ -110,7 +110,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#运行时数据区域"><span class="toc-number">1.</span> <span class="toc-text">运行时数据区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程"><span class="toc-number">2.</span> <span class="toc-text">HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的创建"><span class="toc-number">2.1.</span> <span class="toc-text">对象的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的内存布局"><span class="toc-number">2.2.</span> <span class="toc-text">对象的内存布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的访问定位"><span class="toc-number">2.3.</span> <span class="toc-text">对象的访问定位</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#运行时数据区域"><span class="toc-number">1.</span> <span class="toc-text">运行时数据区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程"><span class="toc-number">2.</span> <span class="toc-text">HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的创建"><span class="toc-number">2.1.</span> <span class="toc-text">对象的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的内存布局"><span class="toc-number">2.2.</span> <span class="toc-text">对象的内存布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的访问定位"><span class="toc-number">2.3.</span> <span class="toc-text">对象的访问定位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OutOfMemoryError异常"><span class="toc-number">3.</span> <span class="toc-text">OutOfMemoryError异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java堆溢出"><span class="toc-number">3.1.</span> <span class="toc-text">java堆溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟机栈和本地方法栈溢出"><span class="toc-number">3.2.</span> <span class="toc-text">虚拟机栈和本地方法栈溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法区和运行时常量池溢出"><span class="toc-number">3.3.</span> <span class="toc-text">方法区和运行时常量池溢出</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -207,7 +207,24 @@
 <li>如果使用直接指针访问，那么Java堆对象的布局中就必须考虑如何放置访问类型数据的相关信息，而reference中存储的直接就是对象地址</li>
 </ul>
 <p><img src="https://pic.downk.cc/item/5e2ef41e2fb38b8c3cb2fd16.jpg" alt></p>
-
+<h2 id="OutOfMemoryError异常"><a href="#OutOfMemoryError异常" class="headerlink" title="OutOfMemoryError异常"></a>OutOfMemoryError异常</h2><h3 id="java堆溢出"><a href="#java堆溢出" class="headerlink" title="java堆溢出"></a>java堆溢出</h3><p>Java堆用于存储对象实例，只要不断地创建对象，并且保证GC Roots到对象之间有可达路径来避免垃圾回收机制清除这些对象，那么在对象数量到达最大堆的容量限制后就会产生内存溢出异常。</p>
+<p>Java堆内存的OOM异常是实际应用中常见的内存溢出异常情况。当出现Java堆内存溢出时，异常堆栈信息“java.lang.OutOfMemoryError”会跟着进一步提示“Java heap space”。</p>
+<p>原因：</p>
+<ul>
+<li><p>内存泄露，可进一步通过工具查看泄露对象到GC Roots的引用链。于是就能找到泄露对象是通过怎样的路径与GC Roots相关联并导致垃圾收集器无法自动回收它们的</p>
+</li>
+<li><p>如果不存在泄露，换句话说，就是内存中的对象确实都还必须存活着，那就应当检查虚拟机的堆参数（-Xmx与-Xms），与机器物理内存对比看是否还可以调大</p>
+</li>
+</ul>
+<h3 id="虚拟机栈和本地方法栈溢出"><a href="#虚拟机栈和本地方法栈溢出" class="headerlink" title="虚拟机栈和本地方法栈溢出"></a>虚拟机栈和本地方法栈溢出</h3><ul>
+<li><p>如果线程请求的栈深度大于虚拟机所允许的最大深度，将抛出StackOverflowError异常</p>
+</li>
+<li><p>如果虚拟机在扩展栈时无法申请到足够的内存空间，则抛出OutOfMemoryError异常。</p>
+</li>
+</ul>
+<p>递归深度过大–&gt;栈深度不够–&gt;Stack Overflow</p>
+<p>创建过多的线程，每个线程都分栈帧，out of memory</p>
+<h3 id="方法区和运行时常量池溢出"><a href="#方法区和运行时常量池溢出" class="headerlink" title="方法区和运行时常量池溢出"></a>方法区和运行时常量池溢出</h3>
   </div>
 </article>
 
@@ -259,7 +276,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#运行时数据区域"><span class="toc-number">1.</span> <span class="toc-text">运行时数据区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程"><span class="toc-number">2.</span> <span class="toc-text">HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的创建"><span class="toc-number">2.1.</span> <span class="toc-text">对象的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的内存布局"><span class="toc-number">2.2.</span> <span class="toc-text">对象的内存布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的访问定位"><span class="toc-number">2.3.</span> <span class="toc-text">对象的访问定位</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#运行时数据区域"><span class="toc-number">1.</span> <span class="toc-text">运行时数据区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程"><span class="toc-number">2.</span> <span class="toc-text">HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的创建"><span class="toc-number">2.1.</span> <span class="toc-text">对象的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的内存布局"><span class="toc-number">2.2.</span> <span class="toc-text">对象的内存布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的访问定位"><span class="toc-number">2.3.</span> <span class="toc-text">对象的访问定位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OutOfMemoryError异常"><span class="toc-number">3.</span> <span class="toc-text">OutOfMemoryError异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java堆溢出"><span class="toc-number">3.1.</span> <span class="toc-text">java堆溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟机栈和本地方法栈溢出"><span class="toc-number">3.2.</span> <span class="toc-text">虚拟机栈和本地方法栈溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法区和运行时常量池溢出"><span class="toc-number">3.3.</span> <span class="toc-text">方法区和运行时常量池溢出</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
