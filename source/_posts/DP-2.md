@@ -1,6 +1,6 @@
 ---
 title: DP-当前状态与前面所有状态都有关
-date: 2019/8/8 
+date: 2019/8/8 \
 tags:
     - LeetCode
 categories:
@@ -83,6 +83,58 @@ public class Solution {
         if (dp[right] < val) return len+1;
         else if (dp[left] >= val) return left;
         else return right;
+    }
+}
+```
+
+### [Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence/)
+
+使用两个dp数组来保存状态，因为当前状态的更新有两种方式（所以会不会出现3种方式呢？也有可能吧，还没有遇到）
+
+```java
+class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        if(nums.length < 2)
+            return nums.length;
+        
+        int[] up = new int[nums.length];
+        int[] down = new int[nums.length];
+        for(int i = 1; i < nums.length; i++) {
+            for(int j = 0; j < i; j++) {
+                if(nums[i] > nums[j]) {
+                    up[i] = Math.max(up[i], down[j] + 1);
+                }else if(nums[i] < nums[j]) {
+                    down[i] = Math.max(down[i], up[j] + 1);
+                }
+            }
+        }
+        return 1 + Math.max(down[nums.length - 1], up[nums.length - 1]);
+    }
+}
+```
+
+```java
+class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        if(nums.length < 2)
+            return nums.length;
+        
+        int[] up = new int[nums.length];
+        int[] down = new int[nums.length];
+        up[0] = down[0] = 1;
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] > nums[i - 1]) {
+                up[i] = down[i - 1] + 1;
+                down[i] = down[i - 1];
+            }else if(nums[i] < nums[i - 1]) {
+                up[i] = up[i - 1];
+                down[i] = up[i - 1] + 1;
+            }else {
+                up[i] = up[i - 1];
+                down[i] = down[i - 1];
+            }
+        }
+        return Math.max(down[nums.length - 1], up[nums.length - 1]);
     }
 }
 ```
