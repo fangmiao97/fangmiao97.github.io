@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fangmiao97.github.io/googleff90ba0c5f606433.html</loc>
+    
+    <lastmod>2020-02-02T12:27:08.712Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://fangmiao97.github.io/2020/01/19/algorithm-review/</loc>
+    
+    <lastmod>2020-02-01T11:03:18.925Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://fangmiao97.github.io/2020/01/27/study-jvm/</loc>
     
-    <lastmod>2020-01-31T15:36:10.210Z</lastmod>
+    <lastmod>2020-01-31T15:37:12.264Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>https://fangmiao97.github.io/2019/08/08/DP-2/</loc>
     
     <lastmod>2020-01-30T02:53:19.977Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fangmiao97.github.io/2020/01/19/algorithm-review/</loc>
-    
-    <lastmod>2020-01-26T09:01:54.511Z</lastmod>
     
   </url>
   
@@ -131,13 +138,6 @@
     <loc>https://fangmiao97.github.io/2019/12/31/2019-review/</loc>
     
     <lastmod>2019-12-31T12:01:34.453Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fangmiao97.github.io/googleff90ba0c5f606433.html</loc>
-    
-    <lastmod>2019-12-28T14:15:36.148Z</lastmod>
     
   </url>
   
@@ -268,14 +268,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/search/index.html</loc>
+    <loc>https://fangmiao97.github.io/categories/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/categories/index.html</loc>
+    <loc>https://fangmiao97.github.io/search/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
@@ -310,13 +310,6 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
-    
-    <lastmod>2019-06-04T01:06:18.985Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
@@ -325,6 +318,13 @@
   
   <url>
     <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
+    
+    <lastmod>2019-06-04T01:06:18.985Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
     
@@ -352,14 +352,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/04/22/mock-accesslog-python/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/27/minionsUsage/</loc>
     
     <lastmod>2019-06-04T01:06:18.980Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/27/minionsUsage/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/22/mock-accesslog-python/</loc>
     
     <lastmod>2019-06-04T01:06:18.980Z</lastmod>
     
