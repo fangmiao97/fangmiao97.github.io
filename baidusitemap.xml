@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://fangmiao97.github.io/2019/08/19/bytedance-interview/</loc>
+    <lastmod>2020-02-03</lastmod>
+  </url>  <url>
     <loc>https://fangmiao97.github.io/2020/01/19/algorithm-review/</loc>
     <lastmod>2020-02-03</lastmod>
   </url>  <url>
@@ -64,9 +67,6 @@
     <loc>https://fangmiao97.github.io/2019/09/18/backtrack-review/</loc>
     <lastmod>2019-09-20</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/08/19/bytedance-interview/</loc>
-    <lastmod>2019-08-22</lastmod>
-  </url>  <url>
     <loc>https://fangmiao97.github.io/2019/03/18/JavaUtilsAPI/</loc>
     <lastmod>2019-08-19</lastmod>
   </url>  <url>
@@ -112,10 +112,10 @@
     <loc>https://fangmiao97.github.io/2019/03/30/weeklyReport190330/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/03/16/weeklyReport190316/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/23/weeklyReport190323/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/03/23/weeklyReport190323/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/16/weeklyReport190316/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
@@ -136,16 +136,16 @@
     <loc>https://fangmiao97.github.io/2019/04/13/tanslate-Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction%E2%80%93for-In-Memory-Cluster-Computing/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/04/22/mock-accesslog-python/</loc>
-    <lastmod>2019-06-04</lastmod>
-  </url>  <url>
     <loc>https://fangmiao97.github.io/2019/03/27/minionsUsage/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/03/19/graduationDesignReferences/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/22/mock-accesslog-python/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/03/21/minions-frontend-overview/</loc>
+    <lastmod>2019-06-04</lastmod>
+  </url>  <url>
+    <loc>https://fangmiao97.github.io/2019/03/19/graduationDesignReferences/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/06/01/graduation-design-paper/</loc>
