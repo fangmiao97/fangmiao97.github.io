@@ -398,8 +398,55 @@ class Solution {
 }
 ```
 
+## [Arithmetic Slices](https://leetcode.com/problems/arithmetic-slices/)
 
+在给定的数列中有多少等比数列（最少3个一组，并且是连续的）
 
+```java
+//Brute Force
+//将子序列全部找出来，并验证是否为等差数列
+class Solution {
+    public int numberOfArithmeticSlices(int[] A) {
+        int res = 0;
+        if(A.length < 3)
+            return res;
+        //start point
+        for(int s = 0; s < A.length - 2; s++) {
+            int dist = A[s + 1] - A[s];
+            //end point
+            for(int e = s + 2; e < A.length; e++) {
+                int i = 0;//index
+                for(i = s + 1; i <= e; i++) {
+                    if(A[i] - A[i - 1] != dist)
+                        break;
+                }
+                if(i > e)//all pass. res++
+                    res++;
+            }
+        }
+        return res;
+    }
+}
+```
+
+事实上，如果当前这个序列经过判断不是等差数列的话，后面就可以不用判断了。如果当前序列经过判断是等差数列，那么下一个（也就是结尾往后移一位的序列，只需判断新增的那个是否构成等差即可。
+
+dp解法的话，比较偏数学
+```java
+class Solution {
+    public int numberOfArithmeticSlices(int[] A) {
+        int[] dp = new int[A.length];
+        int res = 0;
+        for(int i = 2; i < dp.length; i++) {
+            if(A[i] - A[i - 1] == A[i - 1] - A[i -2]) {
+                dp[i] = dp[i - 1] + 1;
+                res += dp[i];
+            }
+        }
+        return res;
+    }
+}
+```
 
 
 
