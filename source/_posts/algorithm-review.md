@@ -448,5 +448,23 @@ class Solution {
 }
 ```
 
+## [Longest Arithmetic Subsequence of Given Difference](https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference/)
+
+使用hashmap来存储状态
+
+```java
+class Solution {
+    public int longestSubsequence(int[] arr, int difference) {
+        int maxLen = 0;
+        Map<Integer, Integer> dp = new HashMap<>();
+        for(int i = 0; i < arr.length; i++) {
+            int len = dp.getOrDefault(arr[i] - difference, 0) + 1;
+            dp.put(arr[i], len);
+            maxLen = Math.max(maxLen, len);
+        }
+        return maxLen;
+    }
+}
+```
 
 
