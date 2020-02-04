@@ -61,6 +61,48 @@ putVal(hash(key), key, value, false, evict)//把元素放到hashMap中
 
 tab即是table，n是map集合的容量大小，hash是上面方法的返回值。因为通常声明map集合时不会指定大小，或者初始化的时候就创建一个容量很大的map对象，所以这个通过容量大小与key值进行hash的算法在开始的时候只会对低位进行计算，虽然容量的2进制高位一开始都是0，但是key的2进制高位通常是有值的，因此先在hash方法中将key的hashCode右移16位在与自身异或，使得高位也可以参与hash，更大程度上减少了碰撞率。
 
+### get方法
+
+先用hashCode定位，再用equals方法得到正确的值。**主要答hashcode方法和equals方法的区别与联系。**
+
+equals() 的作用是 **用来判断两个对象是否相等**。String.equals()
+equals() 定义在JDK的Object.java中。通过判断两个对象的地址是否相等(即，是否是同一个对象)来区分它们是否相等。
+
+== : 它的作用是判断两个对象的地址是不是相等。即，判断两个对象是不是同一个对象。
+
+hashCode() 的作用是获取哈希码，也称为散列码。hashCode() 在散列表中才有用，在其它情况下没用。在散列表中hashCode() 的作用是获取对象的散列码，进而确定该对象在散列表中的位置。
+
+会在HashSet, Hashtable, HashMap等等这些本质是散列表的数据结构中，“hashCode() 和 equals() ”是有关系
+如果两个对象相等，那么它们的hashCode()值一定相同。这里的相等是指，通过equals()比较两个对象时返回true。
+如果两个对象hashCode()相等，它们并不一定相等。（哈希冲突）
+
+```java
+public V get(Object key) {
+        Node<K,V> e;
+        return (e = getNode(hash(key), key)) == null ? null : e.value;
+    }
+
+final Node<K,V> getNode(int hash, Object key) {
+        Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
+        if ((tab = table) != null && (n = tab.length) > 0 &&
+            (first = tab[(n - 1) & hash]) != null) {//根据hashCode找到桶位置
+            if (first.hash == hash && // always check first node
+                ((k = first.key) == key || (key != null && key.equals(k))))
+                return first;
+            if ((e = first.next) != null) {
+                if (first instanceof TreeNode)
+                    return ((TreeNode<K,V>)first).getTreeNode(hash, key);
+                do {
+                    if (e.hash == hash &&
+                        ((k = e.key) == key || (key != null && key.equals(k))))
+                        return e;
+                } while ((e = e.next) != null);
+            }
+        }
+        return null;
+    }
+```
+
 ![](https://pic.downk.cc/item/5e154fcf76085c3289600fb2.jpg)
 
 ![](https://pic.downk.cc/item/5e15507676085c3289601fb6.jpg)

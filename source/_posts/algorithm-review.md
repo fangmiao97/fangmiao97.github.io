@@ -467,4 +467,32 @@ class Solution {
 }
 ```
 
+## [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+
+```java
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        int count = 0;
+        ListNode node = head;
+        while(count < k) {
+            if(node == null)
+                return head;
+            count++;
+            node = node.next;
+        }//count == k
+        //sub problem's return node
+        ListNode pre = reverseKGroup(node, k);
+        while(count > 0) {//loop for k times
+            //insert the node to the position infront of pre forward
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+            count--;
+        }
+        return pre;
+    }
+}
+```
+
 

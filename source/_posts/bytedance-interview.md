@@ -119,3 +119,40 @@ Once finalize method completes immediately Garbage Collector destroy that object
 
 我们自己的类，要override finalize方法         
          
+## 判断计算结果溢出
+
+* 加法 r = x + y
+溢出的情况：x和y同号，但是r的符号与他们相反。即，两个正数得到负数，两个负数得到正数。
+```java
+if(((x ^ r) & （y ^ r)) < 0) {
+    throw overflowexpection;
+}
+```
+
+* 减法 r = x - y
+x和y不同号，且r与x不同号。即，正减负得负，负减正得正。
+```java
+if((x ^ y) & (x ^ r)) < 0) {
+    throw expection
+}
+```
+
+* 乘法 r = x * y
+    * int
+    两个int的乘法是先转成long，得到一个long的res，然后取后32位得int，返回。
+    如果得到的int res与long res不相等则溢出
+    `if((int)r != r)`
+    
+    * long
+     等有参数大于32位时，可能出现溢出。这种情况下看得到的结果除y是否还是x，来判断
+ ```java
+if (((ax | ay) >>> 31 != 0)) {
+    // Some bits greater than 2^31 that might cause overflow
+    // Check the result using the divide operator
+    // and check for the special case of Long.MIN_VALUE * -1
+    if (((y != 0) && (r / y != x)) ||
+        (x == Long.MIN_VALUE && y == -1)) {
+        throw new ArithmeticException("long overflow");
+        }
+    }
+```
