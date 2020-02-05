@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fangmiao97.github.io/2019/09/14/JVM-and-JMM/</loc>
+    
+    <lastmod>2020-02-05T15:39:58.176Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://fangmiao97.github.io/2019/12/28/study-innodb/</loc>
     
-    <lastmod>2020-02-05T08:52:47.671Z</lastmod>
+    <lastmod>2020-02-05T11:43:33.060Z</lastmod>
     
   </url>
   
@@ -103,13 +110,6 @@
     <loc>https://fangmiao97.github.io/2019/08/08/decode/</loc>
     
     <lastmod>2020-01-05T02:30:38.348Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fangmiao97.github.io/2019/09/14/JVM-and-JMM/</loc>
-    
-    <lastmod>2020-01-04T15:55:24.942Z</lastmod>
     
   </url>
   
@@ -268,14 +268,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/categories/index.html</loc>
+    <loc>https://fangmiao97.github.io/search/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/search/index.html</loc>
+    <loc>https://fangmiao97.github.io/categories/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
@@ -310,14 +310,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
     
@@ -394,14 +394,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/axioscorsquestions/</loc>
+    <loc>https://fangmiao97.github.io/2019/04/19/StudyHBaseJavaAPI/</loc>
     
     <lastmod>2019-06-04T01:06:18.976Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/04/19/StudyHBaseJavaAPI/</loc>
+    <loc>https://fangmiao97.github.io/2019/03/18/axioscorsquestions/</loc>
     
     <lastmod>2019-06-04T01:06:18.976Z</lastmod>
     
