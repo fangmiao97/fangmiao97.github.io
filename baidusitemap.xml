@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://fangmiao97.github.io/2019/12/28/study-innodb/</loc>
+    <lastmod>2020-02-05</lastmod>
+  </url>  <url>
     <loc>https://fangmiao97.github.io/2020/01/27/study-jvm/</loc>
     <lastmod>2020-02-05</lastmod>
   </url>  <url>
@@ -24,9 +27,6 @@
   </url>  <url>
     <loc>https://fangmiao97.github.io/2020/01/17/study-sql/</loc>
     <lastmod>2020-01-22</lastmod>
-  </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/12/28/study-innodb/</loc>
-    <lastmod>2020-01-16</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2020/01/15/system-design/</loc>
     <lastmod>2020-01-16</lastmod>
@@ -118,13 +118,13 @@
     <loc>https://fangmiao97.github.io/2019/03/23/weeklyReport190323/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
+    <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
+    <lastmod>2019-06-04</lastmod>
+  </url>  <url>
     <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
-    <lastmod>2019-06-04</lastmod>
-  </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/22/user-action-logger-design/</loc>

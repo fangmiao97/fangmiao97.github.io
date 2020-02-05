@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e37e8d62fb38b8c3c827de4.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e38060a2fb38b8c3c858a66.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e3993152fb38b8c3cacb000.jpg">
-<meta property="og:updated_time" content="2020-02-05T03:59:48.123Z">
+<meta property="og:updated_time" content="2020-02-05T04:14:41.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机学习">
 <meta name="twitter:description" content="运行时数据区域 程序计数器  此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域  java虚拟机栈  每个方法在执行的同时都会创建一个栈帧（Stack Frame)用于存储局部变量表、操作数栈、动态链接、方法出口等信息。 局部变量表存放了编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、dou">
@@ -406,7 +406,7 @@
 <ul>
 <li>准备</li>
 </ul>
-<p>准备阶段是正式为类变量分配内存并设置类变量初始值（零值）的阶段，这些变量所使用的内存都将在<strong>方法区</strong>中进行分配。</p>
+<p>准备阶段是正式为<strong>类变量</strong>分配内存并设置类变量初始值（零值）的阶段，这些变量所使用的内存都将在<strong>方法区</strong>中进行分配。<br>此时<strong>常量（被static final修饰的）</strong>直接赋定义的值。</p>
 <ul>
 <li>解析</li>
 </ul>
@@ -417,7 +417,7 @@
 <li>初始化</li>
 </ul>
 <p>初始化阶段是执行类构造器clinit()方法的过程。</p>
-<p>clinit()方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块（static{}块）中的语句合并产生的，编译器收集的顺序是由语句在源文件中出现的顺序所决定的，静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块可以赋值，但是不能访问。</p>
+<p>clinit()方法是由编译器自动收集类中的<strong>所有类变量的赋值动作和静态语句块</strong>（static{}块）中的语句合并产生的，编译器收集的顺序是由语句在源文件中出现的顺序所决定的，静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块可以赋值，但是不能访问。</p>
 <p>clini()方法与类的构造函数（或者说实例构造器init()方法）不同，它不需要显式地调用父类构造器，虚拟机会保证在子类的clini()方法执行之前，父类的clinit()方法已经执行完毕。因此在虚拟机中第一个被执行的clinit()方法的类肯定是java.lang.Object。</p>
 <p>虚拟机会保证一个类的clinit()方法在多线程环境中被正确地加锁、同步，如果多个线程同时去初始化一个类，那么只会有一个线程去执行这个类的clinit()方法，其他线程都需要阻塞等待，直到活动线程执行clinit()方法完毕。</p>
 <h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>虚拟机会保证一个类的<clinit>()方法在多线程环境中被正确地加锁、同步，如果多个线程同时去初始化一个类，那么只会有一个线程去执行这个类的<clinit>()方法，其他线程都需要阻塞等待，直到活动线程执行<clinit>()方法完毕。类加载器来实现前面的这个动作。</clinit></clinit></clinit></p>
