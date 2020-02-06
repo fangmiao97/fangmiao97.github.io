@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e37e8d62fb38b8c3c827de4.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e38060a2fb38b8c3c858a66.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e3993152fb38b8c3cacb000.jpg">
-<meta property="og:updated_time" content="2020-02-05T04:14:41.065Z">
+<meta property="og:updated_time" content="2020-02-06T10:19:44.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机学习">
 <meta name="twitter:description" content="运行时数据区域 程序计数器  此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域  java虚拟机栈  每个方法在执行的同时都会创建一个栈帧（Stack Frame)用于存储局部变量表、操作数栈、动态链接、方法出口等信息。 局部变量表存放了编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、dou">
@@ -260,8 +260,7 @@
 <h4 id="软引用"><a href="#软引用" class="headerlink" title="软引用"></a>软引用</h4><p>是用来描述一些还有用但并非必需的对象。对于软引用关联着的对象，在系统将要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行第二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常。在JDK 1.2之后，提供了SoftReference类来实现软引用</p>
 <h4 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h4><p>也是用来描述非必需对象的，但是它的强度比软引用更弱一些，被弱引用关联的对象只能生存到下一次垃圾收集发生之前。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK 1.2之后，提供了WeakReference类来实现弱引用。</p>
 <h4 id="虚引用"><a href="#虚引用" class="headerlink" title="虚引用"></a>虚引用</h4><p>也称为幽灵引用或者幻影引用，它是最弱的一种引用关系。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知。在JDK1.2之后，提供了PhantomReference类来实现虚引用。</p>
-<h3 id="是否执行finalize"><a href="#是否执行finalize" class="headerlink" title="是否执行finalize()"></a>是否执行finalize()</h3><p>如果对象在进行可达性分析后发现没有与GC Roots相连接的引用链，那它将会被第一次标记并且进行一次筛选，筛选的条件是此对象是否有必要执行finalize()方法。当对象没有覆盖finalize()方法，或者finalize()方法已经被虚拟机调用过，虚拟机将这两种情况都视为“没有必要执行”。</p>
-<p>一个对象自我拯救的过程：</p>
+<h3 id="是否执行finalize"><a href="#是否执行finalize" class="headerlink" title="是否执行finalize()"></a>是否执行finalize()</h3><p>一个对象自我拯救的过程：</p>
 <ul>
 <li>对象可以在被GC时自我拯救</li>
 <li><strong>机会只有一次，因为一个对象的finalize()方法最多只会被系统自动调用一次</strong></li>
