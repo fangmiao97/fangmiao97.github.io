@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Brief Summary复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这一个个都内存模型的，是要干什么。  JVM内存模型（区域）描述的是JVM对所管理的物理内存到底是怎么划分，即某个区域是用来干A事情，另一个区域是用来干B事情的。因为程序的运行需要记录很多数据，有程序中每个线程自己要记录的东西，也有整个">
+    <meta name="description" content="面试怎么回答JMM怎么保证原子性、一致性、有序性  主内存与工作内存 volatile happens-before  线程安全的实现 互斥同步 - synchronized 和 ReentrantLock 非阻塞同步 - CAS  Brief Summary复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM内存模型和java内存模型（JMM）">
 <meta property="og:url" content="https://fangmiao97.github.io/2019/09/14/JVM-and-JMM/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
-<meta property="og:description" content="Brief Summary复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这一个个都内存模型的，是要干什么。  JVM内存模型（区域）描述的是JVM对所管理的物理内存到底是怎么划分，即某个区域是用来干A事情，另一个区域是用来干B事情的。因为程序的运行需要记录很多数据，有程序中每个线程自己要记录的东西，也有整个">
+<meta property="og:description" content="面试怎么回答JMM怎么保证原子性、一致性、有序性  主内存与工作内存 volatile happens-before  线程安全的实现 互斥同步 - synchronized 和 ReentrantLock 非阻塞同步 - CAS  Brief Summary复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://p.pstatp.com/origin/fe870000d0047e0f31b3">
 <meta property="og:image" content="https://p.pstatp.com/origin/fe55000135a2ec8d912e">
 <meta property="og:image" content="https://p.pstatp.com/origin/ffe000006754194e0501">
-<meta property="og:updated_time" content="2020-01-04T15:55:24.942Z">
+<meta property="og:updated_time" content="2020-02-05T15:39:58.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM内存模型和java内存模型（JMM）">
-<meta name="twitter:description" content="Brief Summary复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这一个个都内存模型的，是要干什么。  JVM内存模型（区域）描述的是JVM对所管理的物理内存到底是怎么划分，即某个区域是用来干A事情，另一个区域是用来干B事情的。因为程序的运行需要记录很多数据，有程序中每个线程自己要记录的东西，也有整个">
+<meta name="twitter:description" content="面试怎么回答JMM怎么保证原子性、一致性、有序性  主内存与工作内存 volatile happens-before  线程安全的实现 互斥同步 - synchronized 和 ReentrantLock 非阻塞同步 - CAS  Brief Summary复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这">
 <meta name="twitter:image" content="https://p.pstatp.com/origin/fe870000d0047e0f31b3">
     
     
@@ -113,7 +113,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Brief-Summary"><span class="toc-number">1.</span> <span class="toc-text">Brief Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存模型概括"><span class="toc-number">2.</span> <span class="toc-text">JVM内存模型概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM"><span class="toc-number">3.</span> <span class="toc-text">JMM</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面试怎么回答"><span class="toc-number">1.</span> <span class="toc-text">面试怎么回答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM"><span class="toc-number">1.1.</span> <span class="toc-text">JMM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程安全的实现"><span class="toc-number">1.2.</span> <span class="toc-text">线程安全的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Brief-Summary"><span class="toc-number">2.</span> <span class="toc-text">Brief Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存模型概括"><span class="toc-number">3.</span> <span class="toc-text">JVM内存模型概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM-1"><span class="toc-number">4.</span> <span class="toc-text">JMM</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -162,7 +162,17 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="Brief-Summary"><a href="#Brief-Summary" class="headerlink" title="Brief Summary"></a>Brief Summary</h2><p>复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这一个个都内存模型的，是要干什么。</p>
+    <h2 id="面试怎么回答"><a href="#面试怎么回答" class="headerlink" title="面试怎么回答"></a>面试怎么回答</h2><h3 id="JMM"><a href="#JMM" class="headerlink" title="JMM"></a>JMM</h3><p>怎么保证原子性、一致性、有序性</p>
+<ul>
+<li>主内存与工作内存</li>
+<li>volatile</li>
+<li>happens-before</li>
+</ul>
+<h3 id="线程安全的实现"><a href="#线程安全的实现" class="headerlink" title="线程安全的实现"></a>线程安全的实现</h3><ul>
+<li>互斥同步 - synchronized 和 ReentrantLock</li>
+<li>非阻塞同步 - CAS</li>
+</ul>
+<h2 id="Brief-Summary"><a href="#Brief-Summary" class="headerlink" title="Brief Summary"></a>Brief Summary</h2><p>复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这一个个都内存模型的，是要干什么。</p>
 <p><img src="https://p.pstatp.com/origin/fe870000d0047e0f31b3" alt></p>
 <p>JVM内存模型（区域）描述的是JVM对所管理的物理内存到底是怎么划分，即某个区域是用来干A事情，另一个区域是用来干B事情的。因为程序的运行需要记录很多数据，有程序中每个线程自己要记录的东西，也有整个程序中所有线程一起共享使用的数据。<br>拿现实中的例子就是，一个商店有很多工作人员，职责有相同的有不同的，作为店长要记录一些数据用来维持整个商店的运行，每个员工自己也要明白自己要干什么。所以就有需要一套规则用来记录前面提到的信息，不能东记一句西记一句吧，这个规则就是规定要怎么在大本本上有条理的记录信息。<br>这里拿1.8之前的JVM来说，因为1.8的还没看，应该只是元空间这个地方有不同。</p>
 <p>所以就搞清楚啦，JVM内存模型是对物理内存功能上的划分。</p>
@@ -192,7 +202,7 @@
 </ul>
 <p>方法区用于存储JVM加载的类信息、final常量、static静态变量等数据，<br>方法区中的数据都是整个程序中唯一的。<br>方法区还包含了运行时常量池，<br>主要存放编译期生成的字面量和符号引用（在类加载后放入）。<br>String对象的字面量就会被放入到运行时常量池中。</p>
 <p><img src="https://p.pstatp.com/origin/fe55000135a2ec8d912e" alt></p>
-<h2 id="JMM"><a href="#JMM" class="headerlink" title="JMM"></a>JMM</h2><p>前面已经说了，JMM给出了一些规则/约定，来保证多线程并行执行时程序结果正确。</p>
+<h2 id="JMM-1"><a href="#JMM-1" class="headerlink" title="JMM"></a>JMM</h2><p>前面已经说了，JMM给出了一些规则/约定，来保证多线程并行执行时程序结果正确。</p>
 <p>具体说是要保证原子性、可见性和有序性。</p>
 <p><img src="https://p.pstatp.com/origin/ffe000006754194e0501" alt></p>
 <p>首先对于每个线程，只能访问工作内存（每个员工有自己的可以知道的内容，也只有自己知道）。<br>主内存相当于大本本，保存着所有信息。工作内存需要用的、甚至是某个线程创建的本地变量也要放在主内存中。而工作内存保存的都是副本。</p>
@@ -267,7 +277,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Brief-Summary"><span class="toc-number">1.</span> <span class="toc-text">Brief Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存模型概括"><span class="toc-number">2.</span> <span class="toc-text">JVM内存模型概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM"><span class="toc-number">3.</span> <span class="toc-text">JMM</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面试怎么回答"><span class="toc-number">1.</span> <span class="toc-text">面试怎么回答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM"><span class="toc-number">1.1.</span> <span class="toc-text">JMM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程安全的实现"><span class="toc-number">1.2.</span> <span class="toc-text">线程安全的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Brief-Summary"><span class="toc-number">2.</span> <span class="toc-text">Brief Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存模型概括"><span class="toc-number">3.</span> <span class="toc-text">JVM内存模型概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM-1"><span class="toc-number">4.</span> <span class="toc-text">JMM</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

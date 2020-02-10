@@ -495,4 +495,37 @@ class Solution {
 }
 ```
 
+## [235. Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
 
+在BST中搜索最低公共祖先。因为是二叉树结构，所以p和q分布在公共祖先的左右两边，而且只存在一个节点满足这个条件。最低祖先上边的节点也是祖先，但是pq是分布在它们的一边（BST）
+
+```java
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root.val > p.val && root.val > q.val)
+            return lowestCommonAncestor(root.left, p, q);
+        else if(root.val < p.val && root.val < q.val)
+            return lowestCommonAncestor(root.right, p, q);
+        else
+            return root;
+    }
+}
+```
+
+## [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+
+这里不是BST，只是普通的二叉树。
+依然是找是不是在左右子树中有p或q。
+```java
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null || root == p || root == q)
+            return root;
+        TreeNode fromLeft = lowestCommonAncestor(root.left, p, q);
+        TreeNode fromRight = lowestCommonAncestor(root.right, p, q);
+        if(fromLeft != null && fromRight != null)
+            return root;
+        return fromLeft != null ? fromLeft : fromRight;
+    }
+}
+```

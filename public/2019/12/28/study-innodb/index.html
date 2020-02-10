@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e0ab3fa76085c3289f4a111.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e0afa3976085c3289013b80.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e0c560876085c3289382f12.jpg">
-<meta property="og:updated_time" content="2020-01-16T15:53:26.691Z">
+<meta property="og:updated_time" content="2020-02-05T11:43:33.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="innodb学习笔记">
 <meta name="twitter:description" content="总结问题数据库引擎结构和区别数据库是由一个个文件组成的，存储引擎是底层物理结构的实现。使用存储引擎使得数据库能够对事务进行支持（不同于文件系统的地方）存储引擎是基于表的，不是基于数据库的。 主要对比Innodb和MyISAM  Innodb支持事务，myisam不支持（因为设计它的用处不需要事务，看第二点）； Innodb适合OLTP在线事务处理应用，which is 频繁修改和安全性要求高的应用">
@@ -85,10 +85,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2019/12/28/design-pattern-summary/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/12/31/2019-review/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/12/05/NTU-Semester-1-summary/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/12/28/design-pattern-summary/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -175,10 +175,10 @@
 <h3 id="索引的优化方法、优化底层"><a href="#索引的优化方法、优化底层" class="headerlink" title="索引的优化方法、优化底层"></a>索引的优化方法、优化底层</h3><p>使用explain来显示数据库如何使用索引的。当进行范围查找或join时，或者查询语句使用了过多的索引时，就会直接进行全表扫描，这样可能更快。</p>
 <p>索引设置建议：</p>
 <ul>
-<li>最好的索引是每一行数据都有唯一标识，也就是唯一索引；</li>
+<li>最好的索引是每一行数据都有唯一标识，也就是<strong>唯一索引</strong>；</li>
 <li>索引列的不同值越多越好，比如，性别这一列就不能做索引，因为性别只有“男”“女”。</li>
 <li>主键索引长度尽量短，因为辅助索引要用到;</li>
-<li>频繁更新的列不适合做索引；</li>
+<li><strong>频繁更新的列不适合做索引；</strong></li>
 <li>一次查询不要用过多的索引；</li>
 <li>利用最左前缀原则，比如建立了一个联合索引(a,b,c)，那么其实我们可利用的索引就有(a), (a,b), (a,b,c)<br>  建立联合索引时顺序是很重要的，必须在建索引前考虑清楚。</li>
 <li>like “xxxx%” 是可以用到索引的，like “%xxxx” 则不行(like “%xxx%” 同理)，因为varchar是保存了字段前面一部分作为索引。</li>
@@ -199,17 +199,17 @@
 <ul>
 <li>二进制日志</li>
 </ul>
-<p>二进制日志（binary log）<strong>记录了对MySQL数据库执行更改的所有操作</strong>，但是不包括SELECT和SHOW这类操作，因为这类操作对数据本身并没有修改.<br>二进制日志主要有以下几种作用:恢复（recovery）：某些数据的恢复需要二进制日志，例如，在一个数据库全备文件恢复后，用户可以通过二进制日志进行point-in-time的恢复。恢复（recovery）：某些数据的恢复需要二进制日志，例如，在一个数据库全备文件恢复后，用户可以通过二进制日志进行point-in-time的恢复。审计（audit）：用户可以通过二进制日志中的信息来进行审计，判断是否有对数据库进行注入的攻击。</p>
+<p>二进制日志（binary log）<strong>记录了对MySQL数据库执行更改的所有操作</strong>，但是不包括SELECT和SHOW这类操作，因为这类操作对数据本身并没有修改.<br>恢复（recovery）：某些数据的恢复需要二进制日志，例如，在一个数据库全备文件恢复后，用户可以通过二进制日志进行point-in-time的恢复。审计（audit）：用户可以通过二进制日志中的信息来进行审计，判断是否有对数据库进行注入的攻击。</p>
 <ul>
 <li>表结构定义文件</li>
 </ul>
 <p>因为MySQL插件式存储引擎的体系结构的关系，MySQL数据的存储是根据表进行的，每个表都会有与之对应的文件。但不论表采用何种存储引擎，MySQL都有一个以frm为后缀名的文件，这个文件记录了该表的表结构定义。</p>
 <p>innodb存储引擎文件</p>
-<p>包括表空间文件和重做日志文件。表空间文件是用来管理InnoDB存储引擎的存储，分为共享表空间和独立表空间。重做日志非常的重要，用来记录InnoDB存储引擎的事务日志，也因为重做日志的存在，才使得InnoDB存储引擎可以提供可靠的事务。</p>
+<p>包括表空间文件和重做日志文件。<strong>表空间文件是用来管理InnoDB存储引擎的存储</strong>，分为共享表空间和独立表空间。重做日志非常的重要，用来记录InnoDB存储引擎的<strong>事务日志</strong>，<strong>也因为重做日志的存在，才使得InnoDB存储引擎可以提供可靠的事务</strong>。</p>
 <ul>
 <li>表空间文件</li>
 </ul>
-<p>InnoDB采用将存储的数据按表空间（tablespace）进行存放的设计。在默认配置下会有一个初始大小为10MB，名为<strong>ibdata1</strong>的文件。当配置了相关参数，会将为每一个表创建独立表空间，命名：表明.ibd</p>
+<p>InnoDB采用将存储的数据按表空间（tablespace）进行存放的设计。在默认配置下会有一个初始大小为10MB，名为<strong>ibdata1</strong>的文件。当配置了相关参数，会将为每一个表创建独立表空间，命名：表名.ibd</p>
 <ul>
 <li>重做日志文件</li>
 </ul>
@@ -226,20 +226,19 @@
 </ul>
 <h2 id="innodb逻辑存储结构"><a href="#innodb逻辑存储结构" class="headerlink" title="innodb逻辑存储结构"></a>innodb逻辑存储结构</h2><p>从InnoDB存储引擎的逻辑存储结构看，所有数据都被逻辑地存放在一个空间中，称之为表空间（tablespace）。表空间又由段（segment）、区（extent）、页（page）组成。页在一些文档中有时也称为块（block），InnoDB存储引擎的逻辑存储结构大致如图4-1所示</p>
 <p><img src="https://pic.downk.cc/item/5e0860c376085c32893e59c4.jpg" alt></p>
-<p>表空间是由各个段组成的，常见的段有数据段、索引段、回滚段等。</p>
-<p>InnoDB存储引擎表是索引组织的（index organized），因此数据即索引，索引即数据。那么数据段即为B+树的叶子节点（图4-1的Leaf nodesegment），索引段即为B+树的非索引节点（图4-1的Non-leaf node segment）</p>
+<p>表空间是由各个段组成的，常见的段有<strong>数据段、索引段、回滚段</strong>等。</p>
+<p>InnoDB存储引擎表是索引组织的（index organized），因此数据即索引，索引即数据。那么<strong>数据段即为B+树的叶子节点</strong>（图4-1的Leaf nodesegment），索引段即为B+树的非索引节点（图4-1的Non-leaf node segment）</p>
 <p>区是由连续页组成的空间，在任何情况下每个区的大小都为1MB。InnoDB存储引擎页的大小为16KB，即一个区中一共有64个连续的页。</p>
-<p>InnoDB存储引擎是面向列的（row-oriented），也就说数据是按行进行存放的。</p>
+<p>InnoDB存储引擎是面向列的（row-oriented），也就说<strong>数据是按行进行存放的</strong>。</p>
 <p>页是InnoDB存储引擎管理数据库的最小磁盘单位。页类型为B-tree Node的页存放的即是表中行的实际数据了。<br>InnoDB数据页由以下7个部分组成，如图4-6所示。</p>
 <p><img src="https://pic.downk.cc/item/5e0861a676085c32893e876d.jpg" alt></p>
 <p>需要牢记的是，B+树索引本身并不能找到具体的一条记录，能找到只是该记录所在的页。数据库把页载入到内存，然后通过Page Directory再进行二叉查找。只不过二叉查找的时间复杂度很低，同时在内存中的查找很快，因此通常忽略这部分查找所用的时间。</p>
 <h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><h3 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h3><p>关系型数据库系统和文件系统的一个不同点是，关系数据库本身能保证存储数据的完整性，不需要应用程序的控制，而文件系统一般需要在程序端进行控制</p>
 <p>数据完整性3种形式：</p>
 <ul>
-<li>实体完整性</li>
-</ul>
-<p>保证表中有一个主键。在InnoDB存储引擎表中，用户可以通过定义PrimaryKey或Unique Key约束来保证实体的完整性。用户还可以通过编写一个触发器来保证数据完整性。</p>
-<ul>
+<li><p>实体完整性</p>
+<p>  保证表中有一个主键。在InnoDB存储引擎表中，用户可以通过定义Primary Key或Unique Key约束来保证实体的完整性。用户还可以通过编写一个触发器来保证数据完整性。</p>
+</li>
 <li><p>域完整性</p>
 <p>  保证数据每列的值满足特定的条件。在InnoDB存储引擎表中，域完整性可以通过以下几种途径来保证：</p>
 <ul>
@@ -254,9 +253,9 @@
 </ul>
 </li>
 <li><p>参照完整性</p>
+<p>  保证两张表之间的关系。InnoDB存储引擎支持外键，因此允许用户定义外键以强制参照完整性，也可以通过编写触发器以强制执行。</p>
 </li>
 </ul>
-<p>保证两张表之间的关系。InnoDB存储引擎支持外键，因此允许用户定义外键以强制参照完整性，也可以通过编写触发器以强制执行。</p>
 <p>对于InnoDB存储引擎本身而言，提供了以下几种约束：</p>
 <ul>
 <li>Primary Key</li>
@@ -302,7 +301,7 @@
 <ul>
 <li>HASH分区</li>
 </ul>
-<p>HASH分区的目的是将数据均匀地分布到预先定义的各个分区中，保证各分区的数据数量大致都是一样的。用户所要做的只是基于将要进行哈希分区的列值指定一个列值或表达式，以及指定被分区的表将要被分割成的分区数量。</p>
+<p>HASH分区的目的是将<strong>数据均匀地分布到预先定义的各个分区中</strong>，保证各分区的数据数量大致都是一样的。用户所要做的只是基于将要进行哈希分区的列值指定一个列值或表达式，以及指定被分区的表将要被分割成的分区数量。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</span><br><span class="line">a <span class="built_in">int</span>,</span><br><span class="line">b <span class="built_in">date</span> </span><br><span class="line">)<span class="keyword">engine</span> = <span class="keyword">innodb</span></span><br><span class="line"><span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">hash</span>(<span class="keyword">year</span>(b))</span><br><span class="line"><span class="keyword">partitions</span> <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>KEY分区</li>
@@ -338,23 +337,23 @@
 <p>数据库中的B+树索引可以分为聚集索引（clustered inex）和辅助索引（secondaryindex）。聚集索引与辅助索引不同的是，叶子节点存放的是否是一整行的信息。</p>
 <h3 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h3><p>聚集索引（clustered index）就是按照每张表的<strong>主键</strong>构造一棵B+树，同时<strong>叶子节点中存放的即为整张表的行记录数据</strong>，也将聚集索引的叶子节点称为<strong>数据页</strong>。聚集索引的这个特性决定了索引组织表中数据也是索引的一部分。同B+树数据结构一样，每个数据页都通过一个双向链表来进行链接。</p>
 <p><strong>每张表只能拥有一个聚集索引</strong>。聚集索引能够在B+树索引的叶子节点上直接找到数据。</p>
-<p>聚集索引的存储并不是物理上连续的，而是逻辑上连续的。这其中有两点：一是前面说过的页通过双向链表链接，页按照主键的顺序排序；另一点是每个页中的记录也是通过双向链表进行维护的，物理存储上可以同样不按照主键存储。</p>
+<p>聚集索引的存储并不是物理上连续的，而是逻辑上连续的。这其中有两点：一是前面说过的页通过双向链表链接，页按照主键的顺序排序；另一点是<strong>每个页中的记录也是通过双向链表进行维护的</strong>，物理存储上可以同样不按照主键存储。</p>
 <p>聚集索引的另一个好处是，它对于主键的排序查找和范围查找速度非常快。叶子节点的数据就是用户所要查询的数据。如用户需要查询一张注册用户的表，查询最后注册的10位用户，由于B+树索引是双向链表的，用户可以快速找到最后一个数据页，并取出10条记录。</p>
 <p><img src="https://pic.downk.cc/item/5e09eba476085c3289bde7f3.jpg" alt></p>
 <h3 id="辅助索引-数据域存储的是相应记录主键的值"><a href="#辅助索引-数据域存储的是相应记录主键的值" class="headerlink" title="辅助索引 - 数据域存储的是相应记录主键的值"></a>辅助索引 - 数据域存储的是相应记录主键的值</h3><p>对于辅助索引（Secondary Index，也称非聚集索引），叶子节点并不包含行记录的全部数据。叶子节点除了包含键值以外，每个叶子节点中的索引行中还包含了一个书签（bookmark）。该书签用来告诉InnoDB存储引擎哪里可以找到与索引相对应的行数据.</p>
 <p><img src="https://pic.downk.cc/item/5e0ab3fa76085c3289f4a111.jpg" alt></p>
 <p>每张表上可以有多个辅助索引。当通过辅助索引来寻找数据时，InnoDB存储引擎会遍历辅助索引并通过叶级别的指针<strong>获得指向主键索引的主键</strong>，<strong>然后再通过主键索引来找到一个完整的行记录</strong>。举例来说，如果在一棵高度为3的辅助索引树中查找数据，那需要对这棵辅助索引树遍历3次找到指定主键，如果聚集索引树的高度同样为3，那么还需要对聚集索引树进行3次查找，最终找到一个完整的行数据所在的页，因此一共需要6次逻辑IO访问以得到最终的一个数据页。</p>
 <p>辅助索引远小于聚集索引，选择辅助索引可以减少IO操作。</p>
-<h3 id="B-树索引的管理"><a href="#B-树索引的管理" class="headerlink" title="B+树索引的管理"></a>B+树索引的管理</h3><p>索引的创建和删除可以通过两种方法，一种是ALTER TABLE，另一种是CREATE/DROPINDEX。</p>
+<h3 id="B-树索引的管理"><a href="#B-树索引的管理" class="headerlink" title="B+树索引的管理"></a>B+树索引的管理</h3><p>索引的创建和删除可以通过两种方法，一种是ALTER TABLE，另一种是CREATE/DROP INDEX。</p>
 <p>InnoDB存储引擎实现Online DDL的原理是在执行创建或者删除操作的同时，将INSERT、UPDATE、DELETE这类DML操作日志写入到一个缓存中。待完成索引创建后再将重做应用到表上，以此达到数据的一致性。</p>
 <p>对于什么时候添加B+树索引，一般的经验是，在访问表中很少一部分时使用B+树索引才有意义.<br>例如，按性别进行查询时，可取值的范围一般只有’M’、’F’。因此上述SQL语句得到的结果可能是该表50%的数据（假设男女比例1∶1），这时添加B+树索引是完全没有必要的。</p>
 <h3 id="联合索引"><a href="#联合索引" class="headerlink" title="联合索引"></a>联合索引</h3><p>联合索引是指对表上的多个列进行索引。第一个排序，再第二列排序。。。。</p>
-<h3 id="优化器选择不使用索引的情况"><a href="#优化器选择不使用索引的情况" class="headerlink" title="优化器选择不使用索引的情况"></a>优化器选择不使用索引的情况</h3><p>在某些情况下，当执行EXPLAIN命令进行SQL语句的分析时，会发现优化器并没有选择索引去查找数据，而是通过扫描聚集索引，也就是直接进行全表的扫描来得到数据。这种情况多发生于范围查找、JOIN链接操作等情况下。</p>
+<h3 id="优化器选择不使用索引的情况"><a href="#优化器选择不使用索引的情况" class="headerlink" title="优化器选择不使用索引的情况"></a>优化器选择不使用索引的情况</h3><p>在某些情况下，当执行EXPLAIN命令进行SQL语句的分析时，会发现优化器并没有选择索引去查找数据，而是通过<strong>扫描聚集索引，也就是直接进行全表的扫描来得到数据</strong>。这种情况多发生于范围查找、JOIN链接操作等情况下。</p>
 <h3 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h3><p>innodb自己控制。哈希索引只能用来搜索等值的查询，而对于其他查找类型，如范围查找，是不能使用哈希索引的。</p>
 <h2 id="全文检索"><a href="#全文检索" class="headerlink" title="全文检索"></a>全文检索</h2><p>全文检索（Full-Text Search）是将存储于数据库中的整本书或整篇文章中的任意内容信息查找出来的技术。</p>
 <p>例如，搜索引擎需要根据用户输入的关键字进行全文查找，电子商务网站需要根据用户的查询条件，在可能需要在商品的详细介绍中进行查找，这些都不是B+树索引所能很好地完成的工作。</p>
 <p>InnoDB存储引擎从1.2.x版本开始支持全文检索的技术。在InnoDB存储引擎中，将（DocumentId，Position）视为一个“ilist”。因此在全文检索的表中，有两个列，一个是word字段，另一个是ilist字段，并且在word字段上有设有索引。</p>
-<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>锁是数据库系统区别于文件系统的一个关键特性。锁机制用于管理对共享资源的并发访问。InnoDB存储引擎会在行级别上对表数据上锁。</p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>锁是数据库系统区别于文件系统的一个关键特性。<strong>锁机制用于管理对共享资源的并发访问</strong>。InnoDB存储引擎会在行级别上对表数据上锁。</p>
 <p>lock的对象是事务，用来锁定的是数据库中的对象，如表、页、行。并且一般lock的对象仅在事务commit或rollback后进行释放（不同事务隔离级别释放的时间可能不同）。</p>
 <h3 id="innodb锁的类型"><a href="#innodb锁的类型" class="headerlink" title="innodb锁的类型"></a>innodb锁的类型</h3><ul>
 <li>共享锁（S Lock），允许事务读一行数据。</li>
@@ -371,7 +370,6 @@
 <h3 id="一致性锁定读"><a href="#一致性锁定读" class="headerlink" title="一致性锁定读"></a>一致性锁定读</h3><p>用户需要显式地对数据库读取操作进行加锁以保证数据逻辑的一致性。而这要求数据库支持加锁语句，即使是对于SELECT的只读操作。</p>
 <p>SELECT…FOR UPDATE对读取的行记录加一个X锁，其他事务不能对已锁定的行加上任何锁。SELECT…LOCK IN SHARE MODE对读取的行记录加一个S锁，其他事务可以向被锁定的行加S锁，但是如果加X锁，则会被阻塞。</p>
 <h3 id="解决Phantom-Problem幻读"><a href="#解决Phantom-Problem幻读" class="headerlink" title="解决Phantom Problem幻读"></a>解决Phantom Problem幻读</h3><p>Phantom Problem是指在同一事务下，连续执行两次同样的SQL语句可能导致不同的结果，第二次的SQL语句可能会返回之前不存在的行</p>
-<p>Phantom Problem是指在同一事务下，连续执行两次同样的SQL语句可能导致不同的结果，第二次的SQL语句可能会返回之前不存在的行</p>
 <h3 id="行锁的算法"><a href="#行锁的算法" class="headerlink" title="行锁的算法"></a>行锁的算法</h3><p>InnoDB存储引擎有3种行锁的算法，其分别是：</p>
 <ul>
 <li>Record Lock：单个行记录上的锁</li>
@@ -435,7 +433,7 @@
 <p><strong>redo恢复提交事务修改的页操作，而undo回滚行记录到某个特定版本。</strong></p>
 <p>redo通常是物理日志，记录的是页的物理修改操作。undo是逻辑日志，根据每行记录进行记录。</p>
 <p>undo像游戏返回存档点，redo是从存档点返回现在的地点（不像再从存档点重新走一遍了）</p>
-<h3 id="redo重做日志-记录的是页的物理修改操作"><a href="#redo重做日志-记录的是页的物理修改操作" class="headerlink" title="redo重做日志 - 记录的是页的物理修改操作"></a>redo重做日志 - 记录的是页的物理修改操作</h3><p>其由两部分组成：一是内存中的<strong>重做日志缓冲</strong>（redo log buffer），其是易失的；二是<strong>重做日志文件</strong>（redo logfile），其是持久的。</p>
+<h3 id="redo重做日志-记录的是页的物理修改操作"><a href="#redo重做日志-记录的是页的物理修改操作" class="headerlink" title="redo重做日志 - 记录的是页的物理修改操作"></a>redo重做日志 - 记录的是页的物理修改操作</h3><p>其由两部分组成：一是内存中的<strong>重做日志缓冲</strong>（redo log buffer），其是易失的；二是<strong>重做日志文件</strong>（redo log file），其是持久的。</p>
 <p>InnoDB是事务的存储引擎，其通过Force Log at Commit机制实现事务的持久性，即当事务提交（COMMIT）时，必须先将该事务的所有日志写入到重做日志文件进行持久化，待事务的COMMIT操作完成才算完成。</p>
 <p>在InnoDB存储引擎中，重做日志都是以512字节进行存储的。这意味着重做日志缓存、重做日志文件都是以块（block）的方式进行保存的，称之为重做日志块（redo logblock），每块的大小为512字节。</p>
 <p>InnoDB存储引擎运行过程中，log buffer重做日志缓存根据一定的规则将内存中的log block刷新到磁盘（重做日志文件）中。</p>

@@ -7,6 +7,21 @@ tags:
     - Java
 ---
 
+## 面试怎么回答
+
+### JMM
+
+怎么保证原子性、一致性、有序性
+
+* 主内存与工作内存
+* volatile
+* happens-before
+
+### 线程安全的实现
+
+* 互斥同步 - synchronized 和 ReentrantLock
+* 非阻塞同步 - CAS
+
 ## Brief Summary
 
 复习到volatile的时候遇到了java memory model(JMM)，提到了主内存和工作内存。之前看过JVM内存模型，不是很清楚这一个个都内存模型的，是要干什么。

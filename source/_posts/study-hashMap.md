@@ -24,6 +24,8 @@ tags:
 
 ## 1.8之后
 
+HashMap内部实现是一个桶数组，每个桶中存放着一个单链表的头结点。其中每个结点存储的是一个键值对整体（Entry），HashMap采用拉链法解决哈希冲突（关于哈希冲突后面会介绍）。
+
 ![](https://pic.downk.cc/item/5e153ea876085c32895e1af8.jpg)
 
 ### 链表节点node
@@ -60,6 +62,10 @@ putVal(hash(key), key, value, false, evict)//把元素放到hashMap中
 
 
 tab即是table，n是map集合的容量大小，hash是上面方法的返回值。因为通常声明map集合时不会指定大小，或者初始化的时候就创建一个容量很大的map对象，所以这个通过容量大小与key值进行hash的算法在开始的时候只会对低位进行计算，虽然容量的2进制高位一开始都是0，但是key的2进制高位通常是有值的，因此先在hash方法中将key的hashCode右移16位在与自身异或，使得高位也可以参与hash，更大程度上减少了碰撞率。
+
+### put方法
+
+当调用put操作时，HashMap计算键值K的哈希值，然后将其对应到HashMap的某一个桶(bucket)上；此时找到以这个桶为头结点的一个单链表，然后顺序遍历该单链表找到某个节点的Entry中的Key是等于给定的参数K；若找到，则将其的old V替换为参数指定的V；否则直接在链表头部插入一个新的Entry节点。
 
 ### get方法
 
@@ -107,6 +113,18 @@ final Node<K,V> getNode(int hash, Object key) {
 
 ![](https://pic.downk.cc/item/5e15507676085c3289601fb6.jpg)
 
+
+## 扩容
+
+### 扩容时机
+
+当map中包含的Entry的数量大于等于threshold = loadFactor * capacity的时候，且新建的Entry刚好落在一个非空的桶上，此刻触发扩容机制，将其容量扩大为2倍。
+
+### 怎么扩容
+
+旧桶数组中的某个桶的外挂单链表是通过头插法插入新桶数组中的，并且原链表中的Entry结点并不一定仍然在新桶数组的同一链表。
+
+计算过程比较简单与重新创建新的hashMap比较类似，就是根据entry的key重新计算出hash值，然后根据新的数组长度计算出应该把老的entry放在新数组的那个位置，如果有冲突就将entry链接其上。
 
 
 ### 红黑树节点TreeNode
