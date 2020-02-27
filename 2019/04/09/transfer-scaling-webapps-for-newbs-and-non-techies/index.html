@@ -14,21 +14,21 @@
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="前言上个星期就准备翻译出这篇文章来着，但是毕设答辩加上清明节假期就导致拖到了今天。 话不多说，这篇文章是在阮一峰老师的每周记录中看到的。因为之前看了顶天的《大型网络扩展和JAVA中间件》这本书（2/3），所以对这个话题比较熟悉。加上这篇外文有很好看的插图，清晰易懂，没有技术性的阅读障碍，是通过逻辑性的思维进行网站应用扩展的讲解，所以我把它翻译出来，复习使用。  原文地址: Scaling weba">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://wx4.sinaimg.cn/mw1024/6a49516fly1g1web0xb1ej20zk0k0wrd.jpg">
-<meta property="og:image" content="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1webi6rjsj20jg0bumy3.jpg">
-<meta property="og:image" content="https://wx3.sinaimg.cn/mw1024/6a49516fly1g1webuwgw7j20jg0al3zf.jpg">
-<meta property="og:image" content="https://wx2.sinaimg.cn/mw1024/6a49516fly1g1wec96qloj20jg0csabd.jpg">
-<meta property="og:image" content="https://wx2.sinaimg.cn/mw1024/6a49516fly1g1wecqv3woj20jg0bwdh3.jpg">
-<meta property="og:image" content="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1wed4e3tyj20jg0c3tag.jpg">
-<meta property="og:image" content="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1wedhmbk3j20jg0c876a.jpg">
-<meta property="og:image" content="https://wx3.sinaimg.cn/mw1024/6a49516fly1g1wedx2oaxj20jg0bdjtb.jpg">
-<meta property="og:image" content="https://wx4.sinaimg.cn/mw1024/6a49516fly1g1wee9hj6jj20jg0bf401.jpg">
-<meta property="og:image" content="https://wx4.sinaimg.cn/mw1024/6a49516fly1g1weelr6h4j20jg0bf403.jpg">
-<meta property="og:updated_time" content="2019-06-04T01:06:18.983Z">
+<meta property="og:image" content="https://pic.downk.cc/item/5e5755f66127cc0713f4f087.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e5756176127cc0713f4f3f4.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e57562a6127cc0713f4f5fe.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e57564b6127cc0713f4fa12.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e57565e6127cc0713f4fc3f.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e5756706127cc0713f4fe93.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e57567f6127cc0713f500e9.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e5756906127cc0713f502da.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e5756a06127cc0713f504db.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5e5756b16127cc0713f506ba.jpg">
+<meta property="og:updated_time" content="2020-02-27T05:42:20.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="翻译-新手向大型网络应用扩展">
 <meta name="twitter:description" content="前言上个星期就准备翻译出这篇文章来着，但是毕设答辩加上清明节假期就导致拖到了今天。 话不多说，这篇文章是在阮一峰老师的每周记录中看到的。因为之前看了顶天的《大型网络扩展和JAVA中间件》这本书（2/3），所以对这个话题比较熟悉。加上这篇外文有很好看的插图，清晰易懂，没有技术性的阅读障碍，是通过逻辑性的思维进行网站应用扩展的讲解，所以我把它翻译出来，复习使用。  原文地址: Scaling weba">
-<meta name="twitter:image" content="https://wx4.sinaimg.cn/mw1024/6a49516fly1g1web0xb1ej20zk0k0wrd.jpg">
+<meta name="twitter:image" content="https://pic.downk.cc/item/5e5755f66127cc0713f4f087.jpg">
     
     
         
@@ -174,7 +174,7 @@
 <ul>
 <li>原文地址: <a href="https://arcentry.com/blog/scaling-webapps-for-newbs-and-non-techies/" target="_blank" rel="noopener">Scaling webapps for newbs &amp; non-techies</a></li>
 </ul>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><img src="https://wx4.sinaimg.cn/mw1024/6a49516fly1g1web0xb1ej20zk0k0wrd.jpg" alt></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><img src="https://pic.downk.cc/item/5e5755f66127cc0713f4f087.jpg" alt></p>
 <p>这篇入门总结了将单服务器扩展到百万级别用户大型网站<strong>扩展</strong>的基本原则。这篇文章针对的是，技术领域的新手或者非开发人员的，所以如果你正在部署更高大上的应用服务的话，这篇文章并不适合你。</p>
 <p>如果这正是你想要的，那么开始吧。</p>
 <h3 id="什么是扩展"><a href="#什么是扩展" class="headerlink" title="什么是扩展"></a>什么是扩展</h3><p>你把你编写的网站，网上商店、社交网络等，部署上线，一切都运行的很美好：每天都有几百用户访问、请求响应及时、调用立即完成。一切都有条不紊地不断运行。</p>
@@ -193,8 +193,8 @@
 <li>多核CPU意味着单机也能有效的并行运算，那不如一开始就并行化好了</li>
 </ul>
 <p>那么横向扩展的必要步骤有那些呢？</p>
-<h3 id="1-单服务器-数据库"><a href="#1-单服务器-数据库" class="headerlink" title="1. 单服务器+数据库"></a>1. 单服务器+数据库</h3><p><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1webi6rjsj20jg0bumy3.jpg" alt><br>你的网站后端可能一开始就是这个样子的。一个应用服务器执行你的业务逻辑，数据库存储数据。事情简单而美好，但是想要其高可用，只能用更好的机器–这并不好。</p>
-<h3 id="2-增加反向代理"><a href="#2-增加反向代理" class="headerlink" title="2. 增加反向代理"></a>2. 增加反向代理</h3><p><img src="https://wx3.sinaimg.cn/mw1024/6a49516fly1g1webuwgw7j20jg0al3zf.jpg" alt></p>
+<h3 id="1-单服务器-数据库"><a href="#1-单服务器-数据库" class="headerlink" title="1. 单服务器+数据库"></a>1. 单服务器+数据库</h3><p><img src="https://pic.downk.cc/item/5e5756176127cc0713f4f3f4.jpg" alt><br>你的网站后端可能一开始就是这个样子的。一个应用服务器执行你的业务逻辑，数据库存储数据。事情简单而美好，但是想要其高可用，只能用更好的机器–这并不好。</p>
+<h3 id="2-增加反向代理"><a href="#2-增加反向代理" class="headerlink" title="2. 增加反向代理"></a>2. 增加反向代理</h3><p><img src="https://pic.downk.cc/item/5e57562a6127cc0713f4f5fe.jpg" alt></p>
 <p>为了使你的架构能够适应更大的扩展，第一步要加一个”反向代理”。它就相当于酒店的前台。当然，你可以让客人直接去自己的房间；但是，你真正需要的事一个中间人，能够确认这位客人是否允许进入、到底有没有订房或者正去往一个正确房间的路上。同时你还要要告知客户，他要的房间可不可用、能不能去，以免尴尬的徘徊。以上就是反向代理的工作。代理就是用来接收和转发请求的。通常情况下，请求是从我们的服务器发出到互联网上的。但是这次，是从互联网上路由到我们的服务器上，所以我们”反向代理”。</p>
 <p>一个代理需要完成以下任务：</p>
 <ul>
@@ -203,15 +203,15 @@
 <li>认证，确保请求的发送方是有许可的</li>
 <li>防火墙，确保请求方访问的是服务器上有权限的内容</li>
 </ul>
-<h3 id="3-引入负载均衡"><a href="#3-引入负载均衡" class="headerlink" title="3. 引入负载均衡"></a>3. 引入负载均衡</h3><p><img src="https://wx2.sinaimg.cn/mw1024/6a49516fly1g1wec96qloj20jg0csabd.jpg" alt></p>
+<h3 id="3-引入负载均衡"><a href="#3-引入负载均衡" class="headerlink" title="3. 引入负载均衡"></a>3. 引入负载均衡</h3><p><img src="https://pic.downk.cc/item/5e57564b6127cc0713f4fa12.jpg" alt></p>
 <p>许多反向代理还能够负载均衡。负载均衡器是一个很简单的概念：想象一下，在一分钟内有一百个用户要向你的网上商店付款，很不幸的是，你的支付系统只能同时处理50个支付请求。怎么解决？同时运行两个支付系统服务器。</p>
 <p>现在负载均衡器的作用就是将支付请求分摊到这两个服务器上，用户1到左边的服务器，用户2区右边的服务器，用户3去左边的…以此类推。</p>
 <p>如果同时🈶500个支付请求怎么办呢？加到10个支付系统服务器，然后用负载均衡分摊请求。</p>
-<h3 id="4-扩展数据库"><a href="#4-扩展数据库" class="headerlink" title="4. 扩展数据库"></a>4. 扩展数据库</h3><p><img src="https://wx2.sinaimg.cn/mw1024/6a49516fly1g1wecqv3woj20jg0bwdh3.jpg" alt></p>
+<h3 id="4-扩展数据库"><a href="#4-扩展数据库" class="headerlink" title="4. 扩展数据库"></a>4. 扩展数据库</h3><p><img src="https://pic.downk.cc/item/5e57565e6127cc0713f4fc3f.jpg" alt></p>
 <p>运用负载均衡可以将压力分在各个服务器上。但是你发现问题了么？虽然我们可能有成百上千个服务器，用来处理请求，但是只有一个数据库存取数据。</p>
 <p>所以，我们可以以同样的方式来扩展数据库嘛？很不幸的是，不行。关键在于一致性的问题。我们系统中的每个部分都要确保使用数据的一致性。不一致的数据导致各种棘手的问题：订单为重复执行2次，从余额100的账户里扣除2次90元的付款等等。所以我们怎样才能扩展数据库，同时又保证数据的一致性呢?</p>
 <p>首先我们要把数据库分成不同的部分。一部分专门用来接收和存储数据，其他部分专门用来读取数据。这种方案有时称为主/从魔石，有时称为使用只读副本写入。而且假定服务器读数据比写数据的次数更多。<br>这样的解决方法就能保证一致性，因为数据是从单个接口写入的，而且数据流动是单向的，从写到读。<br>缺点就是数据输入还是由单个数据库完成，这对于中小型的应用来说是OK的，但是对于像Facebook那样级别的就不行。更进一步的数据库扩展将在之后讨论。</p>
-<h3 id="5-微服务"><a href="#5-微服务" class="headerlink" title="5. 微服务"></a>5. 微服务</h3><p><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1wed4e3tyj20jg0c3tag.jpg" alt></p>
+<h3 id="5-微服务"><a href="#5-微服务" class="headerlink" title="5. 微服务"></a>5. 微服务</h3><p><img src="https://pic.downk.cc/item/5e5756706127cc0713f4fe93.jpg" alt></p>
 <p>到现在，我们都用一个服务器去完成所有的工作：处理支付、订单、库存、提供web服务、管理用户账号等。</p>
 <p>这未必不是一件坏事，单个服务器意味着更低的复杂度（结构上的），对我们开发者来说没那么头疼。<br>但是随着扩展的增加，事情开始变得复杂和低效：</p>
 <ul>
@@ -225,10 +225,10 @@
 <li>每个开发团队独立开发，对自己的微服务生命周期负责（创建、部署、更新等）</li>
 <li>每个微服务运用自己的资源，如数据库（一定程度上缓解了4中的问题）</li>
 </ul>
-<h3 id="6-缓存和内容分发网络CDN"><a href="#6-缓存和内容分发网络CDN" class="headerlink" title="6. 缓存和内容分发网络CDN"></a>6. 缓存和内容分发网络CDN</h3><p><img src="https://wx1.sinaimg.cn/mw1024/6a49516fly1g1wedhmbk3j20jg0c876a.jpg" alt></p>
+<h3 id="6-缓存和内容分发网络CDN"><a href="#6-缓存和内容分发网络CDN" class="headerlink" title="6. 缓存和内容分发网络CDN"></a>6. 缓存和内容分发网络CDN</h3><p><img src="https://pic.downk.cc/item/5e57567f6127cc0713f500e9.jpg" alt></p>
 <p>怎么才能工作更高效呢？不要什么都干！<br>我们的web应用很大一部分都是静态资源，像图片、js脚本、css文件、预渲染的进入页面等。<br>所以相比较每次都重新请求数据资源，我们不如将一些结果放在简单的缓存之中，谁需要就去拿，不用干扰到后面的服务器。</p>
 <p>缓存的大哥叫内容分发网络CDN，是一组分布在全世界范围内的缓存。这让我们能够从用户就近的节点向他们分发内容，不需要每次都翻山越岭了。</p>
-<h3 id="7-消息队列"><a href="#7-消息队列" class="headerlink" title="7. 消息队列"></a>7. 消息队列</h3><p><img src="https://wx3.sinaimg.cn/mw1024/6a49516fly1g1wedx2oaxj20jg0bdjtb.jpg" alt></p>
+<h3 id="7-消息队列"><a href="#7-消息队列" class="headerlink" title="7. 消息队列"></a>7. 消息队列</h3><p><img src="https://pic.downk.cc/item/5e5756906127cc0713f502da.jpg" alt></p>
 <p>你去过游乐园吗？你是不是每次都直接去售票厅就能买到票呢？大部分情况都要排队吧应该。<br>政府机构、邮局和游乐园都是”sub-capacity parallelism”很好的例子。他们是并行的–多个售票厅同时售票。<br>但是貌似不可能有足够的售票厅能让每个人都能立即买到票，所以队列就形成了。</p>
 <p>在大型网站上同样可以套用这个概念。成千上万的图片每时每刻上传到Instagram、Facebook上面，每张图片都要被处理、调整、分析和打标，这是一个耗时的过程。<br>所以为了使用户不用等待所有流程都结束，服务器接收到图片之后，只完成下面3件事：</p>
 <ul>
@@ -245,12 +245,12 @@
 </ul>
 <hr>
 <p>👌如果我们的系统已经经过了以上的扩展，那么已经可以应对大流量了。但是如果我们想要更大更强呢？以下是几个选项。</p>
-<h3 id="8-分片-分区"><a href="#8-分片-分区" class="headerlink" title="8. 分片/分区"></a>8. 分片/分区</h3><p><img src="https://wx4.sinaimg.cn/mw1024/6a49516fly1g1wee9hj6jj20jg0bf401.jpg" alt></p>
+<h3 id="8-分片-分区"><a href="#8-分片-分区" class="headerlink" title="8. 分片/分区"></a>8. 分片/分区</h3><p><img src="https://pic.downk.cc/item/5e5756a06127cc0713f504db.jpg" alt></p>
 <p>什么是分区？定义如下：</p>
 <p>“Sharding是一种通过将应用程序的堆栈分成多个单元来并行化应用程序堆栈的技术，每个单元负责某个键或命名空间”</p>
 <p>额，所以到底什么是分区？其实很简单：需要访问20亿Facebook用户的档案，那就把Facebook分成26个小Facebook，每个Facebook服务不同姓名首字母大写的用户。</p>
 <p>分区不一定按照首字母划分，可以是地区、使用频率（头部用户给更好的服务）等。<br>你可以将服务器分区、数据库分许，或者任何你应用系统中的一个方面，只要满足你的需求。</p>
-<h3 id="9-对负载均衡器进行负载均衡"><a href="#9-对负载均衡器进行负载均衡" class="headerlink" title="9. 对负载均衡器进行负载均衡"></a>9. 对负载均衡器进行负载均衡</h3><p><img src="https://wx4.sinaimg.cn/mw1024/6a49516fly1g1weelr6h4j20jg0bf403.jpg" alt></p>
+<h3 id="9-对负载均衡器进行负载均衡"><a href="#9-对负载均衡器进行负载均衡" class="headerlink" title="9. 对负载均衡器进行负载均衡"></a>9. 对负载均衡器进行负载均衡</h3><p><img src="https://pic.downk.cc/item/5e5756b16127cc0713f506ba.jpg" alt></p>
 <p>单个负载均衡器只能做那么多，即使你购买超贵超牛的负载均衡器，性能都是有瓶颈的。</p>
 <p>很幸运的是，有一个全球性的、分散的、超级稳定的层次，能够在流量到达负载均衡器之前进行分流操作。那就是”域名系统”，DNS。全球域名注册表将”github.com”映射到”XXX.XXX.XXX.XXX”这个IP地址上，同时也允许我们将特定域名映射到多个IP地址上，这样就能到达多个不同的负载均衡器了。</p>
 <hr>
