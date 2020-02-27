@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://pic.downk.cc/item/5e10272776085c3289ac4168.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e102e6076085c3289ad5372.jpg">
-<meta property="og:updated_time" content="2020-02-04T09:56:17.310Z">
+<meta property="og:updated_time" content="2020-02-27T05:33:35.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络">
 <meta name="twitter:description" content="get与post2020年了，还是要问的。 从标准上看：GET 用于获取信息，是无副作用的，是幂等的，且可缓存POST 用于修改服务器上的数据，有副作用，非幂等，不可缓存 报文上的区别：GET 和 POST 只是 HTTP 协议中两种请求方式，而 HTTP 协议是基于 TCP/IP 的应用层协议，无论 GET 还是 POST，用的都是同一个传输层协议，所以在传输上，没有区别。报文格式上，不带参数时">
@@ -112,7 +112,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#get与post"><span class="toc-number">1.</span> <span class="toc-text">get与post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见http状态码"><span class="toc-number">2.</span> <span class="toc-text">常见http状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP与Http协议的区别与关系"><span class="toc-number">3.</span> <span class="toc-text">TCP/IP与Http协议的区别与关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC与http的区别"><span class="toc-number">4.</span> <span class="toc-text">RPC与http的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP和HTTPS的区别以及https实现过程"><span class="toc-number">5.</span> <span class="toc-text">HTTP和HTTPS的区别以及https实现过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP如何保证可靠传输"><span class="toc-number">6.</span> <span class="toc-text">TCP如何保证可靠传输</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#get与post"><span class="toc-number">1.</span> <span class="toc-text">get与post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http请求与响应"><span class="toc-number">2.</span> <span class="toc-text">http请求与响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从输入url到页面展现发生了什么"><span class="toc-number">3.</span> <span class="toc-text">从输入url到页面展现发生了什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见http状态码"><span class="toc-number">4.</span> <span class="toc-text">常见http状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP与Http协议的区别与关系"><span class="toc-number">5.</span> <span class="toc-text">TCP/IP与Http协议的区别与关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC与http的区别"><span class="toc-number">6.</span> <span class="toc-text">RPC与http的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP和HTTPS的区别以及https实现过程"><span class="toc-number">7.</span> <span class="toc-text">HTTP和HTTPS的区别以及https实现过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP如何保证可靠传输"><span class="toc-number">8.</span> <span class="toc-text">TCP如何保证可靠传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器渲染"><span class="toc-number">9.</span> <span class="toc-text">浏览器渲染</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -164,10 +164,32 @@
     <h3 id="get与post"><a href="#get与post" class="headerlink" title="get与post"></a>get与post</h3><p>2020年了，还是要问的。</p>
 <p>从标准上看：<br>GET 用于获取信息，是无副作用的，是幂等的，且可缓存<br>POST 用于修改服务器上的数据，有副作用，非幂等，不可缓存</p>
 <p>报文上的区别：<br>GET 和 POST 只是 HTTP 协议中两种请求方式，而 HTTP 协议是基于 TCP/IP 的应用层协议，无论 GET 还是 POST，用的都是同一个传输层协议，所以<strong>在传输上，没有区别</strong>。<br>报文格式上，不带参数时，最大区别就是第一行方法名不同。<br>带参数时，GET 方法的参数应该放在 url 中，POST 方法参数应该放在 body 中。</p>
+<h3 id="http请求与响应"><a href="#http请求与响应" class="headerlink" title="http请求与响应"></a>http请求与响应</h3><p>https默认请求端口443， http默认80</p>
+<ul>
+<li>请求行：包括请求的方法，路径和协议版本</li>
+<li>请求头：包含了请求的一些附加的信息，一般是以键值的形式成对存在，比如设置请求文件的类型accept-type，以及服务器对缓存的设置。</li>
+<li>空行</li>
+<li><p>请求主体：对于post请求，所需要的参数都不会放在url中，这时候就需要一个载体了，这个载体就是请求主体</p>
+</li>
+<li><p>响应行：包含了协议版本，与请求的起始行不同的是其包含的还有状态码和状态码的原因短语。</p>
+</li>
+<li>响应头</li>
+<li>空行</li>
+<li>报文主体：请求所需要的资源</li>
+</ul>
+<h3 id="从输入url到页面展现发生了什么"><a href="#从输入url到页面展现发生了什么" class="headerlink" title="从输入url到页面展现发生了什么"></a>从输入url到页面展现发生了什么</h3><ul>
+<li>域名解析查找服务器IP</li>
+<li>通过IP向服务器发起TCP连接</li>
+<li>向服务器发起请求</li>
+<li>服务器返回请求内容</li>
+<li>浏览器解析渲染页面</li>
+<li>关闭连接</li>
+</ul>
 <h3 id="常见http状态码"><a href="#常见http状态码" class="headerlink" title="常见http状态码"></a>常见http状态码</h3><ul>
 <li>200 OK</li>
 <li>301 永久重定向</li>
 <li>302 临时重定向</li>
+<li>304 no modify 说明这次请求的资源在上次请求之后没有改变，浏览器（客户端）可以直接从它的缓存中取资源</li>
 <li>400 bad request 服务器不知道怎么应答</li>
 <li>403 请求资源被服务器拒绝</li>
 <li>404 not found</li>
@@ -185,7 +207,7 @@
 <p>RPC主要用在比较大型的企业里面，对于效率的要求比较高，所以需要使用rpc在应用的发现、负载均衡等等这些特性。</p>
 <h3 id="HTTP和HTTPS的区别以及https实现过程"><a href="#HTTP和HTTPS的区别以及https实现过程" class="headerlink" title="HTTP和HTTPS的区别以及https实现过程"></a>HTTP和HTTPS的区别以及https实现过程</h3><p>https是http加上ssl安全套接字层(secure socket layer)，可以建立一个信息安全通道，并且能确认网站的真实性。</p>
 <p>https实现过程：</p>
-<p>对称加密：加密解密使用同一把秘钥。非对称加密：客户端请求使用公钥加密，客户端使用私钥进行解密。公钥谁都可以知道，私钥只有服务端自己知道。</p>
+<p>对称加密：加密解密使用同一把秘钥。非对称加密：客户端请求使用公钥加密，服务端使用私钥进行解密。公钥谁都可以知道，私钥只有服务端自己知道。</p>
 <p>https是两种都用，简单的说，先使用非对称加密来传输一个秘钥（客户端向服务端传，说我们以后都用这个秘钥加密），然后就可以用这个只有客户端和服务端知道的秘钥进行信息加密传输了。</p>
 <p>过程：</p>
 <ul>
@@ -213,6 +235,18 @@
 <li>流量控制与拥塞控制</li>
 </ul>
 <p><img src="https://pic.downk.cc/item/5e102e6076085c3289ad5372.jpg" alt></p>
+<h3 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h3><ul>
+<li>根据HTML文件构件DOM(document object model)</li>
+</ul>
+<p>DOM 是 Web 页面的内部的逻辑树文档结构，Web 开发人员可以通过 JavaScript 脚本与之交互数据，以及通过标准 API 来操作 DOM 节点。</p>
+<ul>
+<li>子资源加载</li>
+</ul>
+<p>在解析构建的DOM时，请求包括图片、css和js之类的外部资源。</p>
+<ul>
+<li>样式渲染 使用css渲染DOM样式</li>
+<li>布局layout</li>
+</ul>
 
   </div>
 </article>
@@ -265,7 +299,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#get与post"><span class="toc-number">1.</span> <span class="toc-text">get与post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见http状态码"><span class="toc-number">2.</span> <span class="toc-text">常见http状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP与Http协议的区别与关系"><span class="toc-number">3.</span> <span class="toc-text">TCP/IP与Http协议的区别与关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC与http的区别"><span class="toc-number">4.</span> <span class="toc-text">RPC与http的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP和HTTPS的区别以及https实现过程"><span class="toc-number">5.</span> <span class="toc-text">HTTP和HTTPS的区别以及https实现过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP如何保证可靠传输"><span class="toc-number">6.</span> <span class="toc-text">TCP如何保证可靠传输</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#get与post"><span class="toc-number">1.</span> <span class="toc-text">get与post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http请求与响应"><span class="toc-number">2.</span> <span class="toc-text">http请求与响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从输入url到页面展现发生了什么"><span class="toc-number">3.</span> <span class="toc-text">从输入url到页面展现发生了什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见http状态码"><span class="toc-number">4.</span> <span class="toc-text">常见http状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP与Http协议的区别与关系"><span class="toc-number">5.</span> <span class="toc-text">TCP/IP与Http协议的区别与关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC与http的区别"><span class="toc-number">6.</span> <span class="toc-text">RPC与http的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP和HTTPS的区别以及https实现过程"><span class="toc-number">7.</span> <span class="toc-text">HTTP和HTTPS的区别以及https实现过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP如何保证可靠传输"><span class="toc-number">8.</span> <span class="toc-text">TCP如何保证可靠传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器渲染"><span class="toc-number">9.</span> <span class="toc-text">浏览器渲染</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

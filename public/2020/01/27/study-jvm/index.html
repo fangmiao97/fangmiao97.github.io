@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://pic.downk.cc/item/5e37e8d62fb38b8c3c827de4.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e38060a2fb38b8c3c858a66.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5e3993152fb38b8c3cacb000.jpg">
-<meta property="og:updated_time" content="2020-02-06T10:19:44.468Z">
+<meta property="og:updated_time" content="2020-02-06T11:25:31.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机学习">
 <meta name="twitter:description" content="运行时数据区域 程序计数器  此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域  java虚拟机栈  每个方法在执行的同时都会创建一个栈帧（Stack Frame)用于存储局部变量表、操作数栈、动态链接、方法出口等信息。 局部变量表存放了编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、dou">
@@ -485,7 +485,7 @@
 <ul>
 <li>动态连接</li>
 </ul>
-<p>每个栈帧都包含一个指向运行时常量池中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接（Dynamic Linking）。<br>字节码中的方法调用指令就以常量池中指向方法的符号引用作为参数。这些符号引用一部分会在类加载阶段或者第一次使用的时候就转化为直接引用，这种转化称为静态解析。另外一部分将在每一次运行期间转化为直接引用，这部分称为动态连接。</p>
+<p><strong>每个栈帧都包含一个指向运行时常量池中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接（Dynamic Linking）。</strong><br>字节码中的方法调用指令就以常量池中指向方法的符号引用作为参数。这些符号引用一部分会在类加载阶段或者第一次使用的时候就转化为直接引用，这种转化称为静态解析。另外一部分将在每一次运行期间转化为直接引用，这部分称为动态连接。</p>
 <ul>
 <li>方法返回地址</li>
 </ul>
