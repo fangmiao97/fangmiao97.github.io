@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fangmiao97.github.io/2020/05/03/54/</loc>
+    
+    <lastmod>2020-05-03T12:29:34.343Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://fangmiao97.github.io/2019/04/09/transfer-scaling-webapps-for-newbs-and-non-techies/</loc>
+    
+    <lastmod>2020-02-27T05:42:20.236Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://fangmiao97.github.io/2020/01/04/network-review/</loc>
     
     <lastmod>2020-02-27T05:33:35.991Z</lastmod>
@@ -268,14 +282,14 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/search/index.html</loc>
+    <loc>https://fangmiao97.github.io/categories/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/categories/index.html</loc>
+    <loc>https://fangmiao97.github.io/search/index.html</loc>
     
     <lastmod>2019-06-04T01:06:18.989Z</lastmod>
     
@@ -310,6 +324,13 @@
   </url>
   
   <url>
+    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
+    
+    <lastmod>2019-06-04T01:06:18.985Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
     
     <lastmod>2019-06-04T01:06:18.985Z</lastmod>
@@ -324,23 +345,9 @@
   </url>
   
   <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
-    
-    <lastmod>2019-06-04T01:06:18.985Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://fangmiao97.github.io/2019/04/22/user-action-logger-design/</loc>
     
     <lastmod>2019-06-04T01:06:18.984Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://fangmiao97.github.io/2019/04/09/transfer-scaling-webapps-for-newbs-and-non-techies/</loc>
-    
-    <lastmod>2019-06-04T01:06:18.983Z</lastmod>
     
   </url>
   

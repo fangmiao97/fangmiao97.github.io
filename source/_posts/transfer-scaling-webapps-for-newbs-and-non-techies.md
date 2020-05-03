@@ -16,7 +16,7 @@ tags:
 
 ## 正文
 
-![](https://wx4.sinaimg.cn/mw1024/6a49516fly1g1web0xb1ej20zk0k0wrd.jpg)
+![](https://pic.downk.cc/item/5e5755f66127cc0713f4f087.jpg)
 
 这篇入门总结了将单服务器扩展到百万级别用户大型网站**扩展**的基本原则。这篇文章针对的是，技术领域的新手或者非开发人员的，所以如果你正在部署更高大上的应用服务的话，这篇文章并不适合你。
 
@@ -45,11 +45,11 @@ tags:
 那么横向扩展的必要步骤有那些呢？
 
 ### 1. 单服务器+数据库
-![](https://wx1.sinaimg.cn/mw1024/6a49516fly1g1webi6rjsj20jg0bumy3.jpg)
+![](https://pic.downk.cc/item/5e5756176127cc0713f4f3f4.jpg)
 你的网站后端可能一开始就是这个样子的。一个应用服务器执行你的业务逻辑，数据库存储数据。事情简单而美好，但是想要其高可用，只能用更好的机器--这并不好。
 
 ### 2. 增加反向代理
-![](https://wx3.sinaimg.cn/mw1024/6a49516fly1g1webuwgw7j20jg0al3zf.jpg)
+![](https://pic.downk.cc/item/5e57562a6127cc0713f4f5fe.jpg)
 
 为了使你的架构能够适应更大的扩展，第一步要加一个"反向代理"。它就相当于酒店的前台。当然，你可以让客人直接去自己的房间；但是，你真正需要的事一个中间人，能够确认这位客人是否允许进入、到底有没有订房或者正去往一个正确房间的路上。同时你还要要告知客户，他要的房间可不可用、能不能去，以免尴尬的徘徊。以上就是反向代理的工作。代理就是用来接收和转发请求的。通常情况下，请求是从我们的服务器发出到互联网上的。但是这次，是从互联网上路由到我们的服务器上，所以我们"反向代理"。
 
@@ -62,7 +62,7 @@ tags:
 
 ### 3. 引入负载均衡
 
-![](https://wx2.sinaimg.cn/mw1024/6a49516fly1g1wec96qloj20jg0csabd.jpg)
+![](https://pic.downk.cc/item/5e57564b6127cc0713f4fa12.jpg)
 
 许多反向代理还能够负载均衡。负载均衡器是一个很简单的概念：想象一下，在一分钟内有一百个用户要向你的网上商店付款，很不幸的是，你的支付系统只能同时处理50个支付请求。怎么解决？同时运行两个支付系统服务器。
 
@@ -72,7 +72,7 @@ tags:
 
 ### 4. 扩展数据库
 
-![](https://wx2.sinaimg.cn/mw1024/6a49516fly1g1wecqv3woj20jg0bwdh3.jpg)
+![](https://pic.downk.cc/item/5e57565e6127cc0713f4fc3f.jpg)
 
 运用负载均衡可以将压力分在各个服务器上。但是你发现问题了么？虽然我们可能有成百上千个服务器，用来处理请求，但是只有一个数据库存取数据。
 
@@ -84,7 +84,7 @@ tags:
 
 ### 5. 微服务
 
-![](https://wx1.sinaimg.cn/mw1024/6a49516fly1g1wed4e3tyj20jg0c3tag.jpg)
+![](https://pic.downk.cc/item/5e5756706127cc0713f4fe93.jpg)
 
 到现在，我们都用一个服务器去完成所有的工作：处理支付、订单、库存、提供web服务、管理用户账号等。
 
@@ -103,7 +103,7 @@ tags:
 * 每个微服务运用自己的资源，如数据库（一定程度上缓解了4中的问题）
 
 ### 6. 缓存和内容分发网络CDN
-![](https://wx1.sinaimg.cn/mw1024/6a49516fly1g1wedhmbk3j20jg0c876a.jpg)
+![](https://pic.downk.cc/item/5e57567f6127cc0713f500e9.jpg)
 
 怎么才能工作更高效呢？不要什么都干！
 我们的web应用很大一部分都是静态资源，像图片、js脚本、css文件、预渲染的进入页面等。
@@ -113,7 +113,7 @@ tags:
 
 ### 7. 消息队列
 
-![](https://wx3.sinaimg.cn/mw1024/6a49516fly1g1wedx2oaxj20jg0bdjtb.jpg)
+![](https://pic.downk.cc/item/5e5756906127cc0713f502da.jpg)
 
 你去过游乐园吗？你是不是每次都直接去售票厅就能买到票呢？大部分情况都要排队吧应该。
 政府机构、邮局和游乐园都是"sub-capacity parallelism"很好的例子。他们是并行的--多个售票厅同时售票。
@@ -139,7 +139,7 @@ tags:
 
 ### 8. 分片/分区
 
-![](https://wx4.sinaimg.cn/mw1024/6a49516fly1g1wee9hj6jj20jg0bf401.jpg)
+![](https://pic.downk.cc/item/5e5756a06127cc0713f504db.jpg)
 
 什么是分区？定义如下：
 
@@ -152,7 +152,7 @@ tags:
 
 ### 9. 对负载均衡器进行负载均衡
 
-![](https://wx4.sinaimg.cn/mw1024/6a49516fly1g1weelr6h4j20jg0bf403.jpg)
+![](https://pic.downk.cc/item/5e5756b16127cc0713f506ba.jpg)
 
 单个负载均衡器只能做那么多，即使你购买超贵超牛的负载均衡器，性能都是有瓶颈的。
 

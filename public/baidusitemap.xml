@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://fangmiao97.github.io/2020/05/03/54/</loc>
+    <lastmod>2020-05-03</lastmod>
+  </url>  <url>
+    <loc>https://fangmiao97.github.io/2019/04/09/transfer-scaling-webapps-for-newbs-and-non-techies/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>  <url>
     <loc>https://fangmiao97.github.io/2020/01/04/network-review/</loc>
     <lastmod>2020-02-27</lastmod>
   </url>  <url>
@@ -118,19 +124,16 @@
     <loc>https://fangmiao97.github.io/2019/03/16/weeklyReport190316/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
+    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
+    <lastmod>2019-06-04</lastmod>
+  </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/20/weekly-report-190420/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/14/weekly-report-190414/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/03/18/websitesafari/</loc>
-    <lastmod>2019-06-04</lastmod>
-  </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/22/user-action-logger-design/</loc>
-    <lastmod>2019-06-04</lastmod>
-  </url>  <url>
-    <loc>https://fangmiao97.github.io/2019/04/09/transfer-scaling-webapps-for-newbs-and-non-techies/</loc>
     <lastmod>2019-06-04</lastmod>
   </url>  <url>
     <loc>https://fangmiao97.github.io/2019/04/13/tanslate-Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction%E2%80%93for-In-Memory-Cluster-Computing/</loc>
