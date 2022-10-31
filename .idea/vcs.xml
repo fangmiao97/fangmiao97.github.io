@@ -4,5 +4,6 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.deploy_git" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/themes/cactus" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/themes/cactus-light" vcs="Git" />
   </component>
 </project>

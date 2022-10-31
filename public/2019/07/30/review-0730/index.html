@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="findDuplicate &amp;amp; findDuplicates 都是在长位n的数组里面出现重复的数字，数字在1-n之间  第一题重复的数字为一个，可重复一次以上；第二题重复的数字为多个，重复的次数为2次  都可以使用遍历的方法，先遍历数组记录每个数字出现的次数，再从记录中找到重复次数大于2的即可。但是对于第一题效率不高，第二题还可以  也可采用索引的方法或Cycle Detection">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-30T02:34:01.435Z">
+<meta property="og:updated_time" content="2020-07-25T11:11:54.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode复习">
 <meta name="twitter:description" content="findDuplicate &amp;amp; findDuplicates 都是在长位n的数组里面出现重复的数字，数字在1-n之间  第一题重复的数字为一个，可重复一次以上；第二题重复的数字为多个，重复的次数为2次  都可以使用遍历的方法，先遍历数组记录每个数字出现的次数，再从记录中找到重复次数大于2的即可。但是对于第一题效率不高，第二题还可以  也可采用索引的方法或Cycle Detection">
@@ -65,13 +65,7 @@
          
           <li><a href="/archives/">归档</a></li>
          
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
-         
-          <li><a href="/search/">搜索</a></li>
-         
-          <li><a href="https://github.com/fangmiao97">项目</a></li>
+          <li><a href="/projects_url">项目</a></li>
         
       </ul>
     </span>
@@ -105,6 +99,7 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2019/07/30/review-0730/&title=LeetCode复习"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2019/07/30/review-0730/&title=LeetCode复习"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2019/07/30/review-0730/&name=LeetCode复习&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://fangmiao97.github.io/2019/07/30/review-0730/&t=LeetCode复习"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -184,13 +179,6 @@
   </div>
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
-        </div>
-    </div>
-
-
 
 
         
@@ -206,13 +194,7 @@
          
           <li><a href="/archives/">归档</a></li>
          
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
-         
-          <li><a href="/search/">搜索</a></li>
-         
-          <li><a href="https://github.com/fangmiao97">项目</a></li>
+          <li><a href="/projects_url">项目</a></li>
         
       </ul>
     </div>
@@ -233,6 +215,7 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://fangmiao97.github.io/2019/07/30/review-0730/&title=LeetCode复习"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://fangmiao97.github.io/2019/07/30/review-0730/&title=LeetCode复习"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://fangmiao97.github.io/2019/07/30/review-0730/&name=LeetCode复习&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://fangmiao97.github.io/2019/07/30/review-0730/&t=LeetCode复习"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -250,7 +233,11 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2020 Fang Miao
+    Copyright &copy;
+    
+    
+    2016-2020
+    Fang Miao
   </div>
   <div class="footer-right">
     <nav>
@@ -262,13 +249,7 @@
          
           <li><a href="/archives/">归档</a></li>
          
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
-         
-          <li><a href="/search/">搜索</a></li>
-         
-          <li><a href="https://github.com/fangmiao97">项目</a></li>
+          <li><a href="/projects_url">项目</a></li>
         
       </ul>
     </nav>
@@ -283,6 +264,29 @@
     <!-- jquery -->
 <script src="/lib/jquery/jquery.min.js"></script>
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
 <script src="/js/main.js"></script>
 <!-- search -->
 
@@ -291,18 +295,6 @@
 <!-- Baidu Analytics -->
 
 <!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'cactus-1-2';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
 
 
 </body>
