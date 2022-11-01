@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang=en>
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://fangmiao97.github.io/2019/06/01/graduation-design-paper/index.html">
 <meta property="og:site_name" content="Chaoyue&#39;s Notes">
 <meta property="og:description" content="摘要随着大数据时代的到来，数据总量不断增加，同时分布式存储与计算技术也在快速发展，如何从海量、分散的数据中提取出有价值的信息，已经成为各个行业的迫切需求，对数据的实时处理和响应变得越来越重要。 本文设计了基于Spark Streaming的网站日志实时流处理系统，针对通用音乐网站两种类型的日志：网页浏览日志和网页行为日志，进行了实时采集、传输、处理、分析、持久化和可视化。本文完成了以下几个功能：1">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1599777765_1559366186537/0">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1599777765_1559366311701/0">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1599777765_1559366347719/0">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1599777765_1559370164164/0">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1359855289_1559370195372/0">
 <meta property="og:image" content="https://puui.qpic.cn/fans_admin/0/3_1599777765_1559370221681/0">
-<meta property="og:updated_time" content="2020-07-25T11:11:54.030Z">
+<meta property="og:updated_time" content="2022-11-01T13:05:29.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Spark Streaming的网站日志实时流处理">
 <meta name="twitter:description" content="摘要随着大数据时代的到来，数据总量不断增加，同时分布式存储与计算技术也在快速发展，如何从海量、分散的数据中提取出有价值的信息，已经成为各个行业的迫切需求，对数据的实时处理和响应变得越来越重要。 本文设计了基于Spark Streaming的网站日志实时流处理系统，针对通用音乐网站两种类型的日志：网页浏览日志和网页行为日志，进行了实时采集、传输、处理、分析、持久化和可视化。本文完成了以下几个功能：1">
@@ -88,13 +88,13 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">首页</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">关于</a></li>
+          <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">归档</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="/projects_url">项目</a></li>
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
     </span>
@@ -110,10 +110,10 @@
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
     <br>
     <div id="share" style="display: none">
@@ -466,13 +466,13 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">首页</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">关于</a></li>
+          <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">归档</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="/projects_url">项目</a></li>
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
     </div>
@@ -499,10 +499,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
@@ -514,20 +514,20 @@
     Copyright &copy;
     
     
-    2016-2020
+    2016-2022
     Fang Miao
   </div>
   <div class="footer-right">
     <nav>
       <ul>
          
-          <li><a href="/">首页</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">关于</a></li>
+          <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">归档</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="/projects_url">项目</a></li>
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
     </nav>
@@ -548,7 +548,7 @@
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
     btn += '<i class="far fa-clone"></i>';
     btn += '</span>'; 
     // mount it!
@@ -559,7 +559,7 @@
       }
     });
     clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.trigger.setAttribute('aria-label', "Copied!");
       e.clearSelection();
     })
   })
